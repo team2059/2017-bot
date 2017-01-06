@@ -1,0 +1,15 @@
+*.bak
+*.launch
+*.swp
+*.tmp
+*~.nib
+.loadpath
+.recommenders
+.settings/
+/.classpath
+/.metadata
+/bin/
+/build/
+/dist/
+/tmp/
+local.properties
