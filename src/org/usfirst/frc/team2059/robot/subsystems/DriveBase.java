@@ -11,5 +11,11 @@ public class DriveBase extends Subsystem{
 	  public void initDefaultCommand(){
 		    setDefaultCommand(new Drive());
       }
+	  public void driveMecanum(double x, double y, double z){
+		  rightFrontMotor.set(-x+y-z);
+		  leftFrontMotor.set(-(x+y+z));
+		  rightRearMotor.set(x+y-z);
+		  leftRearMotor.set(-(-x+y+z));
+	  }
 }
 // vim: sw=2:ts=2:sts=2
