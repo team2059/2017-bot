@@ -9,6 +9,10 @@ public class Drive extends CommandBase {
   protected void initialize() {
   }
   protected void execute() {
+	    double x = Robot.oi.getJoysticks()[0].getRawAxis(0);
+	    double y = Robot.oi.getJoysticks()[0].getRawAxis(1);
+	    double z = Robot.oi.getJoysticks()[0].getRawAxis(2);
+	    driveBase.driveMecanum(x, y, z);
   }
   protected boolean isFinished() {
     return false;
