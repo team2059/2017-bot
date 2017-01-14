@@ -3,6 +3,7 @@ import org.usfirst.frc.team2059.robot.RobotMap;
 import org.usfirst.frc.team2059.robot.commands.drivetrain.Drive;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import com.ctre.CANTalon;
+
 public class DriveBase extends Subsystem {
   CANTalon leftFrontMotor = new CANTalon(RobotMap.driveLeftFrontMotor);
   CANTalon leftRearMotor = new CANTalon(RobotMap.driveLeftRearMotor);

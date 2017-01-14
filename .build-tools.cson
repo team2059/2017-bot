@@ -1,0 +1,85 @@
+providers: [
+  {
+    key: "java-ant"
+    config:
+      props:
+        wd: "."
+        env: {}
+        modifier:
+          save_all: {}
+          env:
+            ANT_HOME: "C:\\Users\\achin\\Desktop\\apache-ant-1.10.0-bin\\apache-ant-1.10.0"
+        environment:
+          name: "child_process"
+          config:
+            stdoe: "both"
+        stdout:
+          pipeline: []
+        stderr:
+          pipeline: []
+        output: {}
+        version: 2
+      file: "build.xml"
+  }
+  {
+    key: "bt"
+    config:
+      commands: [
+        {
+          project: "C:\\Users\\achin\\Documents\\GitHub\\2017-bot"
+          source: "C:\\Users\\achin\\Documents\\GitHub\\2017-bot\\.build-tools.cson"
+          name: "DIR"
+          command: "C:\\Users\\achin\\Desktop\\apache-ant-1.10.0-bin\\apache-ant-1.10.0\\bin\\ant"
+          wd: "."
+          env: {}
+          modifier:
+            save_all: {}
+            env:
+              JAVA_HOME: "C:\\Program Files\\Java\\jdk1.8.0_111"
+          environment:
+            name: "child_process"
+            config:
+              stdoe: "both"
+          stdout:
+            pipeline: []
+          stderr:
+            pipeline: []
+          output:
+            console:
+              close_success: false
+              queue_in_buffer: true
+              colors: false
+              stdin: false
+          version: 2
+        }
+        {
+          project: "C:\\Users\\achin\\Documents\\GitHub\\2017-bot"
+          source: "C:\\Users\\achin\\Documents\\GitHub\\2017-bot\\.build-tools.cson"
+          name: "ant-build"
+          command: "ant"
+          wd: "."
+          env: {}
+          modifier:
+            save_all: {}
+          environment:
+            name: "child_process"
+            config:
+              stdoe: "both"
+          stdout:
+            pipeline: []
+          stderr:
+            pipeline: []
+          output:
+            console:
+              close_success: false
+              queue_in_buffer: true
+              colors: false
+              stdin: false
+            linter:
+              no_trace: false
+              immediate: false
+          version: 2
+        }
+      ]
+  }
+]
