@@ -14,7 +14,7 @@ public class Robot extends IterativeRobot {
   public static OI oi;
 
   Command autonomousCommand;
-  SendableChooser<Command> chooser = new SendableChooser<>();
+  SendableChooser chooser = new SendableChooser();
 
   @Override
   public void robotInit() {
@@ -33,7 +33,7 @@ public class Robot extends IterativeRobot {
 
   @Override
   public void autonomousInit() {
-    autonomousCommand = chooser.getSelected();
+    autonomousCommand = (Command)chooser.getSelected();
     if (autonomousCommand != null) {
       autonomousCommand.start();
     }
