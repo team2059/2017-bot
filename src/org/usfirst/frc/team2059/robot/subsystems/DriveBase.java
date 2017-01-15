@@ -13,7 +13,7 @@ public class DriveBase extends Subsystem {
   CANTalon rightFrontMotor = new CANTalon(RobotMap.driveRightFrontMotor);
   CANTalon rightRearMotor = new CANTalon(RobotMap.driveRightRearMotor);
   Encoder xEncoder = new Encoder(RobotMap.xEncoderA, RobotMap.xEncoderB, false, Encoder.EncodingType.k2X);
-  PIDController xEncoderController = new PIDController(0.02, 0.002, 0.017, xEncoder, new MotorsPIDOutput());
+  PIDController xEncoderController = new PIDController(0.02, 0.002, 0.017, xEncoder, new xEncoderPIDOutput());
   public void initDefaultCommand() {
     setDefaultCommand(new Drive());
   }
@@ -33,10 +33,10 @@ public class DriveBase extends Subsystem {
   public PIDController getxEncoderController(){
     return xEncoderController;
   }
-  public class MotorsPIDOutput implements PIDOutput{
+  public class xEncoderPIDOutput implements PIDOutput{
     @Override
     public void pidWrite(double output){
-      driveMecanum(0,output,0);
+      driveMecanum(output*.25,0,0);
     }
   }
 }

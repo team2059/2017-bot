@@ -53,6 +53,7 @@ public class Robot extends IterativeRobot {
       autonomousCommand.cancel();
     }
     CommandBase.driveBase.getxEncoderController().disable();
+    CommandBase.driveBase.getxEncoderController().setSetpoint(768);
   }
 
   @Override
