@@ -22,6 +22,7 @@ public class Robot extends IterativeRobot {
 	CommandBase.init();
     oi = new OI();
     SmartDashboard.putData("Auto mode", chooser);
+    SmartDashboard.putData("xEncoderController", CommandBase.driveBase.getxEncoderController());
   }
 
   @Override
@@ -51,6 +52,7 @@ public class Robot extends IterativeRobot {
     if (autonomousCommand != null) {
       autonomousCommand.cancel();
     }
+    CommandBase.driveBase.getxEncoderController().disable();
   }
 
   @Override

@@ -3,6 +3,8 @@ import org.usfirst.frc.team2059.robot.RobotMap;
 import org.usfirst.frc.team2059.robot.commands.drivetrain.Drive;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.PIDOutput;
+import edu.wpi.first.wpilibj.PIDController;
 import com.ctre.CANTalon;
 
 public class DriveBase extends Subsystem {
@@ -11,6 +13,7 @@ public class DriveBase extends Subsystem {
   CANTalon rightFrontMotor = new CANTalon(RobotMap.driveRightFrontMotor);
   CANTalon rightRearMotor = new CANTalon(RobotMap.driveRightRearMotor);
   Encoder xEncoder = new Encoder(RobotMap.xEncoderA, RobotMap.xEncoderB, false, Encoder.EncodingType.k2X);
+  PIDController xEncoderController = new PIDController(0.02, 0.002, 0.017, xEncoder, new MotorsPIDOutput());
   public void initDefaultCommand() {
     setDefaultCommand(new Drive());
   }
@@ -25,6 +28,16 @@ public class DriveBase extends Subsystem {
   }
   public void resetxEncoderCount(){
     xEncoder.reset();
+  }
+
+  public PIDController getxEncoderController(){
+    return xEncoderController;
+  }
+  public class MotorsPIDOutput implements PIDOutput{
+    @Override
+    public void pidWrite(double output){
+      driveMecanum(0,output,0);
+    }
   }
 }
 // vim: sw=2:ts=2:sts=2
