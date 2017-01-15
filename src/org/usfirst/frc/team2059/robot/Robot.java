@@ -56,6 +56,7 @@ public class Robot extends IterativeRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
+    SmartDashboard.putNumber("xEncoderCount",CommandBase.driveBase.getxEncoderCount());
   }
 
   @Override

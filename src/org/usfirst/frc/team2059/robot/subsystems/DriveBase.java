@@ -10,6 +10,7 @@ public class DriveBase extends Subsystem {
   CANTalon leftRearMotor = new CANTalon(RobotMap.driveLeftRearMotor);
   CANTalon rightFrontMotor = new CANTalon(RobotMap.driveRightFrontMotor);
   CANTalon rightRearMotor = new CANTalon(RobotMap.driveRightRearMotor);
+  Encoder xEncoder = new Encoder(RobotMap.xEncoderA, RobotMap.xEncoderB, false, Encoder.EncodingType.k2X);
   public void initDefaultCommand() {
     setDefaultCommand(new Drive());
   }
@@ -18,6 +19,12 @@ public class DriveBase extends Subsystem {
     leftFrontMotor.set(-(x + y + z));
     rightRearMotor.set(x + y - z);
     leftRearMotor.set(-(-x + y + z));
+  }
+  public double getxEncoderCount(){
+    return xEncoder.get();
+  }
+  public void resetxEncoderCount(){
+    xEncoder.reset();
   }
 }
 // vim: sw=2:ts=2:sts=2
