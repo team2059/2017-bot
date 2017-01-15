@@ -17,7 +17,13 @@ public class DriveBase extends Subsystem {
   public void initDefaultCommand() {
     setDefaultCommand(new Drive());
   }
-  public void driveMecanum(double x, double y, double z) {
+  public void driveMecanum(double x, double y, double z, double s) {
+	  if(x<0.1 && x>-0.1){x=0;}
+	  if(y<0.05 && y>-0.1){y=0;}
+	  if(z<0.1 && z>-0.1){z=0;}
+	  x=-x*s;
+	  y=y*s;
+	  z=-z*s;
     rightFrontMotor.set(-x + y - z);
     leftFrontMotor.set(-(x + y + z));
     rightRearMotor.set(x + y - z);
@@ -36,7 +42,7 @@ public class DriveBase extends Subsystem {
   public class xEncoderPIDOutput implements PIDOutput{
     @Override
     public void pidWrite(double output){
-      driveMecanum(output*.25,0,0);
+      driveMecanum(output*.25,0,0,1);
     }
   }
 }
