@@ -12,7 +12,7 @@ public class Drive extends CommandBase {
 	    double x = Robot.oi.getJoysticks()[0].getRawAxis(0);
 	    double y = Robot.oi.getJoysticks()[0].getRawAxis(1);
 	    double z = Robot.oi.getJoysticks()[0].getRawAxis(2);
-	    driveBase.driveMecanum(x, y, z);
+	    driveBase.driveMecanum(x, y, z,0.8);
   }
   protected boolean isFinished() {
     return false;
