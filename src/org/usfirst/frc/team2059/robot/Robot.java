@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team2059.robot;
 
+import org.usfirst.frc.team2059.robot.commands.CommandBase;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -18,6 +19,7 @@ public class Robot extends IterativeRobot {
 
   @Override
   public void robotInit() {
+	CommandBase.init();
     oi = new OI();
     SmartDashboard.putData("Auto mode", chooser);
   }
