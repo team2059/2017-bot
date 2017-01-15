@@ -9,4 +9,7 @@ public class RobotMap {
   public static int climbermotor = 5;
   public static int xEncoderA = 0;
   public static int xEncoderB = 1;
+  public static int yEncoderA = 2;
+  public static int yEncoderB = 3;
+  public static int gyro = 0;
 }

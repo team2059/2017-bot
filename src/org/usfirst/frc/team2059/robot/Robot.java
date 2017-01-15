@@ -52,6 +52,7 @@ public class Robot extends IterativeRobot {
     if (autonomousCommand != null) {
       autonomousCommand.cancel();
     }
+    CommandBase.driveBase.getGyro().reset();
     CommandBase.driveBase.getxEncoderController().disable();
     CommandBase.driveBase.getxEncoderController().setSetpoint(768);
   }
@@ -60,6 +61,7 @@ public class Robot extends IterativeRobot {
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
     SmartDashboard.putNumber("xEncoderCount",CommandBase.driveBase.getxEncoderCount());
+    SmartDashboard.putNumber("GyroAngle",CommandBase.driveBase.getGyro().getAngle());
   }
 
   @Override
