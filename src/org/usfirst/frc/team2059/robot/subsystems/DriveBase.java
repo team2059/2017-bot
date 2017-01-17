@@ -33,14 +33,14 @@ public class DriveBase extends Subsystem {
   public void setDriveEnabled(boolean enabled){
     driveEnabled = enabled;
   }
-  public void driveMecanum(double x, double y, double z, double s) {
+  public void driveMecanum(double x, double y, double z, double sensitivity) {
     if(driveEnabled){
       if(x<0.1 && x>-0.1){x=0;}
       if(y<0.05 && y>-0.1){y=0;}
       if(z<0.1 && z>-0.1){z=0;}
-      x=-x*s;
-      y=y*s;
-      z=-z*s;
+      x=-x*sensitivity;
+      y=y*sensitivity;
+      z=-z*sensitivity;
       rightFrontMotor.set(-x + y - z);
       leftFrontMotor.set(-(x + y + z));
       rightRearMotor.set(x + y - z);
