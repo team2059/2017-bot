@@ -83,5 +83,21 @@ public class DriveBase extends Subsystem {
       driveMecanum(0,output,0);
     }
   }
+  public double GetxEncoderDistance(){
+	  double x=this.getxEncoderCount();
+	  double z=(x/256)*12.66;
+	  
+	  return z;
+  }
+  public double GetyEncoderDistance(){
+	  double x=this.getxEncoderCount();
+	  double z=(x/256)*12.66;
+	  
+	  return z;
+  }
+  public void pidDrive(double setpoint) {
+	    xEncoderController.enable();
+	    xEncoderController.setSetpoint(setpoint);
+	  }
 }
 // vim: sw=2:ts=2:sts=2

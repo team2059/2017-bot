@@ -2,8 +2,8 @@
 package org.usfirst.frc.team2059.robot;
 
 import org.usfirst.frc.team2059.robot.commands.CommandBase;
-import org.usfirst.frc.team2059.robot.commands.drivetrain;
-import org.usfirst.frc.team2059.robot.commands.drivetrain;
+import org.usfirst.frc.team2059.robot.commands.auto.AutoDriveDelay;
+import org.usfirst.frc.team2059.robot.commands.auto.AutoEncoder;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -17,13 +17,18 @@ public class Robot extends IterativeRobot {
   public static OI oi;
 
   Command autonomousCommand;
-  SendableChooser chooser = new SendableChooser();
+   SendableChooser chooser = new SendableChooser();
+  
 
   @Override
   public void robotInit() {
 	CommandBase.init();
     oi = new OI();
+    chooser.addObject("Auto Drive Delay", new AutoDriveDelay(1));
+    chooser.addObject("Auto Encoder", new AutoEncoder());
     SmartDashboard.putData("Auto mode", chooser);
+   
+    
     SmartDashboard.putData("xEncoderController", CommandBase.driveBase.getxEncoderController());
   }
 
@@ -47,6 +52,7 @@ public class Robot extends IterativeRobot {
   @Override
   public void autonomousPeriodic() {
     Scheduler.getInstance().run();
+    SmartDashboard.putNumber("xEncoderCount",CommandBase.driveBase.getxEncoderCount());
   }
 
   @Override

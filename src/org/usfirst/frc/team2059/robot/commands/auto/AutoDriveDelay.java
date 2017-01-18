@@ -1,5 +1,5 @@
 
-package org.usfirst.frc.team2059.robot.commands.drivetrain;
+package org.usfirst.frc.team2059.robot.commands.auto;
 import org.usfirst.frc.team2059.robot.commands.CommandBase;
 import org.usfirst.frc.team2059.robot.Robot;
 
