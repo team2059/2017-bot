@@ -19,6 +19,7 @@ public class DriveBase extends Subsystem {
   PIDController xEncoderController = new PIDController(0.02, 0.002, 0.017, xEncoder, new xEncoderPIDOutput());
   PIDController yEncoderController = new PIDController(0.02, 0.002, 0.017, yEncoder, new yEncoderPIDOutput());
   AnalogGyro gyro = new AnalogGyro(RobotMap.gyro);
+  double correctedGyroAngle = .1;
   public void initDefaultCommand() {
     setDefaultCommand(new Drive());
   }
@@ -80,7 +81,7 @@ public class DriveBase extends Subsystem {
   public class yEncoderPIDOutput implements PIDOutput{
     @Override
     public void pidWrite(double output){
-      driveMecanum(0,output,0);
+      driveMecanum(0,output,correctedGyroAngle);
     }
   }
   public double GetxEncoderDistance(){
@@ -95,9 +96,12 @@ public class DriveBase extends Subsystem {
 	  
 	  return z;
   }
-  public void pidDrive(double setpoint) {
-	    xEncoderController.enable();
-	    xEncoderController.setSetpoint(setpoint);
+  public void yPidDrive(double setpoint, double correction) {
+      //Reset gyro so it drives straight in whatever direction
+      resetGyro();
+	    yEncoderController.enable();
+	    yEncoderController.setSetpoint(setpoint);
+      correctedGyroAngle = -gyro.getAngle() * correction;
 	  }
 }
 // vim: sw=2:ts=2:sts=2

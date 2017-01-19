@@ -26,9 +26,8 @@ public class Robot extends IterativeRobot {
     oi = new OI();
     chooser.addObject("Auto Drive Delay", new AutoDriveDelay(1));
     chooser.addObject("Auto Encoder", new AutoEncoder());
+    SmartDashboard.putNumber("GyroCorrection",.1);
     SmartDashboard.putData("Auto mode", chooser);
-   
-    
     SmartDashboard.putData("xEncoderController", CommandBase.driveBase.getxEncoderController());
   }
 
