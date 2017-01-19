@@ -86,14 +86,13 @@ public class DriveBase extends Subsystem {
   }
   public double GetxEncoderDistance(){
 	  double x=this.getxEncoderCount();
-	  double z=(x/256)*12.66;
-	  
+	  double z=(x/256)*3.14*8;
 	  return z;
   }
   public double GetyEncoderDistance(){
-	  double x=this.getxEncoderCount();
-	  double z=(x/256)*12.66;
-	  
+	  double y=this.getyEncoderCount();
+	  //TODO change to physical wheel size
+	  double z=(y/256)*3.14*8;
 	  return z;
   }
   public void yPidDrive(double setpoint, double correction) {
