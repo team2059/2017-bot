@@ -12,7 +12,7 @@ public class RobotMap {
   public static int yEncoderA = 2;
   public static int yEncoderB = 3;
   public static int gyro = 0;
-  public static int gearsolenoid1 = 1;
-  public static int gearsolenoid2 = 2;
-  public static int pcm = 0;
+  public static int gearsolenoid1 = 0;
+  public static int gearsolenoid2 = 1;
+  public static int pcm = 31;
 }

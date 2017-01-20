@@ -3,6 +3,7 @@ package org.usfirst.frc.team2059.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import org.usfirst.frc.team2059.robot.commands.SetGearHolderOpen;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -22,6 +23,7 @@ public class OI {
 	      joystickButtons[0][i] = new JoystickButton(joysticks[0], i + 1);
 	      joystickButtons[1][i] = new JoystickButton(joysticks[1], i + 1);
 	    }
+			joystickButtons[0][0].whileHeld(new SetGearHolderOpen(true));
 	  }
 	  public Joystick[] getJoysticks() {
 		    return joysticks;

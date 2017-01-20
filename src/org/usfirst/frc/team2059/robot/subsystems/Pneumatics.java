@@ -7,7 +7,10 @@ import edu.wpi.first.wpilibj.Compressor;
 public class Pneumatics extends Subsystem {
   Compressor compressor = new Compressor (RobotMap.pcm);
   DoubleSolenoid gearSolenoid = new DoubleSolenoid (RobotMap.pcm, RobotMap.gearsolenoid1, RobotMap.gearsolenoid2);
-  boolean gearState;
+  boolean gearState = false;
+  public Pneumatics() {
+    gearSolenoid.set(DoubleSolenoid.Value.kForward);
+  }
   public void initDefaultCommand() {
   }
   public void setCompressorEnabled(boolean state){
@@ -15,9 +18,9 @@ public class Pneumatics extends Subsystem {
   }
   public void setGearState (boolean state){
     if (state) {
-      gearSolenoid.set(DoubleSolenoid.Value.kForward);
-    } else {
       gearSolenoid.set(DoubleSolenoid.Value.kReverse);
+    } else {
+      gearSolenoid.set(DoubleSolenoid.Value.kForward);
     }
     gearState = state;
   }
