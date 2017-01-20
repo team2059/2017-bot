@@ -8,4 +8,7 @@ public class Climber extends Subsystem{
 
 public void initDefaultCommand() {
   }
+public void climbAtSpeed(double speed){
+  climberMotor.set(speed);
+}
 }
