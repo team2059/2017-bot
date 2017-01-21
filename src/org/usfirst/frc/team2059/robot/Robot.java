@@ -18,22 +18,21 @@ public class Robot extends IterativeRobot {
   public static OI oi;
 
   Command autonomousCommand;
-   SendableChooser chooser = new SendableChooser();
+  SendableChooser chooser = new SendableChooser();
 
 
   @Override
   public void robotInit() {
-	CommandBase.init();
+    CommandBase.init();
     oi = new OI();
     chooser.addDefault("Auto Drive Delay", new AutoDriveDelay(1));
     chooser.addObject("Auto Encoder X Direction", new AutoEncoderX());
 //    chooser.addObject("Auto Encoder Y Direction", new AutoEncoderY());
-    SmartDashboard.putNumber("GyroCorrection",.1);
+    SmartDashboard.putNumber("GyroCorrection", .1);
     SmartDashboard.putData("Auto mode", chooser);
     SmartDashboard.putData("xEncoderController", CommandBase.driveBase.getxEncoderController());
     SmartDashboard.putData("yEncoderController", CommandBase.driveBase.getyEncoderController());
-    SmartDashboard.putInt("Automode",0);
-
+    SmartDashboard.putInt("Automode", 0);
   }
 
   @Override
@@ -47,8 +46,7 @@ public class Robot extends IterativeRobot {
 
   @Override
   public void autonomousInit() {
-    int mode = SmartDashboard.getInt("Automode");
-    switch(mode){
+    switch (SmartDashboard.getInt("Automode")) {
       case 0:
         return;
       case 1:
@@ -64,8 +62,8 @@ public class Robot extends IterativeRobot {
   @Override
   public void autonomousPeriodic() {
     Scheduler.getInstance().run();
-    SmartDashboard.putNumber("xEncoderCount",CommandBase.driveBase.getxEncoderCount());
-    SmartDashboard.putNumber("GyroAngle",CommandBase.driveBase.getGyro().getAngle());
+    SmartDashboard.putNumber("xEncoderCount", CommandBase.driveBase.getxEncoderCount());
+    SmartDashboard.putNumber("GyroAngle", CommandBase.driveBase.getGyro().getAngle());
   }
 
   @Override
@@ -81,8 +79,8 @@ public class Robot extends IterativeRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
-    SmartDashboard.putNumber("xEncoderCount",CommandBase.driveBase.getxEncoderCount());
-    SmartDashboard.putNumber("GyroAngle",CommandBase.driveBase.getGyro().getAngle());
+    SmartDashboard.putNumber("xEncoderCount", CommandBase.driveBase.getxEncoderCount());
+    SmartDashboard.putNumber("GyroAngle", CommandBase.driveBase.getGyro().getAngle());
   }
 
   @Override

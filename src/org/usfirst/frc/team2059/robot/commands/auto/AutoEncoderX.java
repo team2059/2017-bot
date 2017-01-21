@@ -6,14 +6,13 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class AutoEncoderX extends CommandBase {
   public AutoEncoderX() {
     requires(driveBase);
- 
   }
   protected void initialize() {
     driveBase.resetxEncoderCount();
     driveBase.resetGyro();
   }
   protected void execute() {
-  	driveBase.xPidDrive(256, SmartDashboard.getNumber("GyroCorrection"));
+    driveBase.xPidDrive(256, SmartDashboard.getNumber("GyroCorrection"));
   }
   protected boolean isFinished() {
     return isTimedOut();

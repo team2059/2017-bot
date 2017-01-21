@@ -8,7 +8,7 @@ public class Climb extends CommandBase {
     speed = s;
   }
 
-  protected void initialize(){
+  protected void initialize() {
   }
 
   protected void execute() {

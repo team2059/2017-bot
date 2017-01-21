@@ -13,10 +13,10 @@ public class Pneumatics extends Subsystem {
   }
   public void initDefaultCommand() {
   }
-  public void setCompressorEnabled(boolean state){
+  public void setCompressorEnabled(boolean state) {
     compressor.setClosedLoopControl(state);
   }
-  public void setGearState (boolean state){
+  public void setGearState (boolean state) {
     if (state) {
       gearSolenoid.set(DoubleSolenoid.Value.kReverse);
     } else {
@@ -24,10 +24,10 @@ public class Pneumatics extends Subsystem {
     }
     gearState = state;
   }
-public boolean getgearState() {
+  public boolean getgearState() {
     return gearState;
   }
-public boolean getCompressorEnabled() {
+  public boolean getCompressorEnabled() {
     return compressor.enabled();
   }
 }

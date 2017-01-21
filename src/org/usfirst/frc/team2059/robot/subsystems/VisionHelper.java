@@ -4,9 +4,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.CameraServer;
 
-public class VisionHelper{
+public class VisionHelper {
   NetworkTable contoursTable;
-	public VisionHelper(){
-		contoursTable = NetworkTable.getTable("GRIP/contours");
+  public VisionHelper() {
+    contoursTable = NetworkTable.getTable("GRIP/contours");
   }
 }
