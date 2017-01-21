@@ -81,7 +81,7 @@ public class DriveBase extends Subsystem {
   public class yEncoderPIDOutput implements PIDOutput{
     @Override
     public void pidWrite(double output){
-      driveMecanum(0,output,correctedGyroAngle);
+      driveMecanum(0,output*.25,correctedGyroAngle);
     }
   }
   public double GetxEncoderDistance(){
@@ -100,6 +100,13 @@ public class DriveBase extends Subsystem {
       resetGyro();
 	    yEncoderController.enable();
 	    yEncoderController.setSetpoint(setpoint);
+      correctedGyroAngle = -gyro.getAngle() * correction;
+	  }
+  public void xPidDrive(double setpoint, double correction) {
+      //Reset gyro so it drives straight in whatever direction
+      resetGyro();
+	    xEncoderController.enable();
+	    xEncoderController.setSetpoint(setpoint);
       correctedGyroAngle = -gyro.getAngle() * correction;
 	  }
 }

@@ -3,7 +3,8 @@ package org.usfirst.frc.team2059.robot;
 
 import org.usfirst.frc.team2059.robot.commands.CommandBase;
 import org.usfirst.frc.team2059.robot.commands.auto.AutoDriveDelay;
-import org.usfirst.frc.team2059.robot.commands.auto.AutoEncoder;
+import org.usfirst.frc.team2059.robot.commands.auto.AutoEncoderY;
+import org.usfirst.frc.team2059.robot.commands.auto.AutoEncoderX;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -25,10 +26,12 @@ public class Robot extends IterativeRobot {
 	CommandBase.init();
     oi = new OI();
     chooser.addObject("Auto Drive Delay", new AutoDriveDelay(1));
-    chooser.addObject("Auto Encoder", new AutoEncoder());
+//    chooser.addObject("Auto Encoder X Direction", new AutoEncoderX());
+//    chooser.addObject("Auto Encoder Y Direction", new AutoEncoderY());
     SmartDashboard.putNumber("GyroCorrection",.1);
     SmartDashboard.putData("Auto mode", chooser);
     SmartDashboard.putData("xEncoderController", CommandBase.driveBase.getxEncoderController());
+    SmartDashboard.putData("yEncoderController", CommandBase.driveBase.getyEncoderController());
   }
 
   @Override
