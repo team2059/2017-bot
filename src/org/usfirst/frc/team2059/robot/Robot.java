@@ -32,6 +32,7 @@ public class Robot extends IterativeRobot {
     SmartDashboard.putData("Auto mode", chooser);
     SmartDashboard.putData("xEncoderController", CommandBase.driveBase.getxEncoderController());
     SmartDashboard.putData("yEncoderController", CommandBase.driveBase.getyEncoderController());
+    SmartDashboard.putInt("Automode",0);
 
   }
 
@@ -46,8 +47,15 @@ public class Robot extends IterativeRobot {
 
   @Override
   public void autonomousInit() {
-//    autonomousCommand = (Command)chooser.getSelected();
-    autonomousCommand = new AutoEncoderX();
+    int mode = SmartDashboard.getInt("Automode");
+    switch(mode){
+      case 0:
+        return;
+      case 1:
+        autonomousCommand = new AutoEncoderX();
+      case 2:
+        autonomousCommand = new AutoEncoderY();
+    }
     if (autonomousCommand != null) {
       autonomousCommand.start();
     }
