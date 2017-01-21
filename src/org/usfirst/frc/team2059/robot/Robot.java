@@ -46,7 +46,8 @@ public class Robot extends IterativeRobot {
 
   @Override
   public void autonomousInit() {
-    autonomousCommand = (Command)chooser.getSelected();
+//    autonomousCommand = (Command)chooser.getSelected();
+    autonomousCommand = new AutoEncoderX();
     if (autonomousCommand != null) {
       autonomousCommand.start();
     }
@@ -56,6 +57,7 @@ public class Robot extends IterativeRobot {
   public void autonomousPeriodic() {
     Scheduler.getInstance().run();
     SmartDashboard.putNumber("xEncoderCount",CommandBase.driveBase.getxEncoderCount());
+    SmartDashboard.putNumber("GyroAngle",CommandBase.driveBase.getGyro().getAngle());
   }
 
   @Override

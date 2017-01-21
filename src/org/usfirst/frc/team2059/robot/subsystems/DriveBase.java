@@ -97,14 +97,12 @@ public class DriveBase extends Subsystem {
   }
   public void yPidDrive(double setpoint, double correction) {
       //Reset gyro so it drives straight in whatever direction
-      resetGyro();
 	    yEncoderController.enable();
 	    yEncoderController.setSetpoint(setpoint);
       correctedGyroAngle = -gyro.getAngle() * correction;
 	  }
   public void xPidDrive(double setpoint, double correction) {
       //Reset gyro so it drives straight in whatever direction
-      resetGyro();
 	    xEncoderController.enable();
 	    xEncoderController.setSetpoint(setpoint);
       correctedGyroAngle = -gyro.getAngle() * correction;

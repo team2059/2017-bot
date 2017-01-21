@@ -9,7 +9,8 @@ public class AutoEncoderY extends CommandBase {
  
   }
   protected void initialize() {
-	  driveBase.getxEncoderController().reset();
+    driveBase.resetyEncoderCount();
+    driveBase.resetGyro();
   }
   protected void execute() {
   	driveBase.yPidDrive(256, SmartDashboard.getNumber("GyroCorrection"));
