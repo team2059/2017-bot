@@ -2,11 +2,11 @@ package org.usfirst.frc.team2059.robot;
 
 public class RobotMap {
   //Drivetrain
-  public static int driveLeftFrontMotor = 5;
+  public static int driveLeftFrontMotor = 6;
   public static int driveLeftRearMotor = 3;
   public static int driveRightFrontMotor = 4;
   public static int driveRightRearMotor = 2;
-  public static int climbermotor = 1;
+  public static int climbermotor = 5;
   public static int xEncoderA = 0;
   public static int xEncoderB = 1;
   public static int yEncoderA = 2;
@@ -15,4 +15,5 @@ public class RobotMap {
   public static int gearsolenoid1 = 0;
   public static int gearsolenoid2 = 1;
   public static int pcm = 31;
+  public static int collectorMotor = 1;
 }

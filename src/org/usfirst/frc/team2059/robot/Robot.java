@@ -19,19 +19,20 @@ public class Robot extends IterativeRobot {
 
   Command autonomousCommand;
    SendableChooser chooser = new SendableChooser();
-  
+
 
   @Override
   public void robotInit() {
 	CommandBase.init();
     oi = new OI();
-    chooser.addObject("Auto Drive Delay", new AutoDriveDelay(1));
-//    chooser.addObject("Auto Encoder X Direction", new AutoEncoderX());
+    chooser.addDefault("Auto Drive Delay", new AutoDriveDelay(1));
+    chooser.addObject("Auto Encoder X Direction", new AutoEncoderX());
 //    chooser.addObject("Auto Encoder Y Direction", new AutoEncoderY());
     SmartDashboard.putNumber("GyroCorrection",.1);
     SmartDashboard.putData("Auto mode", chooser);
     SmartDashboard.putData("xEncoderController", CommandBase.driveBase.getxEncoderController());
     SmartDashboard.putData("yEncoderController", CommandBase.driveBase.getyEncoderController());
+
   }
 
   @Override

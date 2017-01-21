@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import org.usfirst.frc.team2059.robot.commands.SetGearHolderOpen;
 import org.usfirst.frc.team2059.robot.commands.Climb;
+import org.usfirst.frc.team2059.robot.commands.Collect;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -26,6 +27,7 @@ public class OI {
 	    }
 			joystickButtons[0][0].whileHeld(new SetGearHolderOpen(true));
 			joystickButtons[0][1].whileHeld(new Climb(1));
+			joystickButtons[0][1].whileHeld(new Collect(1));
 	  }
 	  public Joystick[] getJoysticks() {
 		    return joysticks;
