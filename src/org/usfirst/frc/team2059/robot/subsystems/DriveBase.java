@@ -76,7 +76,7 @@ public class DriveBase extends Subsystem {
   public class xEncoderPIDOutput implements PIDOutput{
     @Override
     public void pidWrite(double output){
-      driveMecanum(output*.25,0,0,1);
+      driveMecanum(output*.25,0,correctedGyroAngle,1);
     }
   }
   public class yEncoderPIDOutput implements PIDOutput{
