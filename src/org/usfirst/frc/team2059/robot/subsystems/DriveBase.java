@@ -1,6 +1,7 @@
 package org.usfirst.frc.team2059.robot.subsystems;
 import org.usfirst.frc.team2059.robot.RobotMap;
 import org.usfirst.frc.team2059.robot.commands.drivetrain.Drive;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.AnalogGyro;
@@ -96,16 +97,16 @@ public class DriveBase extends Subsystem {
 	  return z;
   }
   public void yPidDrive(double setpoint, double correction) {
-      //Reset gyro so it drives straight in whatever direction
 	    yEncoderController.enable();
 	    yEncoderController.setSetpoint(setpoint);
       correctedGyroAngle = -gyro.getAngle() * correction;
+      SmartDashboard.putNumber("CorrectedGyroAngle", correctedGyroAngle);
 	  }
   public void xPidDrive(double setpoint, double correction) {
-      //Reset gyro so it drives straight in whatever direction
 	    xEncoderController.enable();
 	    xEncoderController.setSetpoint(setpoint);
       correctedGyroAngle = -gyro.getAngle() * correction;
+      SmartDashboard.putNumber("CorrectedGyroAngle", correctedGyroAngle);
 	  }
 }
 // vim: sw=2:ts=2:sts=2
