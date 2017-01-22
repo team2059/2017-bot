@@ -2,15 +2,16 @@ package org.usfirst.frc.team2059.robot.commands.auto;
 import org.usfirst.frc.team2059.robot.commands.CommandBase;
 import org.usfirst.frc.team2059.robot.Robot;
 
-public class AutoDriveDelay extends CommandBase {
-  public AutoDriveDelay(double driveTime) {
+public class AutoCircleDrive extends CommandBase {
+  double radius;
+  public AutoCircleDrive(double r) {
     requires(driveBase);
-    setTimeout(driveTime);
+    radius=r;
   }
   protected void initialize() {
   }
   protected void execute() {
-    driveBase.driveMecanum(0, 1, 0, 0.8);
+    driveBase.circleDrive(radius);
   }
   protected boolean isFinished() {
     return isTimedOut();

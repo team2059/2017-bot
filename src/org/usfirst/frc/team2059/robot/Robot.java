@@ -1,10 +1,10 @@
-
 package org.usfirst.frc.team2059.robot;
 
 import org.usfirst.frc.team2059.robot.commands.CommandBase;
 import org.usfirst.frc.team2059.robot.commands.auto.AutoDriveDelay;
 import org.usfirst.frc.team2059.robot.commands.auto.AutoEncoderY;
 import org.usfirst.frc.team2059.robot.commands.auto.AutoEncoderX;
+import org.usfirst.frc.team2059.robot.commands.auto.AutoCircleDrive;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -25,13 +25,11 @@ public class Robot extends IterativeRobot {
   public void robotInit() {
     CommandBase.init();
     oi = new OI();
-    chooser.addDefault("Auto Drive Delay", new AutoDriveDelay(1));
-    chooser.addObject("Auto Encoder X Direction", new AutoEncoderX());
-//    chooser.addObject("Auto Encoder Y Direction", new AutoEncoderY());
     SmartDashboard.putNumber("GyroCorrection", .1);
     SmartDashboard.putData("Auto mode", chooser);
     SmartDashboard.putData("xEncoderController", CommandBase.driveBase.getxEncoderController());
     SmartDashboard.putData("yEncoderController", CommandBase.driveBase.getyEncoderController());
+    SmartDashboard.putData("gyroController", CommandBase.driveBase.getGyroController());
     SmartDashboard.putInt("Automode", 0);
   }
 
@@ -50,9 +48,11 @@ public class Robot extends IterativeRobot {
       case 0:
         return;
       case 1:
-        autonomousCommand = new AutoEncoderX();
+        autonomousCommand = new AutoEncoderX(256);
       case 2:
-        autonomousCommand = new AutoEncoderY();
+        autonomousCommand = new AutoEncoderY(256);
+      case 3:
+        autonomousCommand = new AutoCircleDrive(1);
     }
     if (autonomousCommand != null) {
       autonomousCommand.start();
@@ -81,6 +81,7 @@ public class Robot extends IterativeRobot {
     Scheduler.getInstance().run();
     SmartDashboard.putNumber("xEncoderCount", CommandBase.driveBase.getxEncoderCount());
     SmartDashboard.putNumber("GyroAngle", CommandBase.driveBase.getGyro().getAngle());
+    SmartDashboard.putNumber("centerX", CommandBase.visionHelper.getCenterContourX());
   }
 
   @Override

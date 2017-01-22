@@ -4,15 +4,17 @@ import org.usfirst.frc.team2059.robot.Robot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class AutoEncoderX extends CommandBase {
-  public AutoEncoderX() {
+  double distance;
+  public AutoEncoderX(double a) {
     requires(driveBase);
+    distance=a;
   }
   protected void initialize() {
     driveBase.resetxEncoderCount();
     driveBase.resetGyro();
   }
   protected void execute() {
-    driveBase.xPidDrive(256, SmartDashboard.getNumber("GyroCorrection"));
+    driveBase.xPidDrive(distance, SmartDashboard.getNumber("GyroCorrection"));
   }
   protected boolean isFinished() {
     return isTimedOut();

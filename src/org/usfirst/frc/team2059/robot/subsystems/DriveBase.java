@@ -6,6 +6,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.PIDOutput;
+import edu.wpi.first.wpilibj.PIDSource;
+import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.PIDController;
 import com.ctre.CANTalon;
 
@@ -15,11 +17,12 @@ public class DriveBase extends Subsystem {
   CANTalon leftRearMotor = new CANTalon(RobotMap.driveLeftRearMotor);
   CANTalon rightFrontMotor = new CANTalon(RobotMap.driveRightFrontMotor);
   CANTalon rightRearMotor = new CANTalon(RobotMap.driveRightRearMotor);
+  AnalogGyro gyro = new AnalogGyro(RobotMap.gyro);
   Encoder xEncoder = new Encoder(RobotMap.xEncoderA, RobotMap.xEncoderB, false, Encoder.EncodingType.k2X);
   Encoder yEncoder = new Encoder(RobotMap.yEncoderA, RobotMap.yEncoderB, false, Encoder.EncodingType.k2X);
   PIDController xEncoderController = new PIDController(0.02, 0.002, 0.017, xEncoder, new xEncoderPIDOutput());
   PIDController yEncoderController = new PIDController(0.02, 0.002, 0.017, yEncoder, new yEncoderPIDOutput());
-  AnalogGyro gyro = new AnalogGyro(RobotMap.gyro);
+  PIDController gyroController = new PIDController(0.02, 0.002, 0.017, gyro, new gyroPIDOutput());
   double correctedGyroAngle = .1;
   public void initDefaultCommand() {
     setDefaultCommand(new Drive());
@@ -73,8 +76,15 @@ public class DriveBase extends Subsystem {
   public PIDController getyEncoderController() {
     return yEncoderController;
   }
+  public PIDController getGyroController() {
+    return gyroController;
+  }
   public void resetGyro() {
     gyro.reset();
+  }
+  public void rotateAngle(double angle){
+    gyroController.enable();
+    gyroController.setSetpoint(angle);
   }
   public AnalogGyro getGyro() {
     return gyro;
@@ -89,6 +99,26 @@ public class DriveBase extends Subsystem {
     @Override
     public void pidWrite(double output) {
       driveMecanum(0, output * .25, correctedGyroAngle);
+    }
+  }
+  public class gyroPIDOutput implements PIDOutput {
+    @Override
+    public void pidWrite(double output) {
+      rightFrontMotor.set(output);
+      leftFrontMotor.set(output);
+      rightRearMotor.set(output);
+      leftRearMotor.set(output);
+    }
+  }
+  public class gyroPIDSource implements PIDSource {
+    @Override
+    public double pidGet(){
+      return gyro.getAngle();
+    }
+    public PIDSourceType getPIDSourceType(){
+      return PIDSourceType.kDisplacement;
+    }
+    public void setPIDSourceType(PIDSourceType type){
     }
   }
   public double GetxEncoderDistance() {
@@ -113,6 +143,9 @@ public class DriveBase extends Subsystem {
     xEncoderController.setSetpoint(setpoint);
     correctedGyroAngle = -gyro.getAngle() * correction;
     SmartDashboard.putNumber("CorrectedGyroAngle", correctedGyroAngle);
+  }
+  public void circleDrive(double radius){
+    driveMecanum(0.1,0,360/(3.14*radius*2));
   }
 }
 // vim: sw=2:ts=2:sts=2

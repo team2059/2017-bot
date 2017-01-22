@@ -2,8 +2,8 @@ package org.usfirst.frc.team2059.robot.commands.auto;
 import org.usfirst.frc.team2059.robot.commands.CommandBase;
 import org.usfirst.frc.team2059.robot.Robot;
 
-public class AutoDriveDelay extends CommandBase {
-  public AutoDriveDelay(double driveTime) {
+public class AutoRotate extends CommandBase {
+  public AutoRotate (double driveTime) {
     requires(driveBase);
     setTimeout(driveTime);
   }
