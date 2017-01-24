@@ -3,19 +3,22 @@ import org.usfirst.frc.team2059.robot.commands.CommandBase;
 import org.usfirst.frc.team2059.robot.Robot;
 
 public class AutoRotate extends CommandBase {
-  public AutoRotate (double driveTime) {
+  double degrees;
+  public AutoRotate (double d) {
     requires(driveBase);
-    setTimeout(driveTime);
+    degrees=d;
   }
   protected void initialize() {
+    driveBase.resetGyro();
   }
   protected void execute() {
-    driveBase.driveMecanum(0, 1, 0, 0.8);
+    driveBase.rotateAngle(degrees);
   }
   protected boolean isFinished() {
     return isTimedOut();
   }
   protected void end() {
+    driveBase.getGyroController().disable();
     driveBase.driveMecanum(0, 0, 0, 0);
   }
   protected void interrupted() {
