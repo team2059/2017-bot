@@ -6,7 +6,7 @@ public class AutoRotate extends CommandBase {
   double degrees;
   public AutoRotate (double d) {
     requires(driveBase);
-    degrees=d;
+    degrees = d;
   }
   protected void initialize() {
     driveBase.resetGyro();

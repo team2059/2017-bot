@@ -82,7 +82,7 @@ public class DriveBase extends Subsystem {
   public void resetGyro() {
     gyro.reset();
   }
-  public void rotateAngle(double angle){
+  public void rotateAngle(double angle) {
     gyroController.enable();
     gyroController.setSetpoint(angle);
   }
@@ -112,13 +112,13 @@ public class DriveBase extends Subsystem {
   }
   public class gyroPIDSource implements PIDSource {
     @Override
-    public double pidGet(){
+    public double pidGet() {
       return gyro.getAngle();
     }
-    public PIDSourceType getPIDSourceType(){
+    public PIDSourceType getPIDSourceType() {
       return PIDSourceType.kDisplacement;
     }
-    public void setPIDSourceType(PIDSourceType type){
+    public void setPIDSourceType(PIDSourceType type) {
     }
   }
   public double GetxEncoderDistance() {
@@ -144,8 +144,8 @@ public class DriveBase extends Subsystem {
     correctedGyroAngle = -gyro.getAngle() * correction;
     SmartDashboard.putNumber("CorrectedGyroAngle", correctedGyroAngle);
   }
-  public void circleDrive(double radius){
-    driveMecanum(0.1,0,360/(3.14*radius*2));
+  public void circleDrive(double radius) {
+    driveMecanum(0.1, 0, 360 / (3.14 * radius * 2));
   }
 }
 // vim: sw=2:ts=2:sts=2

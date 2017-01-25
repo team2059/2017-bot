@@ -7,7 +7,7 @@ public class AutoEncoderY extends CommandBase {
   double distance;
   public AutoEncoderY(double a) {
     requires(driveBase);
-    distance=a;
+    distance = a;
   }
   protected void initialize() {
     driveBase.resetyEncoderCount();

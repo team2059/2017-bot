@@ -16,83 +16,83 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Robot extends IterativeRobot {
 
-	public static OI oi;
+  public static OI oi;
 
-	Command autonomousCommand;
-	SendableChooser chooser = new SendableChooser();
+  Command autonomousCommand;
+  SendableChooser chooser = new SendableChooser();
 
 
-	@Override
-	public void robotInit() {
-		CommandBase.init();
-		oi = new OI();
-		SmartDashboard.putNumber("GyroCorrection", .1);
-		SmartDashboard.putData("Auto mode", chooser);
-		SmartDashboard.putData("xEncoderController", CommandBase.driveBase.getxEncoderController());
-		SmartDashboard.putData("yEncoderController", CommandBase.driveBase.getyEncoderController());
-		SmartDashboard.putData("gyroController", CommandBase.driveBase.getGyroController());
-		SmartDashboard.putInt("Automode", 0);
-	}
+  @Override
+  public void robotInit() {
+    CommandBase.init();
+    oi = new OI();
+    SmartDashboard.putNumber("GyroCorrection", .1);
+    SmartDashboard.putData("Auto mode", chooser);
+    SmartDashboard.putData("xEncoderController", CommandBase.driveBase.getxEncoderController());
+    SmartDashboard.putData("yEncoderController", CommandBase.driveBase.getyEncoderController());
+    SmartDashboard.putData("gyroController", CommandBase.driveBase.getGyroController());
+    SmartDashboard.putInt("Automode", 0);
+  }
 
-	@Override
-	public void disabledInit() {
-	}
+  @Override
+  public void disabledInit() {
+  }
 
-	@Override
-	public void disabledPeriodic() {
-		Scheduler.getInstance().run();
-	}
+  @Override
+  public void disabledPeriodic() {
+    Scheduler.getInstance().run();
+  }
 
-	@Override
-	public void autonomousInit() {
-		switch (SmartDashboard.getInt("Automode")) {
-			case 0:
-				return;
-			case 1:
-				autonomousCommand = new AutoEncoderX(256);
-			case 2:
-				autonomousCommand = new AutoEncoderY(256);
-			case 3:
-				autonomousCommand = new AutoCircleDrive(1);
-			case 4:
-				autonomousCommand = new AutoRotate(90);
-			default:
-				break;
-		}
-		if (autonomousCommand != null) {
-			autonomousCommand.start();
-		}
-	}
+  @Override
+  public void autonomousInit() {
+    switch (SmartDashboard.getInt("Automode")) {
+      case 0:
+        return;
+      case 1:
+        autonomousCommand = new AutoEncoderX(256);
+      case 2:
+        autonomousCommand = new AutoEncoderY(256);
+      case 3:
+        autonomousCommand = new AutoCircleDrive(1);
+      case 4:
+        autonomousCommand = new AutoRotate(90);
+      default:
+        break;
+    }
+    if (autonomousCommand != null) {
+      autonomousCommand.start();
+    }
+  }
 
-	@Override
-	public void autonomousPeriodic() {
-		Scheduler.getInstance().run();
-		SmartDashboard.putNumber("xEncoderCount", CommandBase.driveBase.getxEncoderCount());
-		SmartDashboard.putNumber("GyroAngle", CommandBase.driveBase.getGyro().getAngle());
-	}
+  @Override
+  public void autonomousPeriodic() {
+    Scheduler.getInstance().run();
+    SmartDashboard.putNumber("xEncoderCount", CommandBase.driveBase.getxEncoderCount());
+    SmartDashboard.putNumber("GyroAngle", CommandBase.driveBase.getGyro().getAngle());
+  }
 
-	@Override
-	public void teleopInit() {
-		if (autonomousCommand != null) {
-			autonomousCommand.cancel();
-		}
-		CommandBase.driveBase.getGyro().reset();
-		CommandBase.driveBase.getGyroController().disable();
-		CommandBase.driveBase.getxEncoderController().disable();
-		CommandBase.driveBase.getyEncoderController().disable();
-	}
+  @Override
+  public void teleopInit() {
+    if (autonomousCommand != null) {
+      autonomousCommand.cancel();
+    }
+    CommandBase.driveBase.getGyro().reset();
+    CommandBase.driveBase.getGyroController().disable();
+    CommandBase.driveBase.getxEncoderController().disable();
+    CommandBase.driveBase.getyEncoderController().disable();
+  }
 
-	@Override
-	public void teleopPeriodic() {
-		Scheduler.getInstance().run();
-		SmartDashboard.putNumber("xEncoderCount", CommandBase.driveBase.getxEncoderCount());
-		SmartDashboard.putNumber("GyroAngle", CommandBase.driveBase.getGyro().getAngle());
-		SmartDashboard.putNumber("horizontalError", CommandBase.visionHelper.getHorizontalError());
-	}
+  @Override
+  public void teleopPeriodic() {
+    Scheduler.getInstance().run();
+    SmartDashboard.putNumber("xEncoderCount", CommandBase.driveBase.getxEncoderCount());
+    SmartDashboard.putNumber("GyroAngle", CommandBase.driveBase.getGyro().getAngle());
+    SmartDashboard.putNumber("horizontalError", CommandBase.visionHelper.getHorizontalError());
+  }
 
-	@Override
-	public void testPeriodic() {
-		LiveWindow.run();
-	}
+  @Override
+  public void testPeriodic() {
+    LiveWindow.run();
+  }
 }
 // vim: sw=2:ts=2:sts=2

@@ -6,7 +6,7 @@ public class AutoCircleDrive extends CommandBase {
   double radius;
   public AutoCircleDrive(double r) {
     requires(driveBase);
-    radius=r;
+    radius = r;
   }
   protected void initialize() {
   }

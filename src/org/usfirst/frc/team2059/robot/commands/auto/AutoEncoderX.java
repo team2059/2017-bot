@@ -7,7 +7,7 @@ public class AutoEncoderX extends CommandBase {
   double distance;
   public AutoEncoderX(double a) {
     requires(driveBase);
-    distance=a;
+    distance = a;
   }
   protected void initialize() {
     driveBase.resetxEncoderCount();
