@@ -27,7 +27,7 @@ public class OI {
     }
     joystickButtons[0][0].whileHeld(new SetGearHolderOpen(true));
     joystickButtons[0][1].whileHeld(new Climb(1));
-    joystickButtons[0][1].whileHeld(new Collect(1));
+    joystickButtons[0][2].whileHeld(new Collect(1));
   }
   public Joystick[] getJoysticks() {
     return joysticks;
