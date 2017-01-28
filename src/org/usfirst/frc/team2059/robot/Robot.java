@@ -55,7 +55,7 @@ public class Robot extends IterativeRobot {
       case 3:
         autonomousCommand = new AutoCircleDrive(1);
       case 4:
-        autonomousCommand = new AutoRotate(90);
+        autonomousCommand = new AutoRotate(15);
       default:
         break;
     }
@@ -89,6 +89,7 @@ public class Robot extends IterativeRobot {
     SmartDashboard.putNumber("GyroAngle", CommandBase.driveBase.getGyro().getAngle());
     SmartDashboard.putNumber("horizontalError", CommandBase.visionHelper.getHorizontalError());
     SmartDashboard.putNumber("sonar distance", CommandBase.visionHelper.getSonar());
+    SmartDashboard.putNumber("TranslationDistance", CommandBase.visionHelper.getTranslationDistance());
 }
   @Override
   public void testPeriodic() {

@@ -32,10 +32,12 @@ public class VisionHelper {
     }
   }
   public double getHorizontalError() {
-    return ((180 / Math.PI) * (Math.atan((getCenterContourX() - (RobotMap.imageWidth / 2)) / RobotMap.fWidth))) + 3.5;
+    return ((180 / Math.PI) * (Math.atan((getCenterContourX() - (RobotMap.imageWidth / 2)) / RobotMap.fWidth)));
   }
   public double getSonar() {
     return (sonar.getAverageValue()/9.76562f);
   }
-
+  public double getTranslationDistance() {
+    return getSonar()*Math.tan((Math.PI/180) * getHorizontalError());
+  }
 }
