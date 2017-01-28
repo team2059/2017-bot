@@ -4,13 +4,16 @@ import java.util.Arrays;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.first.wpilibj.AnalogInput;
 
 public class VisionHelper {
   NetworkTable contoursTable;
   double imageWidth = 640;
   double imageHeight = 480;
+  AnalogInput sonar;
   public VisionHelper() {
     contoursTable = NetworkTable.getTable("GRIP/contours");
+    sonar = new AnalogInput(RobotMap.sonar);
   }
   public double getCenterContourX() {
     int highestAreaIndex = 0;
@@ -31,4 +34,8 @@ public class VisionHelper {
   public double getHorizontalError() {
     return ((180 / Math.PI) * (Math.atan((getCenterContourX() - (RobotMap.imageWidth / 2)) / RobotMap.fWidth))) + 3.5;
   }
+  public double getSonar() {
+    return (sonar.getAverageValue()/9.76562f);
+  }
+
 }
