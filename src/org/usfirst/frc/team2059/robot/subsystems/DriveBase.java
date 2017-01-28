@@ -98,7 +98,8 @@ public class DriveBase extends Subsystem {
   public class yEncoderPIDOutput implements PIDOutput {
     @Override
     public void pidWrite(double output) {
-    driveMecanum(0, output * .25, correctedGyroAngle);
+    //driveMecanum(0, output * .25, correctedGyroAngle);
+    driveMecanum(0, output * .25, 0);
     SmartDashboard.putNumber("tmpOutput", output);
     }
   }
@@ -157,7 +158,6 @@ public class DriveBase extends Subsystem {
   }
   public void yPidDrive(double setpoint, double correction) {
     yEncoderController.setSetpoint(setpoint);
-    yEncoderController.enable();
     correctedGyroAngle = -gyro.getAngle() * correction;
     SmartDashboard.putNumber("CorrectedGyroAngle", correctedGyroAngle);
   }

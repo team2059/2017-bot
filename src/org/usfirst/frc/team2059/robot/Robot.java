@@ -6,6 +6,7 @@ import org.usfirst.frc.team2059.robot.commands.auto.AutoEncoderY;
 import org.usfirst.frc.team2059.robot.commands.auto.AutoEncoderX;
 import org.usfirst.frc.team2059.robot.commands.auto.AutoCircleDrive;
 import org.usfirst.frc.team2059.robot.commands.auto.AutoRotate;
+import org.usfirst.frc.team2059.robot.commands.auto.AutoStrafeAlignVision;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -40,8 +41,7 @@ public class Robot extends IterativeRobot {
   public void disabledInit() {
   }
 
-  @Override
-  public void disabledPeriodic() {
+  @Override public void disabledPeriodic() {
     Scheduler.getInstance().run();
   }
 
@@ -61,7 +61,8 @@ public class Robot extends IterativeRobot {
   //    default:
   //      break;
   //  }
-        autonomousCommand = new AutoEncoderY(SmartDashboard.getNumber("yEncoderTarget"));
+//        autonomousCommand = new AutoEncoderY(SmartDashboard.getNumber("yEncoderTarget"));
+    autonomousCommand = new AutoStrafeAlignVision();
     if (autonomousCommand != null) {
       autonomousCommand.start();
     }
