@@ -27,6 +27,8 @@ public class Robot extends IterativeRobot {
     CommandBase.init();
     oi = new OI();
     SmartDashboard.putNumber("GyroCorrection", 0.1);
+    SmartDashboard.putNumber("xEncoderTarget", 0);
+    SmartDashboard.putNumber("yEncoderTarget", 0);
     SmartDashboard.putData("Auto mode", chooser);
     SmartDashboard.putData("xEncoderController", CommandBase.driveBase.getxEncoderController());
     SmartDashboard.putData("yEncoderController", CommandBase.driveBase.getyEncoderController());
@@ -45,20 +47,21 @@ public class Robot extends IterativeRobot {
 
   @Override
   public void autonomousInit() {
-    switch (SmartDashboard.getInt("Automode")) {
-      case 0:
-        return;
-      case 1:
-        autonomousCommand = new AutoEncoderX(256);
-      case 2:
-        autonomousCommand = new AutoEncoderY(256);
-      case 3:
-        autonomousCommand = new AutoCircleDrive(1);
-      case 4:
-        autonomousCommand = new AutoRotate(15);
-      default:
-        break;
-    }
+  //  switch (SmartDashboard.getInt("Automode")) {
+  //    case 0:
+  //      return;
+  //    case 1:
+  //      autonomousCommand = new AutoEncoderX(SmartDashboard.getNumber("xEncoderTarget"));
+  //    case 2:
+  //      autonomousCommand = new AutoEncoderY(256);
+  //    case 3:
+  //      autonomousCommand = new AutoCircleDrive(1);
+  //    case 4:
+  //      autonomousCommand = new AutoRotate(15);
+  //    default:
+  //      break;
+  //  }
+        autonomousCommand = new AutoEncoderY(SmartDashboard.getNumber("yEncoderTarget"));
     if (autonomousCommand != null) {
       autonomousCommand.start();
     }
@@ -68,6 +71,8 @@ public class Robot extends IterativeRobot {
   public void autonomousPeriodic() {
     Scheduler.getInstance().run();
     SmartDashboard.putNumber("xEncoderCount", CommandBase.driveBase.getxEncoderCount());
+    SmartDashboard.putNumber("yEncoderCount", CommandBase.driveBase.getyEncoderCount());
+    SmartDashboard.putNumber("yEncoderDistance", CommandBase.driveBase.getyEncoderDistance());
     SmartDashboard.putNumber("GyroAngle", CommandBase.driveBase.getGyro().getAngle());
   }
 
@@ -86,6 +91,8 @@ public class Robot extends IterativeRobot {
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
     SmartDashboard.putNumber("xEncoderCount", CommandBase.driveBase.getxEncoderCount());
+    SmartDashboard.putNumber("yEncoderCount", CommandBase.driveBase.getyEncoderCount());
+    SmartDashboard.putNumber("yEncoderDistance", CommandBase.driveBase.getyEncoderDistance());
     SmartDashboard.putNumber("GyroAngle", CommandBase.driveBase.getGyro().getAngle());
     SmartDashboard.putNumber("horizontalError", CommandBase.visionHelper.getHorizontalError());
     SmartDashboard.putNumber("sonar distance", CommandBase.visionHelper.getSonar());

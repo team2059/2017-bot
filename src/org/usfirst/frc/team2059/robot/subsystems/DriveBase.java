@@ -20,9 +20,9 @@ public class DriveBase extends Subsystem {
   AnalogGyro gyro = new AnalogGyro(RobotMap.gyro);
   Encoder xEncoder = new Encoder(RobotMap.xEncoderA, RobotMap.xEncoderB, false, Encoder.EncodingType.k2X);
   Encoder yEncoder = new Encoder(RobotMap.yEncoderA, RobotMap.yEncoderB, false, Encoder.EncodingType.k2X);
-  PIDController xEncoderController = new PIDController(0.02, 0.002, 0.017, xEncoder, new xEncoderPIDOutput());
-  PIDController yEncoderController = new PIDController(0.02, 0.002, 0.017, yEncoder, new yEncoderPIDOutput());
-  PIDController gyroController = new PIDController(0.02, 0.002, 0.017, gyro, new gyroPIDOutput());
+  PIDController xEncoderController = new PIDController(0.02, 0.002, 0.017, new xEncoderPIDSource(), new xEncoderPIDOutput());
+  PIDController yEncoderController = new PIDController(0.02, 0.002, 0.017, new yEncoderPIDSource(), new yEncoderPIDOutput());
+  PIDController gyroController = new PIDController(0.02, 0.002, 0.017, new gyroPIDSource(), new gyroPIDOutput());
   double correctedGyroAngle = .1;
   public void initDefaultCommand() {
     setDefaultCommand(new Drive());
@@ -98,7 +98,8 @@ public class DriveBase extends Subsystem {
   public class yEncoderPIDOutput implements PIDOutput {
     @Override
     public void pidWrite(double output) {
-      driveMecanum(0, output * .25, correctedGyroAngle);
+    driveMecanum(0, output * .25, correctedGyroAngle);
+    SmartDashboard.putNumber("tmpOutput", output);
     }
   }
   public class gyroPIDOutput implements PIDOutput {
@@ -121,26 +122,48 @@ public class DriveBase extends Subsystem {
     public void setPIDSourceType(PIDSourceType type) {
     }
   }
-  public double GetxEncoderDistance() {
+  public class xEncoderPIDSource implements PIDSource {
+    @Override
+    public double pidGet(){
+      return getxEncoderDistance();
+    }
+    public PIDSourceType getPIDSourceType() {
+      return PIDSourceType.kDisplacement;
+    }
+    public void setPIDSourceType(PIDSourceType type){
+    }
+  }
+  public class yEncoderPIDSource implements PIDSource {
+    @Override
+    public double pidGet(){
+      return getyEncoderDistance();
+    }
+    public PIDSourceType getPIDSourceType() {
+      return PIDSourceType.kDisplacement;
+    }
+    public void setPIDSourceType(PIDSourceType type){
+    }
+  }
+  public double getxEncoderDistance() {
     double x = this.getxEncoderCount();
     double z = (x / 256) * 3.14 * 8;
     return z;
   }
-  public double GetyEncoderDistance() {
+  public double getyEncoderDistance() {
     double y = this.getyEncoderCount();
     //TODO change to physical wheel size
     double z = (y / 256) * 3.14 * 8;
-    return z;
+    return -z;
   }
   public void yPidDrive(double setpoint, double correction) {
-    yEncoderController.enable();
     yEncoderController.setSetpoint(setpoint);
+    yEncoderController.enable();
     correctedGyroAngle = -gyro.getAngle() * correction;
     SmartDashboard.putNumber("CorrectedGyroAngle", correctedGyroAngle);
   }
   public void xPidDrive(double setpoint, double correction) {
-    xEncoderController.enable();
     xEncoderController.setSetpoint(setpoint);
+    xEncoderController.enable();
     correctedGyroAngle = -gyro.getAngle() * correction;
     SmartDashboard.putNumber("CorrectedGyroAngle", correctedGyroAngle);
   }

@@ -7,10 +7,10 @@ public class RobotMap {
   public static int driveRightFrontMotor = 4;
   public static int driveRightRearMotor = 2;
   public static int climbermotor = 5;
-  public static int xEncoderA = 0;
-  public static int xEncoderB = 1;
-  public static int yEncoderA = 2;
-  public static int yEncoderB = 3;
+  public static int xEncoderA = 2;
+  public static int xEncoderB = 3;
+  public static int yEncoderA = 0;
+  public static int yEncoderB = 1;
   public static int gyro = 0;
   public static int gearsolenoid1 = 0;
   public static int gearsolenoid2 = 1;
