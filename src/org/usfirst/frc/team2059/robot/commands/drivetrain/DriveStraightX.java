@@ -4,13 +4,15 @@ import org.usfirst.frc.team2059.robot.Robot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class DriveStraightX extends CommandBase {
-  public DriveStraightX() {
+  double speed;
+  public DriveStraightX(double s) {
     requires(driveBase);
+    speed = s;
   }
   protected void initialize() {
   }
   protected void execute() {
-    driveBase.driveStraightX(0.25, SmartDashboard.getNumber("GyroCorrection"));
+    driveBase.driveStraightX(speed, SmartDashboard.getNumber("GyroCorrection"));
   }
   protected boolean isFinished() {
     return isTimedOut();
