@@ -4,16 +4,18 @@ import org.usfirst.frc.team2059.robot.Robot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class AutoStrafeAlignVision extends CommandBase {
+  double distance;
   public AutoStrafeAlignVision() {
     requires(driveBase);
   }
   protected void initialize() {
+    distance=visionHelper.getTranslationDistance();
     driveBase.resetyEncoderCount();
     driveBase.resetGyro();
     driveBase.getyEncoderController().enable();
   }
   protected void execute() {
-    driveBase.yPidDrive(visionHelper.getTranslationDistance(), SmartDashboard.getNumber("GyroCorrection"));
+    driveBase.yPidDrive(distance, 0.005);
   }
   protected boolean isFinished() {
     return isTimedOut();

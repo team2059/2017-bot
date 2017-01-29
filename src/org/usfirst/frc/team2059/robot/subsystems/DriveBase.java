@@ -20,8 +20,8 @@ public class DriveBase extends Subsystem {
   AnalogGyro gyro = new AnalogGyro(RobotMap.gyro);
   Encoder xEncoder = new Encoder(RobotMap.xEncoderA, RobotMap.xEncoderB, false, Encoder.EncodingType.k2X);
   Encoder yEncoder = new Encoder(RobotMap.yEncoderA, RobotMap.yEncoderB, false, Encoder.EncodingType.k2X);
-  PIDController xEncoderController = new PIDController(0.02, 0.002, 0.017, new xEncoderPIDSource(), new xEncoderPIDOutput());
-  PIDController yEncoderController = new PIDController(0.02, 0.002, 0.017, new yEncoderPIDSource(), new yEncoderPIDOutput());
+  PIDController xEncoderController = new PIDController(0.2, 0.002, 0.017, new xEncoderPIDSource(), new xEncoderPIDOutput());
+  PIDController yEncoderController = new PIDController(0.2, 0.002, 0.017, new yEncoderPIDSource(), new yEncoderPIDOutput());
   PIDController gyroController = new PIDController(0.02, 0.002, 0.017, new gyroPIDSource(), new gyroPIDOutput());
   double correctedGyroAngle = .1;
   public void initDefaultCommand() {
@@ -92,14 +92,13 @@ public class DriveBase extends Subsystem {
   public class xEncoderPIDOutput implements PIDOutput {
     @Override
     public void pidWrite(double output) {
-      driveMecanum(output * .25, 0, correctedGyroAngle, 1);
+      driveMecanum(output, 0, correctedGyroAngle, 1);
     }
   }
   public class yEncoderPIDOutput implements PIDOutput {
     @Override
     public void pidWrite(double output) {
-    //driveMecanum(0, output * .25, correctedGyroAngle);
-    driveMecanum(0, output * .25, 0);
+    driveMecanum(0, output, correctedGyroAngle, 1);
     SmartDashboard.putNumber("tmpOutput", output);
     }
   }
@@ -166,6 +165,10 @@ public class DriveBase extends Subsystem {
     xEncoderController.enable();
     correctedGyroAngle = -gyro.getAngle() * correction;
     SmartDashboard.putNumber("CorrectedGyroAngle", correctedGyroAngle);
+  }
+  public void driveStraightX(double speed, double correction){
+    double angle = -gyro.getAngle() * correction;
+    driveMecanum(speed, 0, angle, 1);
   }
   public void circleDrive(double radius) {
     driveMecanum(0.1, 0, 360 / (3.14 * radius * 2));
