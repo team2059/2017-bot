@@ -47,20 +47,20 @@ public class Robot extends IterativeRobot {
 
   @Override
   public void autonomousInit() {
-  //  switch (SmartDashboard.getInt("Automode")) {
-  //    case 0:
-  //      return;
-  //    case 1:
-  //      autonomousCommand = new AutoEncoderX(SmartDashboard.getNumber("xEncoderTarget"));
-  //    case 2:
-  //      autonomousCommand = new AutoEncoderY(256);
-  //    case 3:
-  //      autonomousCommand = new AutoCircleDrive(1);
-  //    case 4:
-  //      autonomousCommand = new AutoRotate(15);
-  //    default:
-  //      break;
-  //  }
+    //  switch (SmartDashboard.getInt("Automode")) {
+    //    case 0:
+    //      return;
+    //    case 1:
+    //      autonomousCommand = new AutoEncoderX(SmartDashboard.getNumber("xEncoderTarget"));
+    //    case 2:
+    //      autonomousCommand = new AutoEncoderY(256);
+    //    case 3:
+    //      autonomousCommand = new AutoCircleDrive(1);
+    //    case 4:
+    //      autonomousCommand = new AutoRotate(15);
+    //    default:
+    //      break;
+    //  }
 //        autonomousCommand = new AutoEncoderY(SmartDashboard.getNumber("yEncoderTarget"));
     autonomousCommand = new AutoStrafeAlignVision();
     if (autonomousCommand != null) {
@@ -98,7 +98,7 @@ public class Robot extends IterativeRobot {
     SmartDashboard.putNumber("horizontalError", CommandBase.visionHelper.getHorizontalError());
     SmartDashboard.putNumber("sonar distance", CommandBase.visionHelper.getSonar());
     SmartDashboard.putNumber("TranslationDistance", CommandBase.visionHelper.getTranslationDistance());
-}
+  }
   @Override
   public void testPeriodic() {
     LiveWindow.run();

@@ -9,7 +9,7 @@ public class AutoStrafeAlignVision extends CommandBase {
     requires(driveBase);
   }
   protected void initialize() {
-    distance=visionHelper.getTranslationDistance();
+    distance = visionHelper.getTranslationDistance();
     driveBase.resetyEncoderCount();
     driveBase.resetGyro();
     driveBase.getyEncoderController().enable();

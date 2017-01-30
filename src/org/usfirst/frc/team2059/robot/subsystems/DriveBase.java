@@ -80,7 +80,7 @@ public class DriveBase extends Subsystem {
     SmartDashboard.putNumber("CorrectedGyroAngle", correctedGyroAngle);
   }
 
-  public void driveStraightX(double speed, double correction){
+  public void driveStraightX(double speed, double correction) {
     double angle = -gyro.getAngle() * correction;
     driveMecanum(speed, 0, angle, 1);
   }
@@ -143,8 +143,8 @@ public class DriveBase extends Subsystem {
   public class yEncoderPIDOutput implements PIDOutput {
     @Override
     public void pidWrite(double output) {
-    driveMecanum(0, output, correctedGyroAngle, 1);
-    SmartDashboard.putNumber("tmpOutput", output);
+      driveMecanum(0, output, correctedGyroAngle, 1);
+      SmartDashboard.putNumber("tmpOutput", output);
     }
   }
   public class gyroPIDOutput implements PIDOutput {
@@ -171,24 +171,24 @@ public class DriveBase extends Subsystem {
   }
   public class xEncoderPIDSource implements PIDSource {
     @Override
-    public double pidGet(){
+    public double pidGet() {
       return getxEncoderDistance();
     }
     public PIDSourceType getPIDSourceType() {
       return PIDSourceType.kDisplacement;
     }
-    public void setPIDSourceType(PIDSourceType type){
+    public void setPIDSourceType(PIDSourceType type) {
     }
   }
   public class yEncoderPIDSource implements PIDSource {
     @Override
-    public double pidGet(){
+    public double pidGet() {
       return getyEncoderDistance();
     }
     public PIDSourceType getPIDSourceType() {
       return PIDSourceType.kDisplacement;
     }
-    public void setPIDSourceType(PIDSourceType type){
+    public void setPIDSourceType(PIDSourceType type) {
     }
   }
 }
