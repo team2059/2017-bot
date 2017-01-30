@@ -27,6 +27,11 @@ public class DriveBase extends Subsystem {
   public void initDefaultCommand() {
     setDefaultCommand(new Drive());
   }
+
+  public void setDriveEnabled(boolean enabled) {
+    driveEnabled = enabled;
+  }
+
   public void driveMecanum(double x, double y, double z) {
     if (driveEnabled) {
       rightFrontMotor.set(-x + y - z);
@@ -35,9 +40,7 @@ public class DriveBase extends Subsystem {
       leftRearMotor.set(-(-x + y + z));
     }
   }
-  public void setDriveEnabled(boolean enabled) {
-    driveEnabled = enabled;
-  }
+
   public void driveMecanum(double x, double y, double z, double sensitivity) {
     if (driveEnabled) {
       if (x < 0.1 && x > -0.1) {
@@ -58,18 +61,68 @@ public class DriveBase extends Subsystem {
       leftRearMotor.set(-(-x + y + z));
     }
   }
-  public double getxEncoderCount() {
-    return xEncoder.get();
+
+  public void rotateAngle(double angle) {
+    gyroController.enable();
+    gyroController.setSetpoint(angle);
   }
-  public double getyEncoderCount() {
-    return yEncoder.get();
+
+  public void yPidDrive(double setpoint, double correction) {
+    yEncoderController.setSetpoint(setpoint);
+    correctedGyroAngle = -gyro.getAngle() * correction;
+    SmartDashboard.putNumber("CorrectedGyroAngle", correctedGyroAngle);
   }
+
+  public void xPidDrive(double setpoint, double correction) {
+    xEncoderController.setSetpoint(setpoint);
+    xEncoderController.enable();
+    correctedGyroAngle = -gyro.getAngle() * correction;
+    SmartDashboard.putNumber("CorrectedGyroAngle", correctedGyroAngle);
+  }
+
+  public void driveStraightX(double speed, double correction){
+    double angle = -gyro.getAngle() * correction;
+    driveMecanum(speed, 0, angle, 1);
+  }
+
+  public void circleDrive(double radius) {
+    driveMecanum(0.1, 0, 360 / (3.14 * radius * 2));
+  }
+
+  //Reset sensor counts
   public void resetxEncoderCount() {
     xEncoder.reset();
   }
   public void resetyEncoderCount() {
     yEncoder.reset();
   }
+  public void resetGyro() {
+    gyro.reset();
+  }
+
+  //Get sensor counts
+  public double getxEncoderCount() {
+    return xEncoder.get();
+  }
+  public double getyEncoderCount() {
+    return yEncoder.get();
+  }
+  public AnalogGyro getGyro() {
+    return gyro;
+  }
+  public double getxEncoderDistance() {
+    double x = this.getxEncoderCount();
+    double z = (x / 256) * 3.14 * 8;
+    return z;
+  }
+  public double getyEncoderDistance() {
+    double y = this.getyEncoderCount();
+    //TODO change to physical wheel size
+    double z = (y / 256) * 3.14 * 8;
+    return -z;
+  }
+
+  //PID Controller get methods
   public PIDController getxEncoderController() {
     return xEncoderController;
   }
@@ -79,16 +132,8 @@ public class DriveBase extends Subsystem {
   public PIDController getGyroController() {
     return gyroController;
   }
-  public void resetGyro() {
-    gyro.reset();
-  }
-  public void rotateAngle(double angle) {
-    gyroController.enable();
-    gyroController.setSetpoint(angle);
-  }
-  public AnalogGyro getGyro() {
-    return gyro;
-  }
+
+  //PID Output classes
   public class xEncoderPIDOutput implements PIDOutput {
     @Override
     public void pidWrite(double output) {
@@ -111,6 +156,8 @@ public class DriveBase extends Subsystem {
       leftRearMotor.set(output);
     }
   }
+
+  //PID Source classes
   public class gyroPIDSource implements PIDSource {
     @Override
     public double pidGet() {
@@ -143,35 +190,6 @@ public class DriveBase extends Subsystem {
     }
     public void setPIDSourceType(PIDSourceType type){
     }
-  }
-  public double getxEncoderDistance() {
-    double x = this.getxEncoderCount();
-    double z = (x / 256) * 3.14 * 8;
-    return z;
-  }
-  public double getyEncoderDistance() {
-    double y = this.getyEncoderCount();
-    //TODO change to physical wheel size
-    double z = (y / 256) * 3.14 * 8;
-    return -z;
-  }
-  public void yPidDrive(double setpoint, double correction) {
-    yEncoderController.setSetpoint(setpoint);
-    correctedGyroAngle = -gyro.getAngle() * correction;
-    SmartDashboard.putNumber("CorrectedGyroAngle", correctedGyroAngle);
-  }
-  public void xPidDrive(double setpoint, double correction) {
-    xEncoderController.setSetpoint(setpoint);
-    xEncoderController.enable();
-    correctedGyroAngle = -gyro.getAngle() * correction;
-    SmartDashboard.putNumber("CorrectedGyroAngle", correctedGyroAngle);
-  }
-  public void driveStraightX(double speed, double correction){
-    double angle = -gyro.getAngle() * correction;
-    driveMecanum(speed, 0, angle, 1);
-  }
-  public void circleDrive(double radius) {
-    driveMecanum(0.1, 0, 360 / (3.14 * radius * 2));
   }
 }
 // vim: sw=2:ts=2:sts=2
