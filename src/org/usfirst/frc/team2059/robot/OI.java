@@ -30,6 +30,7 @@ public class OI {
     joystickButtons[0][6].whileHeld(new SetGearHolderOpen(true));
     joystickButtons[0][7].whileHeld(new Climb(1));
     joystickButtons[0][8].whileHeld(new Collect(1));
+    joystickButtons[0][9].whileHeld(new Collect(-1));
     joystickButtons[0][0].whileHeld(new AutoStrafeAlignVision());
     joystickButtons[0][1].whileHeld(new DriveStraightX(0.25));
     joystickButtons[0][2].whileHeld(new DriveStraightX(-0.25));
