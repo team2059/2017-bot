@@ -5,8 +5,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class AutoEncoderY extends CommandBase {
   double distance;
-  public AutoEncoderY(double a) {
+  public AutoEncoderY(double a, double timeout) {
     requires(driveBase);
+    setTimeout(timeout);
     distance = a;
   }
   protected void initialize() {

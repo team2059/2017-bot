@@ -4,8 +4,9 @@ import org.usfirst.frc.team2059.robot.Robot;
 
 public class AutoRotate extends CommandBase {
   double degrees;
-  public AutoRotate (double d) {
+  public AutoRotate (double d, double timeout) {
     requires(driveBase);
+    setTimeout(timeout);
     degrees = d;
   }
   protected void initialize() {
