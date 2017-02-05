@@ -22,4 +22,6 @@ public class RobotMap {
   public static double imageHeight = 240;
   public static double fWidth = 483.467261958;
   public static double fHeight = 362.600446468;
+  public static int CIMEncoderA = 4;
+  public static int CIMEncoderB = 5;
 }
