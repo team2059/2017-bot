@@ -7,6 +7,7 @@ import org.usfirst.frc.team2059.robot.commands.auto.AutoEncoderX;
 import org.usfirst.frc.team2059.robot.commands.auto.AutoCircleDrive;
 import org.usfirst.frc.team2059.robot.commands.auto.AutoRotate;
 import org.usfirst.frc.team2059.robot.commands.auto.AutoStrafeAlignVision;
+import org.usfirst.frc.team2059.robot.subsystems.Shooter;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -98,6 +99,7 @@ public class Robot extends IterativeRobot {
     SmartDashboard.putNumber("horizontalError", CommandBase.visionHelper.getHorizontalError());
     SmartDashboard.putNumber("sonar distance", CommandBase.visionHelper.getSonar());
     SmartDashboard.putNumber("TranslationDistance", CommandBase.visionHelper.getTranslationDistance());
+    SmartDashboard.putNumber("CIMEncoder Rate", CommandBase.shooter.getCIMEncoderRate());
   }
   @Override
   public void testPeriodic() {

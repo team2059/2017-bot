@@ -18,6 +18,7 @@ public class RobotMap {
   public static int collectorMotor = 6;
   public static int sonar = 1;
   public static int gearMotor = 7;
+  public static int shooterMotor=8;
   public static double imageWidth = 320;
   public static double imageHeight = 240;
   public static double fWidth = 483.467261958;

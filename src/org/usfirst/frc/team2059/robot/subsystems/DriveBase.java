@@ -20,7 +20,6 @@ public class DriveBase extends Subsystem {
   AnalogGyro gyro = new AnalogGyro(RobotMap.gyro);
   Encoder xEncoder = new Encoder(RobotMap.xEncoderA, RobotMap.xEncoderB, false, Encoder.EncodingType.k2X);
   Encoder yEncoder = new Encoder(RobotMap.yEncoderA, RobotMap.yEncoderB, false, Encoder.EncodingType.k2X);
-  Encoder CIMEncoder = new Encoder(RobotMap.CIMEncoderA, RobotMap.CIMEncoderB, false, Encoder.EncodingType.k2X);
   PIDController xEncoderController = new PIDController(0.2, 0.002, 0.017, new xEncoderPIDSource(), new xEncoderPIDOutput());
   PIDController yEncoderController = new PIDController(0.2, 0.002, 0.017, new yEncoderPIDSource(), new yEncoderPIDOutput());
   PIDController gyroController = new PIDController(0.02, 0.002, 0.017, new gyroPIDSource(), new gyroPIDOutput());
@@ -123,9 +122,7 @@ public class DriveBase extends Subsystem {
     return -z;
   }
   
-  public double getCIMEncoderRate(){
-	  return CIMEncoder.getRate();
-  }
+  
 
   //PID Controller get methods
   public PIDController getxEncoderController() {

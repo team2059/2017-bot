@@ -3,6 +3,7 @@ import org.usfirst.frc.team2059.robot.subsystems.DriveBase;
 import org.usfirst.frc.team2059.robot.subsystems.Pneumatics;
 import org.usfirst.frc.team2059.robot.subsystems.Climber;
 import org.usfirst.frc.team2059.robot.subsystems.Collector;
+import org.usfirst.frc.team2059.robot.subsystems.Shooter;
 import org.usfirst.frc.team2059.robot.subsystems.VisionHelper;
 import org.usfirst.frc.team2059.robot.subsystems.GearCollector;
 import edu.wpi.first.wpilibj.command.Command;
@@ -13,6 +14,7 @@ public abstract class CommandBase extends Command {
   public static Collector collector;
   public static VisionHelper visionHelper;
   public static GearCollector gearCollector;
+  public static Shooter shooter;
   public static void init() {
     driveBase = new DriveBase();
     pneumatics = new Pneumatics();
@@ -20,6 +22,7 @@ public abstract class CommandBase extends Command {
     collector = new Collector();
     visionHelper = new VisionHelper();
     gearCollector = new GearCollector();
+    shooter=new Shooter();
   }
 }
 // vim: sw=2:ts=2:sts=2
