@@ -10,16 +10,23 @@ import edu.wpi.first.wpilibj.PIDSource;
 import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.DigitalInput;
 
 public class Shooter extends Subsystem {
 	CANTalon shooterMotor = new CANTalon(RobotMap.shooterMotor);
+	CANTalon shooterDeflector=new CANTalon(RobotMap.ShooterDeflector);
 	Encoder CIMEncoder = new Encoder(RobotMap.CIMEncoderA, RobotMap.CIMEncoderB, false, Encoder.EncodingType.k2X);
 	PIDController CIMEncoderController = new PIDController(0.2, 0.002, 0.017, new CIMEncoderPIDSource(), new CIMEncoderPIDOutput());
+	DigitalInput switchUp=new DigitalInput(RobotMap.ShooterSwitch1);
+	DigitalInput switchDown=new DigitalInput(RobotMap.ShooterSwitch2);
 	
 	protected void initDefaultCommand() {		
 	}	
 	public void shootAtSpeed(double speed){
 		shooterMotor.set(speed);
+	}
+	public void moveDeflector(double speed){
+		shooterDeflector.set(speed);
 	}
 	public class CIMEncoderPIDSource implements PIDSource {
 	    public double pidGet() {
@@ -46,6 +53,12 @@ public class Shooter extends Subsystem {
 	  }
 	public double getCIMEncoderRate(){
 		return CIMEncoder.getRate();
+	}
+	public boolean getDeflectorUp(){
+		return switchUp.get();
+	}
+	public boolean getDeflectorDown(){
+		return switchDown.get();
 	}
 
 	
