@@ -27,16 +27,17 @@ public class OI {
       joystickButtons[0][i] = new JoystickButton(joysticks[0], i + 1);
       joystickButtons[1][i] = new JoystickButton(joysticks[1], i + 1);
     }
-    joystickButtons[0][6].whileHeld(new SetGearHolderOpen(true));
+  //  joystickButtons[0][6].whileHeld(new SetGearHolderOpen(true));
     joystickButtons[0][0].whileHeld(new Collect(1));
     joystickButtons[0][1].whileHeld(new Collect(-1));
     //joystickButtons[0][0].whileHeld(new AutoStrafeAlignVision());
-    joystickButtons[0][6].whileHeld(new DriveStraightX(0.25));
-    joystickButtons[0][7].whileHeld(new DriveStraightX(-0.25));
-    joystickButtons[0][9].whileHeld(new GearSystem(1));
-    joystickButtons[0][10].whileHeld(new GearSystem(-1));
+    joystickButtons[0][3].whileHeld(new GearSystem(1));
+    joystickButtons[0][4].whileHeld(new GearSystem(-1));
+    joystickButtons[0][6].whileHeld(new DriveStraightX(0.5));
+    joystickButtons[0][7].whileHeld(new DriveStraightX(-0.5));
 
-    joystickButtons[1][7].whileHeld(new Climb(1));
+    joystickButtons[1][0].whileHeld(new Climb(1));
+    joystickButtons[1][1].whileHeld(new Climb(-1));
     }
   public Joystick[] getJoysticks() {
     return joysticks;

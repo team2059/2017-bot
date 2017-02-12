@@ -10,6 +10,7 @@ public class DriveStraightX extends CommandBase {
     speed = s;
   }
   protected void initialize() {
+    driveBase.resetGyro();
   }
   protected void execute() {
     driveBase.driveStraightX(speed, SmartDashboard.getNumber("GyroCorrection"));

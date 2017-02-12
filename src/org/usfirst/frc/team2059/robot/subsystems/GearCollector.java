@@ -4,7 +4,7 @@ import com.ctre.CANTalon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class GearCollector extends Subsystem {
-  CANTalon gearMotor = new CANTalon(RobotMap.gearMotor);
+  CANTalon gearMotor = new CANTalon(RobotMap.gearCollectorMotor);
 
   public void initDefaultCommand() {
   }

@@ -18,7 +18,7 @@ public class RobotMap {
   public static int pcm = 31;
   public static int collectorMotor = 7;
   public static int sonar = 1;
-  public static int gearMotor = 8;
+  public static int gearCollectorMotor = 8;
   public static int shooterMotor=9;
   public static int shooterfeeder=10;
   public static double imageWidth = 320;
@@ -30,6 +30,6 @@ public class RobotMap {
   public static int ShooterDeflector=11;
   public static int ShooterSwitch1=6;
   public static int ShooterSwitch2=7;
-  
-  
+
+
 }
