@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.DigitalInput;
 public class Shooter extends Subsystem {
 	CANTalon shooterMotor = new CANTalon(RobotMap.shooterMotor);
 	CANTalon shooterDeflector=new CANTalon(RobotMap.ShooterDeflector);
+	CANTalon shooterfeeder = new CANTalon(RobotMap.shooterfeeder);
 	Encoder CIMEncoder = new Encoder(RobotMap.CIMEncoderA, RobotMap.CIMEncoderB, false, Encoder.EncodingType.k2X);
 	PIDController CIMEncoderController = new PIDController(0.2, 0.002, 0.017, new CIMEncoderPIDSource(), new CIMEncoderPIDOutput());
 	DigitalInput switchUp=new DigitalInput(RobotMap.ShooterSwitch1);
@@ -59,6 +60,9 @@ public class Shooter extends Subsystem {
 	}
 	public boolean getDeflectorDown(){
 		return switchDown.get();
+	}
+	public void feed(double i) {
+		shooterfeeder.set(i);
 	}
 
 	

@@ -12,6 +12,7 @@ public class Shoot extends CommandBase {
 
 	  protected void execute() {
 	    shooter.shootAtSpeed(speed);
+	    shooter.feed(speed);
 	  }
 
 	  protected boolean isFinished() {

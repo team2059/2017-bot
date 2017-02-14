@@ -12,6 +12,7 @@ public class PIDShoot extends CommandBase{
 
 	  protected void execute() {
 	    shooter.PidShoot(1000);
+	    shooter.feed(1.0);
 	  }
 
 	  protected boolean isFinished() {
