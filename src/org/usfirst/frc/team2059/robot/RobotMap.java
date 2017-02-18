@@ -31,5 +31,7 @@ public class RobotMap {
   public static int ShooterSwitch1=6;
   public static int ShooterSwitch2=7;
 
+  public static int servoX = 1;
+  public static int servoY = 2;
 
 }

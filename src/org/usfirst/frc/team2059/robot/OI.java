@@ -9,6 +9,8 @@ import org.usfirst.frc.team2059.robot.commands.Collect;
 import org.usfirst.frc.team2059.robot.commands.drivetrain.DriveStraightX;
 import org.usfirst.frc.team2059.robot.commands.auto.AutoStrafeAlignVision;
 import org.usfirst.frc.team2059.robot.commands.GearSystem;
+import org.usfirst.frc.team2059.robot.commands.SetServoYAngle;
+import org.usfirst.frc.team2059.robot.commands.SetServoXAngle;
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
@@ -38,6 +40,10 @@ public class OI {
 
     joystickButtons[1][0].whileHeld(new Climb(1));
     joystickButtons[1][1].whileHeld(new Climb(-1));
+    joystickButtons[1][2].whileHeld(new SetServoXAngle(0));
+    joystickButtons[1][3].whileHeld(new SetServoXAngle(170));
+    joystickButtons[1][4].whileHeld(new SetServoYAngle(0));
+    joystickButtons[1][5].whileHeld(new SetServoYAngle(170));
     }
   public Joystick[] getJoysticks() {
     return joysticks;

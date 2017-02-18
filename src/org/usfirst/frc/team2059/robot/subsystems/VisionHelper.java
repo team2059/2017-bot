@@ -5,12 +5,16 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.Servo;
+import edu.wpi.first.wpilibj.command.Subsystem;
 
-public class VisionHelper {
+public class VisionHelper extends Subsystem{
   NetworkTable contoursTable;
+  Servo servoX,servoY = new Servo(1);
   double imageWidth = 640;
   double imageHeight = 480;
   AnalogInput sonar;
+  public void initDefaultCommand(){};
   public VisionHelper() {
     contoursTable = NetworkTable.getTable("GRIP/contours");
     sonar = new AnalogInput(RobotMap.sonar);
@@ -39,5 +43,17 @@ public class VisionHelper {
   }
   public double getTranslationDistance() {
     return getSonar() * Math.tan((Math.PI / 180) * getHorizontalError());
+  }
+  public void setServoAngleX(double angle){
+    servoX.setAngle(angle);
+  }
+  public void setServoAngleY(double angle){
+    servoY.setAngle(angle);
+  }
+  public double getServoAngleX(){
+    return servoX.getAngle();
+  }
+  public double getServoAngleY(){
+    return servoY.getAngle();
   }
 }
