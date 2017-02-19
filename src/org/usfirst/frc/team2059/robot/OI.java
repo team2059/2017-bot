@@ -3,9 +3,11 @@ package org.usfirst.frc.team2059.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team2059.robot.commands.SetGearHolderOpen;
 import org.usfirst.frc.team2059.robot.commands.Climb;
 import org.usfirst.frc.team2059.robot.commands.Collect;
+import org.usfirst.frc.team2059.robot.commands.Shoot;
 import org.usfirst.frc.team2059.robot.commands.drivetrain.DriveStraightX;
 import org.usfirst.frc.team2059.robot.commands.auto.AutoStrafeAlignVision;
 import org.usfirst.frc.team2059.robot.commands.GearSystem;
@@ -38,6 +40,8 @@ public class OI {
     //Button 8 drives straight
   //  joystickButtons[0][6].whileHeld(new DriveStraightX(0.5));
   //  joystickButtons[0][7].whileHeld(new DriveStraightX(-0.5));
+    joystickButtons[0][10].whileHeld(new Shoot(getJoystick(0).getRawAxis(4)));
+    joystickButtons[0][11].whileHeld(new Shoot(-getJoystick(0).getRawAxis(4)));
 
     joystickButtons[1][0].whileHeld(new Climb(1));
     joystickButtons[1][1].whileHeld(new Climb(-1));

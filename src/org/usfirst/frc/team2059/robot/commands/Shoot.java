@@ -21,7 +21,9 @@ public class Shoot extends CommandBase {
 	  }
 
 	  protected void end() {
+      shooter.agitateBalls(0);
 	    shooter.shootAtSpeed(0);
+	    shooter.feed(0);
 	  }
 
 	  protected void interrupted() {
