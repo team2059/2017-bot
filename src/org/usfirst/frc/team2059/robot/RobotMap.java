@@ -24,8 +24,8 @@ public class RobotMap {
   public static double fWidth = 483.467261958;
   public static double fHeight = 362.600446468;
   //Shooter
-  public static int ShooterDeflector=11;
-  public static int agitatorMotor = 12;
+  public static int ShooterDeflector=12;
+  public static int agitatorMotor = 11;
   public static int shooterDeflectorSwitchOpen=6;
   public static int shooterDeflectorSwitchClosed=7;
   public static int CIMEncoderA = 4;
