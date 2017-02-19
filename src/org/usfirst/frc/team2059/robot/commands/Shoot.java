@@ -11,6 +11,7 @@ public class Shoot extends CommandBase {
 	  }
 
 	  protected void execute() {
+      shooter.agitateBalls(1.0);
 	    shooter.shootAtSpeed(speed);
 	    shooter.feed(speed);
 	  }

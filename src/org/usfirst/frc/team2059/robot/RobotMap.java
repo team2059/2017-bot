@@ -19,17 +19,19 @@ public class RobotMap {
   public static int collectorMotor = 7;
   public static int sonar = 1;
   public static int gearCollectorMotor = 8;
-  public static int shooterMotor=9;
-  public static int shooterfeeder=10;
   public static double imageWidth = 320;
   public static double imageHeight = 240;
   public static double fWidth = 483.467261958;
   public static double fHeight = 362.600446468;
+  //Shooter
+  public static int ShooterDeflector=11;
+  public static int agitatorMotor = 12;
+  public static int shooterDeflectorSwitchOpen=6;
+  public static int shooterDeflectorSwitchClosed=7;
   public static int CIMEncoderA = 4;
   public static int CIMEncoderB = 5;
-  public static int ShooterDeflector=11;
-  public static int ShooterSwitch1=6;
-  public static int ShooterSwitch2=7;
+  public static int shooterMotor=9;
+  public static int shooterfeeder=10;
 
   public static int servoX = 1;
   public static int servoY = 2;

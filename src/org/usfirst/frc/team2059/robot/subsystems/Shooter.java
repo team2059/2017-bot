@@ -16,10 +16,11 @@ public class Shooter extends Subsystem {
 	CANTalon shooterMotor = new CANTalon(RobotMap.shooterMotor);
 	CANTalon shooterDeflector=new CANTalon(RobotMap.ShooterDeflector);
 	CANTalon shooterfeeder = new CANTalon(RobotMap.shooterfeeder);
+  CANTalon ballAgitator = new CANTalon(RobotMap.agitatorMotor);
 	Encoder CIMEncoder = new Encoder(RobotMap.CIMEncoderA, RobotMap.CIMEncoderB, false, Encoder.EncodingType.k2X);
 	PIDController CIMEncoderController = new PIDController(0.2, 0.002, 0.017, new CIMEncoderPIDSource(), new CIMEncoderPIDOutput());
-	DigitalInput switchUp=new DigitalInput(RobotMap.ShooterSwitch1);
-	DigitalInput switchDown=new DigitalInput(RobotMap.ShooterSwitch2);
+	DigitalInput deflectorOpenSwitch=new DigitalInput(RobotMap.shooterDeflectorSwitchOpen);
+	DigitalInput deflectorClosedSwitch=new DigitalInput(RobotMap.shooterDeflectorSwitchClosed);
 	
 	protected void initDefaultCommand() {		
 	}	
@@ -56,15 +57,16 @@ public class Shooter extends Subsystem {
 		return CIMEncoder.getRate();
 	}
 	public boolean getDeflectorUp(){
-		return switchUp.get();
+		return deflectorOpenSwitch.get();
 	}
 	public boolean getDeflectorDown(){
-		return switchDown.get();
+		return deflectorClosedSwitch.get();
 	}
 	public void feed(double i) {
 		shooterfeeder.set(i);
 	}
-
-	
+  public void agitateBalls(double speed){
+    ballAgitator.set(speed);
+  }
 }
 
