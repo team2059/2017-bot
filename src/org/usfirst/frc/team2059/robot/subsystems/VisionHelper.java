@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class VisionHelper extends Subsystem{
   NetworkTable contoursTable;
-  Servo servoX,servoY = new Servo(1);
+  Servo servoX,servoY;
   double imageWidth = 640;
   double imageHeight = 480;
   AnalogInput sonar;
@@ -18,6 +18,8 @@ public class VisionHelper extends Subsystem{
   public VisionHelper() {
     contoursTable = NetworkTable.getTable("GRIP/contours");
     sonar = new AnalogInput(RobotMap.sonar);
+    servoX = new Servo(RobotMap.servoX);
+    servoY = new Servo(RobotMap.servoY);
   }
   public double getCenterContourX() {
     int highestAreaIndex = 0;

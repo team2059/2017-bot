@@ -33,7 +33,7 @@ public class RobotMap {
   public static int shooterMotor=10;
   public static int shooterfeeder=9;
 
-  public static int servoX = 1;
-  public static int servoY = 2;
+  public static int servoX = 0;
+  public static int servoY = 1;
 
 }
