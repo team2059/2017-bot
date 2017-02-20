@@ -46,9 +46,11 @@ public class OI {
     joystickButtons[1][0].whileHeld(new Climb(1));
     joystickButtons[1][1].whileHeld(new Climb(-1));
 //    joystickButtons[1][2].whileHeld(new SetServoXAngle(0));
-//    joystickButtons[1][3].whileHeld(new SetServoXAngle(170));
-//    joystickButtons[1][4].whileHeld(new SetServoYAngle(0));
-//    joystickButtons[1][5].whileHeld(new SetServoYAngle(170));
+//    joystickButtons[1][3].whileHeld(new SetServoXAngle(85));
+//    joystickButtons[1][4].whileHeld(new SetServoXAngle(170));
+//    joystickButtons[1][5].whileHeld(new SetServoYAngle(0));
+//    joystickButtons[1][6].whileHeld(new SetServoYAngle(85));
+//    joystickButtons[1][7].whileHeld(new SetServoYAngle(170));
     }
   public Joystick[] getJoysticks() {
     return joysticks;
