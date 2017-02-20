@@ -36,7 +36,6 @@ public class Robot extends IterativeRobot {
     SmartDashboard.putData("xEncoderController", CommandBase.driveBase.getxEncoderController());
     SmartDashboard.putData("yEncoderController", CommandBase.driveBase.getyEncoderController());
     SmartDashboard.putData("gyroController", CommandBase.driveBase.getGyroController());
-    SmartDashboard.putNumber("shooterPower", 0.9);
     SmartDashboard.putInt("Automode", 0);
   }
 
@@ -102,7 +101,7 @@ public class Robot extends IterativeRobot {
     SmartDashboard.putNumber("sonar distance", CommandBase.visionHelper.getSonar());
     SmartDashboard.putNumber("TranslationDistance", CommandBase.visionHelper.getTranslationDistance());
     SmartDashboard.putNumber("CIMEncoder Rate", CommandBase.shooter.getCIMEncoderRate());
-    SmartDashboard.putNumber("joystick1throttle", oi.getJoystick(0).getRawAxis(4));
+    SmartDashboard.putNumber("joystick1throttle", oi.getJoystickThrottle(0));
   }
   @Override
   public void testPeriodic() {

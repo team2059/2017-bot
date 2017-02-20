@@ -1,6 +1,7 @@
 package org.usfirst.frc.team2059.robot.commands;
 
 import org.usfirst.frc.team2059.robot.subsystems.Shooter;
+import org.usfirst.frc.team2059.robot.Robot;
 
 public class Shoot extends CommandBase {
 	  double speed;
@@ -12,7 +13,7 @@ public class Shoot extends CommandBase {
 
 	  protected void execute() {
       shooter.agitateBalls(1.0);
-	    shooter.shootAtSpeed(speed);
+	    shooter.shootAtSpeed(-Robot.oi.getJoystickThrottle(0));
 	    shooter.feed(speed);
 	  }
 
