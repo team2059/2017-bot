@@ -47,9 +47,9 @@ public class OI {
     joystickButtons[1][0].whileHeld(new Climb(1));
     joystickButtons[1][1].whileHeld(new Climb(-1));
 
-    joystickButtons[1][2].whileHeld(new SetCameraPosition(0,0));
-    joystickButtons[1][3].whileHeld(new SetCameraPosition(90, 90));
-    joystickButtons[1][4].whileHeld(new SetCameraPosition(170, 170));
+    joystickButtons[1][2].whileHeld(new SetCameraPosition(180, 30)); //gear
+    joystickButtons[1][3].whileHeld(new SetCameraPosition(15, 70)); //shooter
+    joystickButtons[1][4].whileHeld(new SetCameraPosition(15, 30)); //climber
     }
   public Joystick[] getJoysticks() {
     return joysticks;
