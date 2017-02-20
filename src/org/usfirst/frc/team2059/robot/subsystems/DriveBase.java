@@ -24,6 +24,7 @@ public class DriveBase extends Subsystem {
   PIDController yEncoderController = new PIDController(0.2, 0.002, 0.017, new yEncoderPIDSource(), new yEncoderPIDOutput());
   PIDController gyroController = new PIDController(0.02, 0.002, 0.017, new gyroPIDSource(), new gyroPIDOutput());
   double correctedGyroAngle = .1;
+  double previousError = 0;
   public void initDefaultCommand() {
     setDefaultCommand(new Drive());
   }
@@ -81,8 +82,16 @@ public class DriveBase extends Subsystem {
   }
 
   public void driveStraightX(double speed, double correction) {
-    double angle = -gyro.getAngle() * correction;
-    driveMecanum(speed, 0, angle, 1);
+    double kP = SmartDashboard.getNumber("driveStraightkP");
+    double kD = SmartDashboard.getNumber("driveStraightkD");
+    double kI = SmartDashboard.getNumber("driveStraightkI");
+    double error = getyEncoderCount() - 0; 
+
+    double yPower = -((kP*error)+(kD*error-previousError)+kI);
+    double zPower = -gyro.getAngle() * correction;
+    SmartDashboard.putNumber("yPower",yPower);
+    driveMecanum(speed, yPower, zPower, 1);
+    previousError = error;
   }
 
   public void circleDrive(double radius) {
