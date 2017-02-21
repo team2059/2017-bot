@@ -14,13 +14,11 @@ public class DriveStraightX extends CommandBase {
     driveBase.resetyEncoderCount();
   }
   protected void execute() {
-    driveBase.driveStraightX(speed, SmartDashboard.getNumber("GyroCorrection"));
   }
   protected boolean isFinished() {
     return isTimedOut();
   }
   protected void end() {
-    driveBase.driveMecanum(0, 0, 0, 0);
   }
   protected void interrupted() {
   }

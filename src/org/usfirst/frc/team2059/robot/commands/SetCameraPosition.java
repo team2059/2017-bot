@@ -20,7 +20,7 @@ public class SetCameraPosition extends CommandBase{
   }
 
   protected boolean isFinished() {
-    return false;
+    return true;
   }
 
   protected void end() {

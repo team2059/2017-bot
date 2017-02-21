@@ -32,9 +32,9 @@ public class Robot extends IterativeRobot {
     SmartDashboard.putNumber("xEncoderTarget", 0);
     SmartDashboard.putNumber("yEncoderTarget", 0);
     SmartDashboard.putNumber("shooterPower", 0.9);
-    SmartDashboard.putNumber("driveStraightkP", 0.07);
+    SmartDashboard.putNumber("driveStraightkP", 0.003);
     SmartDashboard.putNumber("driveStraightkD", 0.03);
-    SmartDashboard.putNumber("driveStraightkI", 0.05);
+    SmartDashboard.putNumber("driveStraightkI", 0.0);
     SmartDashboard.putNumber("shooterPower", 0.9);
     SmartDashboard.putNumber("cameraX", 0);
     SmartDashboard.putNumber("cameraY", 0);
@@ -99,10 +99,8 @@ public class Robot extends IterativeRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
-    CommandBase.visionHelper.setServoAngleX(SmartDashboard.getNumber("cameraX"));
-    CommandBase.visionHelper.setServoAngleY(SmartDashboard.getNumber("cameraY"));
     SmartDashboard.putNumber("xEncoderCount", CommandBase.driveBase.getxEncoderCount());
-    SmartDashboard.putNumber("yEncoderCount", CommandBase.driveBase.getyEncoderCount());
+    //SmartDashboard.putNumber("yEncoderCount", CommandBase.driveBase.getyEncoderCount());
     SmartDashboard.putNumber("yEncoderDistance", CommandBase.driveBase.getyEncoderDistance());
     SmartDashboard.putNumber("GyroAngle", CommandBase.driveBase.getGyro().getAngle());
     SmartDashboard.putNumber("horizontalError", CommandBase.visionHelper.getHorizontalError());

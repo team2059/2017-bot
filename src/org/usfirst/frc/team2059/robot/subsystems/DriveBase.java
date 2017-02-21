@@ -18,8 +18,8 @@ public class DriveBase extends Subsystem {
   CANTalon rightFrontMotor = new CANTalon(RobotMap.driveRightFrontMotor);
   CANTalon rightRearMotor = new CANTalon(RobotMap.driveRightRearMotor);
   AnalogGyro gyro = new AnalogGyro(RobotMap.gyro);
-  Encoder xEncoder = new Encoder(RobotMap.xEncoderA, RobotMap.xEncoderB, false, Encoder.EncodingType.k2X);
-  Encoder yEncoder = new Encoder(RobotMap.yEncoderA, RobotMap.yEncoderB, false, Encoder.EncodingType.k2X);
+  Encoder xEncoder = new Encoder(RobotMap.xEncoderA, RobotMap.xEncoderB, false, Encoder.EncodingType.k4X);
+  Encoder yEncoder = new Encoder(RobotMap.yEncoderA, RobotMap.yEncoderB, false, Encoder.EncodingType.k4X);
   PIDController xEncoderController = new PIDController(0.2, 0.002, 0.017, new xEncoderPIDSource(), new xEncoderPIDOutput());
   PIDController yEncoderController = new PIDController(0.2, 0.002, 0.017, new yEncoderPIDSource(), new yEncoderPIDOutput());
   PIDController gyroController = new PIDController(0.02, 0.002, 0.017, new gyroPIDSource(), new gyroPIDOutput());
@@ -85,9 +85,12 @@ public class DriveBase extends Subsystem {
     double kP = SmartDashboard.getNumber("driveStraightkP");
     double kD = SmartDashboard.getNumber("driveStraightkD");
     double kI = SmartDashboard.getNumber("driveStraightkI");
-    double error = getyEncoderCount() - 0; 
+    double error = getxEncoderCount(); 
 
-    double yPower = -((kP*error)+(kD*error-previousError)+kI);
+    SmartDashboard.putNumber("previousError",previousError);
+    SmartDashboard.putNumber("error",error);
+    //double yPower = -((kP*error)+(kD*error-previousError)+kI);
+    double yPower = -((kP*error)+kI);
     double zPower = -gyro.getAngle() * correction;
     SmartDashboard.putNumber("yPower",yPower);
     driveMecanum(speed, yPower, zPower, 1);
