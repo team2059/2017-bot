@@ -76,5 +76,12 @@ public class Shooter extends Subsystem {
   public double getFeederServoAngle(){
     return feederServo.getAngle();
   }
+  public void setFeederServoOpen(boolean state){
+    if(state){
+      feederServo.setAngle(RobotMap.feederOpenDegrees);
+    }else{
+      feederServo.setAngle(RobotMap.feederCloseDegrees);
+    }
+  }
 }
 

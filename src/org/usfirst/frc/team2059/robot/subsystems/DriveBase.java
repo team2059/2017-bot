@@ -90,7 +90,7 @@ public class DriveBase extends Subsystem {
     SmartDashboard.putNumber("previousError",previousError);
     SmartDashboard.putNumber("error",error);
     //double yPower = -((kP*error)+(kD*error-previousError)+kI);
-    double yPower = -((kP*error)+kI);
+    double yPower = ((kP*error)+kI);
     double zPower = -gyro.getAngle() * correction;
     SmartDashboard.putNumber("yPower",yPower);
     driveMecanum(speed, yPower, zPower, 1);

@@ -37,4 +37,7 @@ public class RobotMap {
   public static int servoY = 1;
   public static int feederServo = 2;
 
+  public static int feederOpenDegrees = 75;
+  public static int feederCloseDegrees = 0;
+
 }
