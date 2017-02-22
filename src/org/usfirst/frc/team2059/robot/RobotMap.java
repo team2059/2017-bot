@@ -35,5 +35,6 @@ public class RobotMap {
 
   public static int servoX = 0;
   public static int servoY = 1;
+  public static int feederServo = 2;
 
 }

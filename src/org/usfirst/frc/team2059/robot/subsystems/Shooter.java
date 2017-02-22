@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.Servo;
 
 public class Shooter extends Subsystem {
 	CANTalon shooterMotor = new CANTalon(RobotMap.shooterMotor);
@@ -21,7 +22,8 @@ public class Shooter extends Subsystem {
 	PIDController CIMEncoderController = new PIDController(0.2, 0.002, 0.017, new CIMEncoderPIDSource(), new CIMEncoderPIDOutput());
 	DigitalInput deflectorOpenSwitch=new DigitalInput(RobotMap.shooterDeflectorSwitchOpen);
 	DigitalInput deflectorClosedSwitch=new DigitalInput(RobotMap.shooterDeflectorSwitchClosed);
-	
+  Servo feederServo = new Servo(RobotMap.feederServo);
+
 	protected void initDefaultCommand() {		
 	}	
 	public void shootAtSpeed(double speed){
@@ -67,6 +69,12 @@ public class Shooter extends Subsystem {
 	}
   public void agitateBalls(double speed){
     ballAgitator.set(speed);
+  }
+  public void setFeederServoAngle(double angle){
+    feederServo.setAngle(angle);
+  }
+  public double getFeederServoAngle(){
+    return feederServo.getAngle();
   }
 }
 
