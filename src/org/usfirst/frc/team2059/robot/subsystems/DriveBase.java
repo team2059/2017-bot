@@ -82,18 +82,31 @@ public class DriveBase extends Subsystem {
   }
 
   public void driveStraightX(double speed, double correction) {
-    double kP = SmartDashboard.getNumber("driveStraightkP");
-    double kD = SmartDashboard.getNumber("driveStraightkD");
-    double kI = SmartDashboard.getNumber("driveStraightkI");
+    double kP = SmartDashboard.getNumber("driveStraightxkP");
+    double kD = SmartDashboard.getNumber("driveStraightxkD");
+    double kI = SmartDashboard.getNumber("driveStraightxkI");
     double error = getxEncoderCount(); 
 
     SmartDashboard.putNumber("previousError",previousError);
     SmartDashboard.putNumber("error",error);
-    //double yPower = -((kP*error)+(kD*error-previousError)+kI);
     double yPower = ((kP*error)+kI);
     double zPower = -gyro.getAngle() * correction;
     SmartDashboard.putNumber("yPower",yPower);
     driveMecanum(speed, yPower, zPower, 1);
+    previousError = error;
+  }
+
+  public void driveStraightY(double speed, double correction) {
+    double kP = SmartDashboard.getNumber("driveStraightykP");
+    double kD = SmartDashboard.getNumber("driveStraightykD");
+    double kI = SmartDashboard.getNumber("driveStraightykI");
+    double error = getyEncoderCount(); 
+
+    SmartDashboard.putNumber("error",error);
+    double xPower = ((kP*error)+kI);
+    double zPower = -gyro.getAngle() * correction;
+    SmartDashboard.putNumber("xPower",xPower);
+    driveMecanum(xPower, speed, zPower, 1);
     previousError = error;
   }
 
@@ -151,14 +164,13 @@ public class DriveBase extends Subsystem {
   public class xEncoderPIDOutput implements PIDOutput {
     @Override
     public void pidWrite(double output) {
-      driveMecanum(output, 0, correctedGyroAngle, 1);
+      driveStraightX(output, SmartDashboard.getNumber("GyroCorrection"));
     }
   }
   public class yEncoderPIDOutput implements PIDOutput {
     @Override
     public void pidWrite(double output) {
-      driveMecanum(0, output, correctedGyroAngle, 1);
-      SmartDashboard.putNumber("tmpOutput", output);
+      driveStraightY(output, SmartDashboard.getNumber("GyroCorrection"));
     }
   }
   public class gyroPIDOutput implements PIDOutput {

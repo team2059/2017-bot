@@ -12,8 +12,8 @@ public class Shoot extends CommandBase {
 	  }
 
 	  protected void execute() {
+      shooter.PidShoot(500);
       shooter.agitateBalls(1.0);
-	    shooter.shootAtSpeed(-Robot.oi.getJoystickThrottle(0));
 	    shooter.feed(speed);
 	  }
 
@@ -22,8 +22,8 @@ public class Shoot extends CommandBase {
 	  }
 
 	  protected void end() {
+      shooter.getCIMEncoderController().disable();
       shooter.agitateBalls(0);
-	    shooter.shootAtSpeed(0);
 	    shooter.feed(0);
 	  }
 

@@ -9,7 +9,6 @@ public class Climber extends Subsystem {
   CANTalon climberMotor2 = new CANTalon(RobotMap.climbermotor2);
   DigitalInput climberSwitch1 = new DigitalInput(RobotMap.climberSwitch1);
   DigitalInput climberSwitch2 = new DigitalInput(RobotMap.climberSwitch2);
-
   public void initDefaultCommand() {
   }
   public void climbAtSpeed(double speed) {

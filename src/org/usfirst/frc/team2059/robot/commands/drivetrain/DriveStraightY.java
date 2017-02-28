@@ -3,9 +3,9 @@ import org.usfirst.frc.team2059.robot.commands.CommandBase;
 import org.usfirst.frc.team2059.robot.Robot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class DriveStraightX extends CommandBase {
+public class DriveStraightY extends CommandBase {
   double distance;
-  public DriveStraightX(double d) {
+  public DriveStraightY(double d) {
     requires(driveBase);
     distance = d;
   }
@@ -15,7 +15,7 @@ public class DriveStraightX extends CommandBase {
     driveBase.resetxEncoderCount();
   }
   protected void execute() {
-    driveBase.getxEncoderController().setSetpoint(distance);
+    driveBase.getyEncoderController().setSetpoint(distance);
   }
   protected boolean isFinished() {
     return isTimedOut();

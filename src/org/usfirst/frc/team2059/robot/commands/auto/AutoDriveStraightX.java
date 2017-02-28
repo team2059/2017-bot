@@ -3,11 +3,12 @@ import org.usfirst.frc.team2059.robot.commands.CommandBase;
 import org.usfirst.frc.team2059.robot.Robot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class DriveStraightX extends CommandBase {
-  double distance;
-  public DriveStraightX(double d) {
+public class AutoDriveStraightX extends CommandBase {
+  double distance, timeout;
+  public AutoDriveStraightX(double d, double to) {
     requires(driveBase);
     distance = d;
+    timeout = to;
   }
   protected void initialize() {
     driveBase.resetGyro();

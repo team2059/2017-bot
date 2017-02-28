@@ -16,7 +16,7 @@ public class Climb extends CommandBase {
   }
 
   protected boolean isFinished() {
-    return false;
+    return climber.getClimberSwitch1() || climber.getClimberSwitch2();
   }
 
   protected void end() {

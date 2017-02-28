@@ -13,7 +13,6 @@ public class RobotMap {
   public static int gyro = 0;
   public static int pcm = 31;
   public static int collectorMotor = 7;
-  public static int sonar = 1;
   public static int gearCollectorMotor = 8;
 
   //Shooter
@@ -24,12 +23,7 @@ public class RobotMap {
   public static int CIMEncoderA = 4;
   public static int CIMEncoderB = 5;
   public static int shooterMotor=10;
-  public static int shooterfeeder=9;
-
-  public static int servoX = 0;
-  public static int servoY = 1;
   public static int feederServo = 2;
-
   public static int feederOpenDegrees = 75;
   public static int feederCloseDegrees = 0;
   
@@ -38,6 +32,9 @@ public class RobotMap {
   public static double imageHeight = 240;
   public static double fWidth = 483.467261958;
   public static double fHeight = 362.600446468;
+  public static int servoX = 0;
+  public static int servoY = 1;
+  public static int sonar = 1;
 
   //Climber
   public static int climbermotor = 5;
