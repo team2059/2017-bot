@@ -28,7 +28,7 @@ public class Robot extends IterativeRobot {
   public void robotInit() {
     CommandBase.init();
     oi = new OI();
-    SmartDashboard.putNumber("GyroCorrection", 0.1);
+    SmartDashboard.putNumber("GyroCorrection", 0.03);
     SmartDashboard.putNumber("xEncoderTarget", 0);
     SmartDashboard.putNumber("yEncoderTarget", 0);
     SmartDashboard.putNumber("shooterPower", 0.9);

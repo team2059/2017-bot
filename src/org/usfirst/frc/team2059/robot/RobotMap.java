@@ -29,7 +29,7 @@ public class RobotMap {
   public static int feederOpenDegrees = 75;
   public static int feederCloseDegrees = 0;
   public static int deflectorUpDegrees = 0;
-  public static int deflectorDownDegrees = 45;
+  public static int deflectorDownDegrees = 180;
 
   //Camera
   public static double imageWidth = 320;

@@ -10,20 +10,16 @@ public class DriveStraightX extends CommandBase {
     distance = d;
   }
   protected void initialize() {
-    driveBase.resetGyro();
-    driveBase.resetyEncoderCount();
+    driveBase.resetGyro(); 
+    driveBase.resetyEncoderCount(); 
     driveBase.resetxEncoderCount();
   }
   protected void execute() {
-    driveBase.getxEncoderController().setSetpoint(distance);
   }
   protected boolean isFinished() {
-    return isTimedOut();
+    return true;
   }
   protected void end() {
-    driveBase.resetGyro();
-    driveBase.getxEncoderController().disable();
-    driveBase.getyEncoderController().disable();
   }
   protected void interrupted() {
   }

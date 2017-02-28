@@ -8,14 +8,14 @@ public class SetDeflectorUp extends CommandBase {
     state = s;
   }
   protected void initialize() {
-  }
-
-  protected void execute() {
     shooter.setDeflectorUp(state);
   }
 
+  protected void execute() {
+  }
+
   protected boolean isFinished() {
-    return false;
+    return true;
   }
 
   protected void end() {
