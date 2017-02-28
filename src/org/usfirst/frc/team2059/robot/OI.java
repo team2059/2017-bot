@@ -35,10 +35,9 @@ public class OI {
       joystickButtons[1][i] = new JoystickButton(joysticks[1], i + 1);
     }
 
-  //  joystickButtons[0][6].whileHeld(new SetGearHolderOpen(true));
 
+    joystickButtons[0][0].whileHeld(new Collect(-1));
 //    joystickButtons[0][0].whileHeld(new Collect(1));
-    joystickButtons[0][1].whileHeld(new Collect(-1));
     //joystickButtons[0][0].whileHeld(new AutoStrafeAlignVision());
 //    joystickButtons[0][3].whileHeld(new GearSystem(1));
 //    joystickButtons[0][4].whileHeld(new GearSystem(-1));
