@@ -14,6 +14,8 @@ import org.usfirst.frc.team2059.robot.commands.GearSystem;
 import org.usfirst.frc.team2059.robot.commands.SetServoYAngle;
 import org.usfirst.frc.team2059.robot.commands.SetServoXAngle;
 import org.usfirst.frc.team2059.robot.commands.SetCameraPosition;
+import org.usfirst.frc.team2059.robot.commands.SetDeflectorUp;
+
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
@@ -32,22 +34,27 @@ public class OI {
       joystickButtons[0][i] = new JoystickButton(joysticks[0], i + 1);
       joystickButtons[1][i] = new JoystickButton(joysticks[1], i + 1);
     }
-    //  joystickButtons[0][6].whileHeld(new SetGearHolderOpen(true));
+
+  //  joystickButtons[0][6].whileHeld(new SetGearHolderOpen(true));
+
 //    joystickButtons[0][0].whileHeld(new Collect(1));
     joystickButtons[0][1].whileHeld(new Collect(-1));
     //joystickButtons[0][0].whileHeld(new AutoStrafeAlignVision());
 //    joystickButtons[0][3].whileHeld(new GearSystem(1));
 //    joystickButtons[0][4].whileHeld(new GearSystem(-1));
     //Button 8 drives straight
-    //  joystickButtons[0][6].whileHeld(new DriveStraightX(0.5));
+  //  joystickButtons[0][6].whileHeld(new DriveStraightX(0.5));
     joystickButtons[0][10].whileHeld(new Shoot(1.0));
     joystickButtons[0][11].whileHeld(new Shoot(-1.0));
+
     joystickButtons[1][0].whileHeld(new Climb(1));
     joystickButtons[1][1].whileHeld(new Climb(-1));
     joystickButtons[1][2].whenPressed(new SetCameraPosition(180, 30)); //gear
     joystickButtons[1][3].whenPressed(new SetCameraPosition(15, 70)); //shooter
     joystickButtons[1][4].whenPressed(new SetCameraPosition(15, 30)); //climber
-  }
+    joystickButtons[1][5].whenPressed(new SetDeflectorUp(true)); //DeflectorUp
+    joystickButtons[1][6].whenPressed(new SetDeflectorUp(false)); //DeflectorDown
+    }
   public Joystick[] getJoysticks() {
     return joysticks;
   }
@@ -57,7 +64,7 @@ public class OI {
   public JoystickButton[][] getJoystickButtons() {
     return joystickButtons;
   }
-  public double getJoystickThrottle(int stick) {
-    return (-getJoystick(stick).getRawAxis(3) + 1) / 2;
+  public double getJoystickThrottle(int stick){
+    return (-getJoystick(stick).getRawAxis(3)+1)/2;
   }
 }

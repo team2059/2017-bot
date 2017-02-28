@@ -2,20 +2,16 @@ package org.usfirst.frc.team2059.robot.commands;
 
 import org.usfirst.frc.team2059.robot.subsystems.Shooter;
 
-public class DeflectorUp extends CommandBase {
-
-  public DeflectorUp() {
+public class SetDeflectorUp extends CommandBase {
+  boolean state;
+  public SetDeflectorUp(boolean s) {
+    state = s;
   }
   protected void initialize() {
   }
 
   protected void execute() {
-    if (shooter.getDeflectorUp() != true) {
-      shooter.moveDeflector(0.5);
-    }
-    else {
-      this.end();
-    }
+    shooter.setDeflectorUp(state);
   }
 
   protected boolean isFinished() {
@@ -23,7 +19,6 @@ public class DeflectorUp extends CommandBase {
   }
 
   protected void end() {
-    shooter.moveDeflector(0);
   }
 
   protected void interrupted() {
