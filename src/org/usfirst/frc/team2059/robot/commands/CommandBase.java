@@ -22,7 +22,7 @@ public abstract class CommandBase extends Command {
     collector = new Collector();
     visionHelper = new VisionHelper();
     gearCollector = new GearCollector();
-    shooter=new Shooter();
+    shooter = new Shooter();
   }
 }
 // vim: sw=2:ts=2:sts=2

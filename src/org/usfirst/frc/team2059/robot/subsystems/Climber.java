@@ -15,10 +15,10 @@ public class Climber extends Subsystem {
     climberMotor.set(speed);
     climberMotor2.set(-speed);
   }
-  public boolean getClimberSwitch1(){
+  public boolean getClimberSwitch1() {
     return climberSwitch1.get();
   }
-  public boolean getClimberSwitch2(){
+  public boolean getClimberSwitch2() {
     return climberSwitch2.get();
   }
 }

@@ -14,68 +14,67 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Servo;
 
 public class Shooter extends Subsystem {
-	CANTalon shooterMotor = new CANTalon(RobotMap.shooterMotor);
-	CANTalon shooterfeeder = new CANTalon(RobotMap.shooterfeeder);
+  CANTalon shooterMotor = new CANTalon(RobotMap.shooterMotor);
+  CANTalon shooterfeeder = new CANTalon(RobotMap.shooterfeeder);
   CANTalon ballAgitator = new CANTalon(RobotMap.agitatorMotor);
-	Encoder CIMEncoder = new Encoder(RobotMap.CIMEncoderA, RobotMap.CIMEncoderB, false, Encoder.EncodingType.k2X);
-	PIDController CIMEncoderController = new PIDController(0.2, 0.002, 0.017, new CIMEncoderPIDSource(), new CIMEncoderPIDOutput());
+  Encoder CIMEncoder = new Encoder(RobotMap.CIMEncoderA, RobotMap.CIMEncoderB, false, Encoder.EncodingType.k2X);
+  PIDController CIMEncoderController = new PIDController(0.2, 0.002, 0.017, new CIMEncoderPIDSource(), new CIMEncoderPIDOutput());
   Servo feederServo = new Servo(RobotMap.feederServo);
   Servo deflectorServo = new Servo(RobotMap.deflectorServo);
 
-	protected void initDefaultCommand() {		
-	}	
-	public void shootAtSpeed(double speed){
-		shooterMotor.set(speed);
-	}
-	public class CIMEncoderPIDSource implements PIDSource {
-	    public double pidGet() {
-	      return getCIMEncoderRate();
-	    }
-	    public PIDSourceType getPIDSourceType() {
-	      return PIDSourceType.kDisplacement;
-	    }
-	    public void setPIDSourceType(PIDSourceType type) {
-	    }
-	}
-	public class CIMEncoderPIDOutput implements PIDOutput {
-	    public void pidWrite(double output) {
-	      shooterMotor.set(output);
-	    }
-	  }
-	public PIDController getCIMEncoderController() {
-	    return CIMEncoderController;
-	  }
-	public void PidShoot(double setpoint) {
-	    CIMEncoderController.setSetpoint(setpoint);
-	    CIMEncoderController.enable();
-	    
-	  }
-	public double getCIMEncoderRate(){
-		return CIMEncoder.getRate();
-	}
-	public void setDeflectorUp(boolean state){
-    if(state){
-    deflectorServo.setAngle(RobotMap.deflectorUpDegrees);
-        }else{
-          deflectorServo.setAngle(RobotMap.deflectorDownDegrees);
-        }
+  protected void initDefaultCommand() {
   }
-	public void feed(double i) {
-		shooterfeeder.set(i);
-	}
-  public void agitateBalls(double speed){
+  public void shootAtSpeed(double speed) {
+    shooterMotor.set(speed);
+  }
+  public class CIMEncoderPIDSource implements PIDSource {
+    public double pidGet() {
+      return getCIMEncoderRate();
+    }
+    public PIDSourceType getPIDSourceType() {
+      return PIDSourceType.kDisplacement;
+    }
+    public void setPIDSourceType(PIDSourceType type) {
+    }
+  }
+  public class CIMEncoderPIDOutput implements PIDOutput {
+    public void pidWrite(double output) {
+      shooterMotor.set(output);
+    }
+  }
+  public PIDController getCIMEncoderController() {
+    return CIMEncoderController;
+  }
+  public void PidShoot(double setpoint) {
+    CIMEncoderController.setSetpoint(setpoint);
+    CIMEncoderController.enable();
+  }
+  public double getCIMEncoderRate() {
+    return CIMEncoder.getRate();
+  }
+  public void setDeflectorUp(boolean state) {
+    if (state) {
+      deflectorServo.setAngle(RobotMap.deflectorUpDegrees);
+    } else {
+      deflectorServo.setAngle(RobotMap.deflectorDownDegrees);
+    }
+  }
+  public void feed(double i) {
+    shooterfeeder.set(i);
+  }
+  public void agitateBalls(double speed) {
     ballAgitator.set(speed);
   }
-  public void setFeederServoAngle(double angle){
+  public void setFeederServoAngle(double angle) {
     feederServo.setAngle(angle);
   }
-  public double getFeederServoAngle(){
+  public double getFeederServoAngle() {
     return feederServo.getAngle();
   }
-  public void setFeederServoOpen(boolean state){
-    if(state){
+  public void setFeederServoOpen(boolean state) {
+    if (state) {
       feederServo.setAngle(RobotMap.feederOpenDegrees);
-    }else{
+    } else {
       feederServo.setAngle(RobotMap.feederCloseDegrees);
     }
   }

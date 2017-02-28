@@ -85,13 +85,12 @@ public class DriveBase extends Subsystem {
     double kP = SmartDashboard.getNumber("driveStraightxkP");
     double kD = SmartDashboard.getNumber("driveStraightxkD");
     double kI = SmartDashboard.getNumber("driveStraightxkI");
-    double error = getxEncoderCount(); 
-
-    SmartDashboard.putNumber("previousError",previousError);
-    SmartDashboard.putNumber("error",error);
-    double yPower = ((kP*error)+kI);
+    double error = getxEncoderCount();
+    SmartDashboard.putNumber("previousError", previousError);
+    SmartDashboard.putNumber("error", error);
+    double yPower = ((kP * error) + kI);
     double zPower = -gyro.getAngle() * correction;
-    SmartDashboard.putNumber("yPower",yPower);
+    SmartDashboard.putNumber("yPower", yPower);
     driveMecanum(speed, yPower, zPower, 1);
     previousError = error;
   }
@@ -100,12 +99,11 @@ public class DriveBase extends Subsystem {
     double kP = SmartDashboard.getNumber("driveStraightykP");
     double kD = SmartDashboard.getNumber("driveStraightykD");
     double kI = SmartDashboard.getNumber("driveStraightykI");
-    double error = getyEncoderCount(); 
-
-    SmartDashboard.putNumber("error",error);
-    double xPower = ((kP*error)+kI);
+    double error = getyEncoderCount();
+    SmartDashboard.putNumber("error", error);
+    double xPower = ((kP * error) + kI);
     double zPower = -gyro.getAngle() * correction;
-    SmartDashboard.putNumber("xPower",xPower);
+    SmartDashboard.putNumber("xPower", xPower);
     driveMecanum(xPower, speed, zPower, 1);
     previousError = error;
   }

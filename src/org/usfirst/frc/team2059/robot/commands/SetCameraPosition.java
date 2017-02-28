@@ -1,7 +1,7 @@
 package org.usfirst.frc.team2059.robot.commands;
 import org.usfirst.frc.team2059.robot.subsystems.VisionHelper;
 
-public class SetCameraPosition extends CommandBase{
+public class SetCameraPosition extends CommandBase {
   double anglex;
   double angley;
 
@@ -10,13 +10,12 @@ public class SetCameraPosition extends CommandBase{
     angley = y;
   }
 
-  protected void initialize(){
+  protected void initialize() {
   }
 
-  protected void execute(){
+  protected void execute() {
     visionHelper.setServoAngleX(anglex);
     visionHelper.setServoAngleY(angley);
-
   }
 
   protected boolean isFinished() {

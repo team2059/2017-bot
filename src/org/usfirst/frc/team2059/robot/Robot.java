@@ -41,7 +41,7 @@ public class Robot extends IterativeRobot {
     SmartDashboard.putNumber("shooterPower", 0.9);
     SmartDashboard.putNumber("cameraX", 0);
     SmartDashboard.putNumber("cameraY", 0);
-    SmartDashboard.putNumber("servoAngleFeeder", 0); 
+    SmartDashboard.putNumber("servoAngleFeeder", 0);
     SmartDashboard.putData("Auto mode", chooser);
     SmartDashboard.putData("xEncoderController", CommandBase.driveBase.getxEncoderController());
     SmartDashboard.putData("yEncoderController", CommandBase.driveBase.getyEncoderController());
@@ -104,7 +104,7 @@ public class Robot extends IterativeRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
-    CommandBase.shooter.setFeederServoAngle(SmartDashboard.getNumber("servoAngleFeeder")); 
+    CommandBase.shooter.setFeederServoAngle(SmartDashboard.getNumber("servoAngleFeeder"));
     SmartDashboard.putNumber("xEncoderCount", CommandBase.driveBase.getxEncoderCount());
     //SmartDashboard.putNumber("yEncoderCount", CommandBase.driveBase.getyEncoderCount());
     SmartDashboard.putNumber("yEncoderDistance", CommandBase.driveBase.getyEncoderDistance());

@@ -8,13 +8,13 @@ import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-public class VisionHelper extends Subsystem{
+public class VisionHelper extends Subsystem {
   NetworkTable contoursTable;
-  Servo servoX,servoY;
+  Servo servoX, servoY;
   double imageWidth = 640;
   double imageHeight = 480;
   AnalogInput sonar;
-  public void initDefaultCommand(){};
+  public void initDefaultCommand() {};
   public VisionHelper() {
     contoursTable = NetworkTable.getTable("GRIP/contours");
     sonar = new AnalogInput(RobotMap.sonar);
@@ -46,16 +46,16 @@ public class VisionHelper extends Subsystem{
   public double getTranslationDistance() {
     return getSonar() * Math.tan((Math.PI / 180) * getHorizontalError());
   }
-  public void setServoAngleX(double angle){
+  public void setServoAngleX(double angle) {
     servoX.setAngle(angle);
   }
-  public void setServoAngleY(double angle){
+  public void setServoAngleY(double angle) {
     servoY.setAngle(angle);
   }
-  public double getServoAngleX(){
+  public double getServoAngleX() {
     return servoX.getAngle();
   }
-  public double getServoAngleY(){
+  public double getServoAngleY() {
     return servoY.getAngle();
   }
 }

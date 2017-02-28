@@ -16,10 +16,10 @@ public class RobotMap {
   public static int gearCollectorMotor = 8;
 
   //Shooter
-  public static int ShooterDeflector=12;
+  public static int ShooterDeflector = 12;
   public static int agitatorMotor = 11;
-  public static int shooterDeflectorSwitchOpen=6;
-  public static int shooterDeflectorSwitchClosed=7;
+  public static int shooterDeflectorSwitchOpen = 6;
+  public static int shooterDeflectorSwitchClosed = 7;
   public static int CIMEncoderA = 4;
   public static int CIMEncoderB = 5;
   public static int shooterMotor = 10;
@@ -30,7 +30,7 @@ public class RobotMap {
   public static int feederCloseDegrees = 0;
   public static int deflectorUpDegrees = 0;
   public static int deflectorDownDegrees = 45;
-  
+
   //Camera
   public static double imageWidth = 320;
   public static double imageHeight = 240;
@@ -42,7 +42,7 @@ public class RobotMap {
 
   //Climber
   public static int climbermotor = 5;
-  public static int climbermotor2=6;
+  public static int climbermotor2 = 6;
   public static int climberSwitch1 = 6;
   public static int climberSwitch2 = 7;
 
