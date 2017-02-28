@@ -22,10 +22,14 @@ public class RobotMap {
   public static int shooterDeflectorSwitchClosed=7;
   public static int CIMEncoderA = 4;
   public static int CIMEncoderB = 5;
-  public static int shooterMotor=10;
+  public static int shooterMotor = 10;
+  public static int shooterfeeder = 9;
   public static int feederServo = 2;
+  public static int deflectorServo = 3;
   public static int feederOpenDegrees = 75;
   public static int feederCloseDegrees = 0;
+  public static int deflectorUpDegrees = 0;
+  public static int deflectorDownDegrees = 45;
   
   //Camera
   public static double imageWidth = 320;
