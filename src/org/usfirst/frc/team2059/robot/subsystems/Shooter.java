@@ -39,7 +39,7 @@ public class Shooter extends Subsystem {
   }
   public class CIMEncoderPIDOutput implements PIDOutput {
     public void pidWrite(double output) {
-      shooterMotor.set(output);
+      shooterMotor.set(-output);
     }
   }
   public PIDController getCIMEncoderController() {

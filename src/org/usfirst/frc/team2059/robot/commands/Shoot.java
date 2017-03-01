@@ -12,7 +12,7 @@ public class Shoot extends CommandBase {
   }
 
   protected void execute() {
-    shooter.PidShoot(500);
+    shooter.shootAtSpeed(speed);
     shooter.agitateBalls(1.0);
     shooter.feed(speed);
   }

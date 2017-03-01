@@ -69,16 +69,13 @@ public class DriveBase extends Subsystem {
   }
 
   public void yPidDrive(double setpoint, double correction) {
-    yEncoderController.setSetpoint(setpoint);
-    correctedGyroAngle = -gyro.getAngle() * correction;
-    SmartDashboard.putNumber("CorrectedGyroAngle", correctedGyroAngle);
+    xEncoderController.setSetpoint(setpoint);
+    xEncoderController.enable();
   }
 
   public void xPidDrive(double setpoint, double correction) {
-    xEncoderController.setSetpoint(setpoint);
-    xEncoderController.enable();
-    correctedGyroAngle = -gyro.getAngle() * correction;
-    SmartDashboard.putNumber("CorrectedGyroAngle", correctedGyroAngle);
+    yEncoderController.setSetpoint(setpoint);
+    yEncoderController.enable();
   }
 
   public void driveStraightX(double speed, double correction) {
@@ -104,6 +101,8 @@ public class DriveBase extends Subsystem {
     double xPower = ((kP * error) + kI);
     double zPower = -gyro.getAngle() * correction;
     SmartDashboard.putNumber("xPower", xPower);
+    SmartDashboard.putNumber("THE SPEED", speed);
+    SmartDashboard.putNumber("zPower", zPower);
     driveMecanum(xPower, speed, zPower, 1);
     previousError = error;
   }

@@ -17,7 +17,7 @@ public class Drive extends CommandBase {
     if(Robot.oi.getJoystick(0).getRawButton(1)){
       driveBase.driveStraightX(x, SmartDashboard.getNumber("GyroCorrection"));
     }else{ 
-      driveBase.driveMecanum(x, y, z, 0.5);
+      driveBase.driveMecanum(x, y, z, 1);
     }
   }
   protected boolean isFinished() {

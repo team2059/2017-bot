@@ -43,7 +43,6 @@ public class OI {
 //    joystickButtons[0][4].whileHeld(new GearSystem(-1));
     //Button 8 drives straight
    joystickButtons[0][0].whenPressed(new DriveStraightX(0.5));
-    joystickButtons[0][11].whileHeld(new Shoot(-1.0));
 
 //    joystickButtons[1][0].whileHeld(new Climb(1));
     joystickButtons[1][7].whileHeld(new Climb(-1));
@@ -51,7 +50,8 @@ public class OI {
     joystickButtons[1][0].whenPressed(new SetCameraPosition(180, 30)); //gear
     joystickButtons[1][1].whenPressed(new SetCameraPosition(15, 70)); //shooter
     joystickButtons[1][2].whenPressed(new SetCameraPosition(15, 30)); //climber
-    joystickButtons[1][11].whileHeld(new SetDeflectorUp(true)); //DeflectorUp
+    joystickButtons[1][9].whileHeld(new SetDeflectorUp(true)); //DeflectorUp
+    joystickButtons[1][10].whileHeld(new Shoot(-1.0));
     }
   public Joystick[] getJoysticks() {
     return joysticks;
