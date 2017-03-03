@@ -5,8 +5,10 @@ import org.usfirst.frc.team2059.robot.Robot;
 
 public class Shoot extends CommandBase {
   double speed;
-  public Shoot(double s) {
+  boolean highgoal;
+  public Shoot(double s, boolean high) {
     speed = s;
+    high = highgoal;
   }
   protected void initialize() {
   }
@@ -15,6 +17,7 @@ public class Shoot extends CommandBase {
     shooter.shootAtSpeed(speed);
     shooter.agitateBalls(1.0);
     shooter.feed(speed);
+    shooter.setDeflectorUp(highgoal);
   }
 
   protected boolean isFinished() {

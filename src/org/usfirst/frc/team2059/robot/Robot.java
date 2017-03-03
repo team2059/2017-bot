@@ -4,6 +4,7 @@ import org.usfirst.frc.team2059.robot.commands.CommandBase;
 import org.usfirst.frc.team2059.robot.commands.auto.AutoDriveDelay;
 import org.usfirst.frc.team2059.robot.commands.auto.AutoEncoderY;
 import org.usfirst.frc.team2059.robot.commands.auto.AutoEncoderX;
+import org.usfirst.frc.team2059.robot.commands.auto.AutoDriveTime;
 import org.usfirst.frc.team2059.robot.commands.auto.AutoCircleDrive;
 import org.usfirst.frc.team2059.robot.commands.auto.AutoRotate;
 import org.usfirst.frc.team2059.robot.commands.auto.AutoStrafeAlignVision;
@@ -42,6 +43,7 @@ public class Robot extends IterativeRobot {
     SmartDashboard.putNumber("cameraX", 0);
     SmartDashboard.putNumber("cameraY", 0);
     SmartDashboard.putNumber("servoAngleFeeder", 0);
+    SmartDashboard.putNumber("deflectorAngle", 0);
     SmartDashboard.putData("Auto mode", chooser);
     SmartDashboard.putData("xEncoderController", CommandBase.driveBase.getxEncoderController());
     SmartDashboard.putData("yEncoderController", CommandBase.driveBase.getyEncoderController());
@@ -75,7 +77,7 @@ public class Robot extends IterativeRobot {
     //      break;
     //  }
 //        autonomousCommand = new AutoEncoderY(SmartDashboard.getNumber("yEncoderTarget"));
-          autonomousCommand = new AutoEncoderX(SmartDashboard.getNumber("yEncoderTarget"));
+        autonomousCommand = new AutoDriveTime(1.0, 5);
     if (autonomousCommand != null) {
       autonomousCommand.start();
     }
@@ -104,6 +106,7 @@ public class Robot extends IterativeRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
+    CommandBase.shooter.setDeflectorAngle(SmartDashboard.getNumber("deflectorAngle"));
     CommandBase.shooter.setFeederServoAngle(SmartDashboard.getNumber("servoAngleFeeder"));
     SmartDashboard.putNumber("xEncoderCount", CommandBase.driveBase.getxEncoderCount());
     //SmartDashboard.putNumber("yEncoderCount", CommandBase.driveBase.getyEncoderCount());

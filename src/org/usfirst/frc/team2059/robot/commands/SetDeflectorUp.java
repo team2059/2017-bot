@@ -19,6 +19,7 @@ public class SetDeflectorUp extends CommandBase {
   }
 
   protected void end() {
+    shooter.setDeflectorUp(!state);
   }
 
   protected void interrupted() {
