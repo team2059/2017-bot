@@ -38,9 +38,9 @@ public class OI {
 
     joystickButtons[0][0].whileHeld(new Collect(-1));
     joystickButtons[0][1].whileHeld(new Collect(1));
-    joystickButtons[1][2].whenPressed(new SetCameraPosition(180, 30)); //gear
-    joystickButtons[1][3].whenPressed(new SetCameraPosition(15, 30)); //climber
-    joystickButtons[1][5].whenPressed(new SetCameraPosition(15, 70)); //shooter
+    joystickButtons[0][2].whenPressed(new SetCameraPosition(180, 30)); //gear
+    joystickButtons[0][3].whenPressed(new SetCameraPosition(15, 30)); //climber
+    joystickButtons[0][5].whenPressed(new SetCameraPosition(15, 70)); //shooter
    joystickButtons[0][10].whenPressed(new DriveStraightX(0.5));
 
 //    joystickButtons[0][0].whileHeld(new Collect(1));
@@ -50,10 +50,12 @@ public class OI {
     //Button 8 drives straight
 
 //    joystickButtons[1][0].whileHeld(new Climb(1));
+    joystickButtons[1][1].whileHeld(new Climb(1));
     joystickButtons[1][6].whenPressed(new SetDeflectorUp(true));
-    joystickButtons[1][7].whileHeld(new Climb(-1));
-    joystickButtons[1][10].whileHeld(new Shoot(1.0, true));
-    joystickButtons[1][11].whileHeld(new Shoot(0.75, false));
+    joystickButtons[1][7].whileHeld(new Climb(1));
+    joystickButtons[1][8].whileHeld(new Climb(0.5));
+    joystickButtons[1][10].whileHeld(new Shoot(-1.0, true));
+    joystickButtons[1][11].whileHeld(new Shoot(-0.75, false));
     }
   public Joystick[] getJoysticks() {
     return joysticks;

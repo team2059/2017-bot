@@ -8,12 +8,15 @@ public class Shoot extends CommandBase {
   boolean highgoal;
   public Shoot(double s, boolean high) {
     speed = s;
-    high = highgoal;
+    highgoal = high;
   }
   protected void initialize() {
   }
 
   protected void execute() {
+    if(highgoal){
+      shooter.setDeflectorAngle(0);
+    }
     shooter.shootAtSpeed(speed);
     shooter.agitateBalls(1.0);
     shooter.feed(speed);
@@ -25,6 +28,8 @@ public class Shoot extends CommandBase {
   }
 
   protected void end() {
+    shooter.setDeflectorAngle(180);
+    shooter.setFeederServoOpen(false);
     shooter.getCIMEncoderController().disable();
     shooter.agitateBalls(0);
     shooter.feed(0);

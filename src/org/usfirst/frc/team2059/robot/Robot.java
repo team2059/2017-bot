@@ -101,13 +101,14 @@ public class Robot extends IterativeRobot {
     CommandBase.driveBase.getGyroController().disable();
     CommandBase.driveBase.getxEncoderController().disable();
     CommandBase.driveBase.getyEncoderController().disable();
+    CommandBase.shooter.setDeflectorAngle(0);
   }
 
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
-    CommandBase.shooter.setDeflectorAngle(SmartDashboard.getNumber("deflectorAngle"));
-    CommandBase.shooter.setFeederServoAngle(SmartDashboard.getNumber("servoAngleFeeder"));
+    //CommandBase.shooter.setDeflectorAngle(SmartDashboard.getNumber("deflectorAngle"));
+//   CommandBase.shooter.setFeederServoAngle(SmartDashboard.getNumber("servoAngleFeeder"));
     SmartDashboard.putNumber("xEncoderCount", CommandBase.driveBase.getxEncoderCount());
     //SmartDashboard.putNumber("yEncoderCount", CommandBase.driveBase.getyEncoderCount());
     SmartDashboard.putNumber("yEncoderDistance", CommandBase.driveBase.getyEncoderDistance());

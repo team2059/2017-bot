@@ -26,10 +26,10 @@ public class RobotMap {
   public static int shooterfeeder = 9;
   public static int feederServo = 2;
   public static int deflectorServo = 3;
-  public static int feederOpenDegrees = 75;
-  public static int feederCloseDegrees = 0;
-  public static int deflectorUpDegrees = 0;
-  public static int deflectorDownDegrees = 180;
+  public static int feederOpenDegrees = 180;
+  public static int feederCloseDegrees = 70;
+  public static int deflectorUpDegrees = 180;
+  public static int deflectorDownDegrees = 0;
 
   //Camera
   public static double imageWidth = 320;
