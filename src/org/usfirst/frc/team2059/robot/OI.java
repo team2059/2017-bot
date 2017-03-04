@@ -50,12 +50,12 @@ public class OI {
     //Button 8 drives straight
 
 //    joystickButtons[1][0].whileHeld(new Climb(1));
-    joystickButtons[1][1].whileHeld(new Climb(1));
+//    joystickButtons[1][1].whileHeld(new Climb(1));
     joystickButtons[1][6].whenPressed(new SetDeflectorUp(true));
-    joystickButtons[1][7].whileHeld(new Climb(1));
-    joystickButtons[1][8].whileHeld(new Climb(0.5));
-    joystickButtons[1][10].whileHeld(new Shoot(-1.0, true));
-    joystickButtons[1][11].whileHeld(new Shoot(-0.75, false));
+    joystickButtons[1][7].whileHeld(new Climb(-1));
+    joystickButtons[1][8].whileHeld(new Climb(-0.5));
+    joystickButtons[1][10].whileHeld(new Shoot(-0.4, true));
+    joystickButtons[1][11].whileHeld(new Shoot(-1.0, false));
     }
   public Joystick[] getJoysticks() {
     return joysticks;

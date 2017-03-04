@@ -15,12 +15,12 @@ public class Shoot extends CommandBase {
 
   protected void execute() {
     if(highgoal){
-      shooter.setDeflectorAngle(0);
+      shooter.setDeflectorAngle(180);
     }
     shooter.shootAtSpeed(speed);
     shooter.agitateBalls(1.0);
     shooter.feed(speed);
-    shooter.setDeflectorUp(highgoal);
+    shooter.setFeederServoOpen(true);
   }
 
   protected boolean isFinished() {
@@ -28,7 +28,7 @@ public class Shoot extends CommandBase {
   }
 
   protected void end() {
-    shooter.setDeflectorAngle(180);
+    shooter.setDeflectorAngle(0);
     shooter.setFeederServoOpen(false);
     shooter.getCIMEncoderController().disable();
     shooter.agitateBalls(0);
