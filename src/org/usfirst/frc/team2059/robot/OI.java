@@ -40,6 +40,7 @@ public class OI {
     joystickButtons[0][1].whileHeld(new Collect(1));
     joystickButtons[0][2].whenPressed(new SetCameraPosition(180, 30)); //gear
     joystickButtons[0][3].whenPressed(new SetCameraPosition(15, 0)); //climber
+    joystickButtons[0][4].whenPressed(new SetCameraPosition(180, 0)); //climber
     joystickButtons[0][5].whenPressed(new SetCameraPosition(15, 70)); //shooter
    joystickButtons[0][10].whenPressed(new DriveStraightX(0.5));
 
