@@ -77,7 +77,7 @@ public class Robot extends IterativeRobot {
     //      break;
     //  }
 //        autonomousCommand = new AutoEncoderY(SmartDashboard.getNumber("yEncoderTarget"));
-        autonomousCommand = new AutoDriveTime(1.0, 5);
+        autonomousCommand = new AutoDriveTime(-1.0, 2.5);
     if (autonomousCommand != null) {
       autonomousCommand.start();
     }
