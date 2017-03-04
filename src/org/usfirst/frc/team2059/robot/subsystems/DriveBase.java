@@ -161,13 +161,13 @@ public class DriveBase extends Subsystem {
   public class xEncoderPIDOutput implements PIDOutput {
     @Override
     public void pidWrite(double output) {
-      driveStraightX(output, SmartDashboard.getNumber("GyroCorrection"));
+      driveStraightY(output, SmartDashboard.getNumber("GyroCorrection"));
     }
   }
   public class yEncoderPIDOutput implements PIDOutput {
     @Override
     public void pidWrite(double output) {
-      driveStraightY(output, SmartDashboard.getNumber("GyroCorrection"));
+      driveStraightX(output, SmartDashboard.getNumber("GyroCorrection"));
     }
   }
   public class gyroPIDOutput implements PIDOutput {
