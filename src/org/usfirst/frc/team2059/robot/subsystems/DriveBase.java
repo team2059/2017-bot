@@ -78,14 +78,56 @@ public class DriveBase extends Subsystem {
     yEncoderController.enable();
   }
 
+  public void driveStraightYdistance(double distance, double correction) {
+    double errorkP = SmartDashboard.getNumber("driveStraightErrorykP");
+    double errorkD = SmartDashboard.getNumber("driveStraightErrorykD");
+    double errorkI = SmartDashboard.getNumber("driveStraightErrorykI");
+    double error = getyEncoderCount();
+    double distancekP = SmartDashboard.getNumber("driveStraightykP");
+    double distancekD = SmartDashboard.getNumber("driveStraightykD");
+    double distancekI = SmartDashboard.getNumber("driveStraightykI");
+    double distanceError = getxEncoderCount() - distance;
+    SmartDashboard.putNumber("previousError", previousError);
+    SmartDashboard.putNumber("error", error);
+    SmartDashboard.putNumber("distanceError", distanceError);
+    double xPower = ((distancekP * distanceError) + distancekI); 
+    double yPower = ((errorkP * error) + errorkI);
+    double zPower = -gyro.getAngle() * correction;
+    SmartDashboard.putNumber("yPower", yPower);
+    SmartDashboard.putNumber("xPower", xPower);
+    driveMecanum(xPower, yPower, zPower, 0.5);
+    previousError = error;
+  }
+
+  public void driveStraightXdistance(double distance, double correction) {
+    double errorkP = SmartDashboard.getNumber("driveStraightErrorxkP");
+    double errorkD = SmartDashboard.getNumber("driveStraightErrorxkD");
+    double errorkI = SmartDashboard.getNumber("driveStraightErrorxkI");
+    double error = getxEncoderCount();
+    double distancekP = SmartDashboard.getNumber("driveStraightxkP");
+    double distancekD = SmartDashboard.getNumber("driveStraightxkD");
+    double distancekI = SmartDashboard.getNumber("driveStraightxkI");
+    double distanceError = getyEncoderCount() - distance;
+    SmartDashboard.putNumber("previousError", previousError);
+    SmartDashboard.putNumber("error", error);
+    SmartDashboard.putNumber("distanceError", distanceError);
+    double xPower = ((distancekP * distanceError) + distancekI); 
+    double yPower = ((errorkP * error) + errorkI);
+    double zPower = -gyro.getAngle() * correction;
+    SmartDashboard.putNumber("yPower", yPower);
+    SmartDashboard.putNumber("xPower", xPower);
+    driveMecanum(xPower, yPower, zPower, 0.5);
+    previousError = error;
+  }
+
   public void driveStraightX(double speed, double correction) {
-    double kP = SmartDashboard.getNumber("driveStraightxkP");
-    double kD = SmartDashboard.getNumber("driveStraightxkD");
-    double kI = SmartDashboard.getNumber("driveStraightxkI");
+    double errorkP = SmartDashboard.getNumber("driveStraightErrorxkP");
+    double errorkD = SmartDashboard.getNumber("driveStraightErrorxkD");
+    double errorkI = SmartDashboard.getNumber("driveStraightErrorxkI");
     double error = getxEncoderCount();
     SmartDashboard.putNumber("previousError", previousError);
     SmartDashboard.putNumber("error", error);
-    double yPower = ((kP * error) + kI);
+    double yPower = ((errorkP * error) + errorkI);
     double zPower = -gyro.getAngle() * correction;
     SmartDashboard.putNumber("yPower", yPower);
     driveMecanum(speed, yPower, zPower, 1);
@@ -93,12 +135,12 @@ public class DriveBase extends Subsystem {
   }
 
   public void driveStraightY(double speed, double correction) {
-    double kP = SmartDashboard.getNumber("driveStraightykP");
-    double kD = SmartDashboard.getNumber("driveStraightykD");
-    double kI = SmartDashboard.getNumber("driveStraightykI");
+    double errorkP = SmartDashboard.getNumber("driveStraightErrorykP");
+    double errorkD = SmartDashboard.getNumber("driveStraightErrorykD");
+    double errorkI = SmartDashboard.getNumber("driveStraightErrorykI");
     double error = getyEncoderCount();
     SmartDashboard.putNumber("error", error);
-    double xPower = ((kP * error) + kI);
+    double xPower = ((errorkP * error) + errorkI);
     double zPower = -gyro.getAngle() * correction;
     SmartDashboard.putNumber("xPower", xPower);
     SmartDashboard.putNumber("THE SPEED", speed);

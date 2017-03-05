@@ -5,9 +5,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class AutoEncoderX extends CommandBase {
   double distance;
-  public AutoEncoderX(double a) {
+  public AutoEncoderX(double a, double t) {
     requires(driveBase);
     distance = a;
+    setTimeout(t);
   }
   protected void initialize() {
     driveBase.resetxEncoderCount();
@@ -15,7 +16,7 @@ public class AutoEncoderX extends CommandBase {
     driveBase.resetxEncoderCount();
   }
   protected void execute() {
-    driveBase.xPidDrive(distance, SmartDashboard.getNumber("GyroCorrection"));
+    driveBase.driveStraightXdistance(distance, SmartDashboard.getNumber("GyroCorrection"));
   }
   protected boolean isFinished() {
     return isTimedOut();

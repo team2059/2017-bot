@@ -8,6 +8,7 @@ import org.usfirst.frc.team2059.robot.commands.auto.AutoDriveTime;
 import org.usfirst.frc.team2059.robot.commands.auto.AutoCircleDrive;
 import org.usfirst.frc.team2059.robot.commands.auto.AutoRotate;
 import org.usfirst.frc.team2059.robot.commands.auto.AutoStrafeAlignVision;
+import org.usfirst.frc.team2059.robot.commands.auto.RoutineCenterGearPeg;
 import org.usfirst.frc.team2059.robot.subsystems.Shooter;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -34,11 +35,17 @@ public class Robot extends IterativeRobot {
     SmartDashboard.putNumber("yEncoderTarget", 0);
     SmartDashboard.putNumber("shooterPower", 0.9);
     SmartDashboard.putNumber("driveStraightxkP", 0.003);
-    SmartDashboard.putNumber("driveStraightxkD", 0.03);
-    SmartDashboard.putNumber("driveStraightxkI", 0.0);
+    SmartDashboard.putNumber("driveStraightxkD", 0.003);
+    SmartDashboard.putNumber("driveStraightxkI", 0.003);
     SmartDashboard.putNumber("driveStraightykP", 0.003);
-    SmartDashboard.putNumber("driveStraightykD", 0.03);
-    SmartDashboard.putNumber("driveStraightykI", 0.0);
+    SmartDashboard.putNumber("driveStraightykD", 0.003);
+    SmartDashboard.putNumber("driveStraightykI", 0.003);
+    SmartDashboard.putNumber("driveStraightErrorxkP", 0.003);
+    SmartDashboard.putNumber("driveStraightErrorxkD", 0.03);
+    SmartDashboard.putNumber("driveStraightErrorxkI", 0.0);
+    SmartDashboard.putNumber("driveStraightErrorykP", 0.003);
+    SmartDashboard.putNumber("driveStraightErrorykD", 0.03);
+    SmartDashboard.putNumber("driveStraightErrorykI", 0.0);
     SmartDashboard.putNumber("shooterPower", 0.9);
     SmartDashboard.putNumber("cameraX", 0);
     SmartDashboard.putNumber("cameraY", 0);
@@ -76,7 +83,8 @@ public class Robot extends IterativeRobot {
     //    default:
     //      break;
     //  }
-//        autonomousCommand = new AutoEncoderY(SmartDashboard.getNumber("xEncoderTarget",));
+//        autonomousCommand = new AutoEncoderY(SmartDashboard.getNumber("xEncoderTarget"), 2);
+      autonomousCommand = new AutoEncoderX(12, 5);
         autonomousCommand = new AutoDriveTime(-1.0, 2.5);
     if (autonomousCommand != null) {
       autonomousCommand.start();

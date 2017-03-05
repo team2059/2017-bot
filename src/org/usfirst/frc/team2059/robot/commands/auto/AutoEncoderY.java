@@ -13,10 +13,10 @@ public class AutoEncoderY extends CommandBase {
   protected void initialize() {
     driveBase.resetyEncoderCount();
     driveBase.resetGyro();
-    driveBase.resetyEncoderCount();
+    driveBase.resetxEncoderCount();
   }
   protected void execute() {
-    driveBase.yPidDrive(distance, SmartDashboard.getNumber("GyroCorrection"));
+    driveBase.driveStraightYdistance(distance, SmartDashboard.getNumber("GyroCorrection"));
   }
   protected boolean isFinished() {
     return isTimedOut();
