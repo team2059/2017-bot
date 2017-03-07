@@ -6,7 +6,10 @@ import org.usfirst.frc.team2059.robot.subsystems.Collector;
 import org.usfirst.frc.team2059.robot.subsystems.Shooter;
 import org.usfirst.frc.team2059.robot.subsystems.VisionHelper;
 import org.usfirst.frc.team2059.robot.subsystems.GearCollector;
+import org.usfirst.frc.team2059.robot.subsystems.GearRollerMotor;
+import org.usfirst.frc.team2059.robot.subsystems.GearAngleMotor;
 import edu.wpi.first.wpilibj.command.Command;
+
 public abstract class CommandBase extends Command {
   public static DriveBase driveBase;
   public static Pneumatics pneumatics;
@@ -14,6 +17,8 @@ public abstract class CommandBase extends Command {
   public static Collector collector;
   public static VisionHelper visionHelper;
   public static GearCollector gearCollector;
+  public static GearAngleMotor gearAngle;
+  public static GearRollerMotor gearRoller;
   public static Shooter shooter;
   public static void init() {
     driveBase = new DriveBase();
@@ -23,6 +28,8 @@ public abstract class CommandBase extends Command {
     visionHelper = new VisionHelper();
     gearCollector = new GearCollector();
     shooter = new Shooter();
+    gearAngle = new GearAngleMotor();
+    gearRoller = new GearRollerMotor();
   }
 }
 // vim: sw=2:ts=2:sts=2

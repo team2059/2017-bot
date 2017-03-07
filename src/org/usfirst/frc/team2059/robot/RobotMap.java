@@ -14,6 +14,8 @@ public class RobotMap {
   public static int pcm = 31;
   public static int collectorMotor = 7;
   public static int gearCollectorMotor = 8;
+  public static int gearAngleMotor = 13;
+  public static int gearRollerMotor = 14;
 
   //Shooter
   public static int ShooterDeflector = 12;

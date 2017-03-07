@@ -20,7 +20,7 @@ public class DriveIntoPeg extends CommandBase {
     driveBase.driveStraightY(distance, SmartDashboard.getNumber("GyroCorrection"), angle);
   }
   protected boolean isFinished() {
-    false;
+    return false;
   }
   protected void end() {
     driveBase.driveMecanum(0, 0, 0, 0);

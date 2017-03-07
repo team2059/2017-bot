@@ -15,7 +15,8 @@ import org.usfirst.frc.team2059.robot.commands.SetServoYAngle;
 import org.usfirst.frc.team2059.robot.commands.SetServoXAngle;
 import org.usfirst.frc.team2059.robot.commands.SetCameraPosition;
 import org.usfirst.frc.team2059.robot.commands.SetDeflectorUp;
-
+import org.usfirst.frc.team2059.robot.commands.SetGearAngle;
+import org.usfirst.frc.team2059.robot.commands.CollectGear;
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
@@ -41,6 +42,8 @@ public class OI {
     joystickButtons[0][4].whenPressed(new SetCameraPosition(180, 0)); //climber
     joystickButtons[0][5].whenPressed(new SetCameraPosition(15, 70)); //shooter
     joystickButtons[0][10].whenPressed(new DriveStraightX(0.5));
+    joystickButtons[0][11].whenPressed(new CollectGear(1));
+    joystickButtons[0][12].whenPressed(new SetGearAngle(1));
 //    joystickButtons[0][0].whileHeld(new Collect(1));
     //joystickButtons[0][0].whileHeld(new AutoStrafeAlignVision());
 //    joystickButtons[0][3].whileHeld(new GearSystem(1));
