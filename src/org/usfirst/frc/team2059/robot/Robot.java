@@ -34,7 +34,7 @@ public class Robot extends IterativeRobot {
     SmartDashboard.putNumber("xEncoderTarget", 0);
     SmartDashboard.putNumber("yEncoderTarget", 0);
     SmartDashboard.putNumber("shooterPower", 0.9);
-    SmartDashboard.putNumber("driveStraightxkP", 0.003);
+    SmartDashboard.putNumber("driveStraightxkP", 0.005);
     SmartDashboard.putNumber("driveStraightxkD", 0.003);
     SmartDashboard.putNumber("driveStraightxkI", 0.003);
     SmartDashboard.putNumber("driveStraightykP", 0.003);
@@ -84,8 +84,9 @@ public class Robot extends IterativeRobot {
     //      break;
     //  }
 //        autonomousCommand = new AutoEncoderY(SmartDashboard.getNumber("xEncoderTarget"), 2);
-      autonomousCommand = new AutoEncoderX(12, 5);
-        autonomousCommand = new AutoDriveTime(-1.0, 2.5);
+//      autonomousCommand = new AutoEncoderX(12, 5);
+    autonomousCommand = new RoutineCenterGearPeg();
+//autonomousCommand = new AutoDriveTime(-1.0, 2.5);
     if (autonomousCommand != null) {
       autonomousCommand.start();
     }

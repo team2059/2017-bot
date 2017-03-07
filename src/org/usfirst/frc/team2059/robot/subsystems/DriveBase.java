@@ -90,11 +90,13 @@ public class DriveBase extends Subsystem {
     SmartDashboard.putNumber("previousError", previousError);
     SmartDashboard.putNumber("error", error);
     SmartDashboard.putNumber("distanceError", distanceError);
-    double xPower = ((distancekP * distanceError) + distancekI); 
-    double yPower = ((errorkP * error) + errorkI);
+    SmartDashboard.putNumber("yPOWERWRWR", distanceError+24);
+    double xPower = ((errorkP * error) + errorkI);
+    double yPower = ((distancekP * distanceError) + distancekI); 
     double zPower = -gyro.getAngle() * correction;
     SmartDashboard.putNumber("yPower", yPower);
     SmartDashboard.putNumber("xPower", xPower);
+    SmartDashboard.putNumber("zPower", zPower);
     driveMecanum(xPower, yPower, zPower, 0.5);
     previousError = error;
   }
@@ -116,6 +118,7 @@ public class DriveBase extends Subsystem {
     double zPower = -gyro.getAngle() * correction;
     SmartDashboard.putNumber("yPower", yPower);
     SmartDashboard.putNumber("xPower", xPower);
+    SmartDashboard.putNumber("zPower", zPower);
     driveMecanum(xPower, yPower, zPower, 0.5);
     previousError = error;
   }
