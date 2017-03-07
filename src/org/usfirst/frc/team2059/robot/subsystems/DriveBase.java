@@ -82,11 +82,11 @@ public class DriveBase extends Subsystem {
     double errorkP = SmartDashboard.getNumber("driveStraightErrorykP");
     double errorkD = SmartDashboard.getNumber("driveStraightErrorykD");
     double errorkI = SmartDashboard.getNumber("driveStraightErrorykI");
-    double error = getyEncoderCount();
+    double error = getyEncoderDistance();
     double distancekP = SmartDashboard.getNumber("driveStraightykP");
     double distancekD = SmartDashboard.getNumber("driveStraightykD");
     double distancekI = SmartDashboard.getNumber("driveStraightykI");
-    double distanceError = getxEncoderCount() - distance;
+    double distanceError = getxEncoderDistance() - distance;
     SmartDashboard.putNumber("previousError", previousError);
     SmartDashboard.putNumber("error", error);
     SmartDashboard.putNumber("distanceError", distanceError);
@@ -105,11 +105,11 @@ public class DriveBase extends Subsystem {
     double errorkP = SmartDashboard.getNumber("driveStraightErrorxkP");
     double errorkD = SmartDashboard.getNumber("driveStraightErrorxkD");
     double errorkI = SmartDashboard.getNumber("driveStraightErrorxkI");
-    double error = getxEncoderCount();
+    double error = getxEncoderDistance();
     double distancekP = SmartDashboard.getNumber("driveStraightxkP");
     double distancekD = SmartDashboard.getNumber("driveStraightxkD");
     double distancekI = SmartDashboard.getNumber("driveStraightxkI");
-    double distanceError = getyEncoderCount() - distance;
+    double distanceError = getyEncoderDistance() - distance;
     SmartDashboard.putNumber("previousError", previousError);
     SmartDashboard.putNumber("error", error);
     SmartDashboard.putNumber("distanceError", distanceError);
@@ -127,7 +127,7 @@ public class DriveBase extends Subsystem {
     double errorkP = SmartDashboard.getNumber("driveStraightErrorxkP");
     double errorkD = SmartDashboard.getNumber("driveStraightErrorxkD");
     double errorkI = SmartDashboard.getNumber("driveStraightErrorxkI");
-    double error = getxEncoderCount();
+    double error = getxEncoderDistance();
     SmartDashboard.putNumber("previousError", previousError);
     SmartDashboard.putNumber("error", error);
     double yPower = ((errorkP * error) + errorkI);
@@ -141,7 +141,7 @@ public class DriveBase extends Subsystem {
     double errorkP = SmartDashboard.getNumber("driveStraightErrorxkP");
     double errorkD = SmartDashboard.getNumber("driveStraightErrorxkD");
     double errorkI = SmartDashboard.getNumber("driveStraightErrorxkI");
-    double error = getxEncoderCount();
+    double error = getxEncoderDistance();
     SmartDashboard.putNumber("previousError", previousError);
     SmartDashboard.putNumber("error", error);
     double yPower = ((errorkP * error) + errorkI);
@@ -155,7 +155,7 @@ public class DriveBase extends Subsystem {
     double errorkP = SmartDashboard.getNumber("driveStraightErrorykP");
     double errorkD = SmartDashboard.getNumber("driveStraightErrorykD");
     double errorkI = SmartDashboard.getNumber("driveStraightErrorykI");
-    double error = getyEncoderCount();
+    double error = getyEncoderDistance();
     SmartDashboard.putNumber("error", error);
     double xPower = ((errorkP * error) + errorkI);
     double zPower = -gyro.getAngle() * correction;
@@ -170,7 +170,7 @@ public class DriveBase extends Subsystem {
     double errorkP = SmartDashboard.getNumber("driveStraightErrorykP");
     double errorkD = SmartDashboard.getNumber("driveStraightErrorykD");
     double errorkI = SmartDashboard.getNumber("driveStraightErrorykI");
-    double error = getyEncoderCount();
+    double error = getyEncoderDistance();
     SmartDashboard.putNumber("error", error);
     double xPower = ((errorkP * error) + errorkI);
     double zPower = -(gyro.getAngle()-angle) * correction;
@@ -208,14 +208,13 @@ public class DriveBase extends Subsystem {
   }
   public double getxEncoderDistance() {
     double x = this.getxEncoderCount();
-    double z = (x / 128) * 3.14 * 8;
+    double z = (x / 128) * 3.14 * 4;
     return z;
   }
   public double getyEncoderDistance() {
     double y = this.getyEncoderCount();
-    //TODO change to physical wheel size
-    double z = (y / 128) * 3.14 * 8;
-    return -z;
+    double z = (y / 128) * 3.14 * 4;
+    return z;
   }
 
 
