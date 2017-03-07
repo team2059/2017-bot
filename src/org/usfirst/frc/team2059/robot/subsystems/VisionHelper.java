@@ -23,16 +23,23 @@ public class VisionHelper extends Subsystem {
   }
   public double getCenterContourX() {
     int highestAreaIndex = 0;
+    int secondHighestAreaIndex = 0;
     int index = 0;
     double areas[] = contoursTable.getNumberArray("area", new double[0]);
-    for (double area : areas) {
-      if (area >= areas[highestAreaIndex]) {
-        highestAreaIndex = index;
-      }
-      index++;
-    }
     try {
-      return contoursTable.getNumberArray("centerX", new double[0])[highestAreaIndex];
+      for (double area : areas) {
+        if (area > areas[highestAreaIndex]) {
+          secondHighestAreaIndex = highestAreaIndex;
+          highestAreaIndex = index;
+        }else if(area > areas[secondHighestAreaIndex]){
+          secondHighestAreaIndex = index;
+        }
+        index++;
+      }
+      double highestArea = contoursTable.getNumberArray("centerX", new double[0])[highestAreaIndex];
+      double secondHighestArea = contoursTable.getNumberArray("centerX", new double[0])[secondHighestAreaIndex];
+
+      return Math.abs((highestArea+secondHighestArea)/2);
     } catch (Exception e) {
       return 0;
     }
