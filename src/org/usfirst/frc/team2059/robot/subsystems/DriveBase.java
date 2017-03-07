@@ -137,6 +137,20 @@ public class DriveBase extends Subsystem {
     previousError = error;
   }
 
+  public void driveStraightX(double speed, double correction, double angle) {
+    double errorkP = SmartDashboard.getNumber("driveStraightErrorxkP");
+    double errorkD = SmartDashboard.getNumber("driveStraightErrorxkD");
+    double errorkI = SmartDashboard.getNumber("driveStraightErrorxkI");
+    double error = getxEncoderCount();
+    SmartDashboard.putNumber("previousError", previousError);
+    SmartDashboard.putNumber("error", error);
+    double yPower = ((errorkP * error) + errorkI);
+    double zPower = -(gyro.getAngle()-angle) * correction;
+    SmartDashboard.putNumber("yPower", yPower);
+    driveMecanum(speed, yPower, zPower, 1);
+    previousError = error;
+  }
+
   public void driveStraightY(double speed, double correction) {
     double errorkP = SmartDashboard.getNumber("driveStraightErrorykP");
     double errorkD = SmartDashboard.getNumber("driveStraightErrorykD");
@@ -145,6 +159,21 @@ public class DriveBase extends Subsystem {
     SmartDashboard.putNumber("error", error);
     double xPower = ((errorkP * error) + errorkI);
     double zPower = -gyro.getAngle() * correction;
+    SmartDashboard.putNumber("xPower", xPower);
+    SmartDashboard.putNumber("THE SPEED", speed);
+    SmartDashboard.putNumber("zPower", zPower);
+    driveMecanum(xPower, speed, zPower, 1);
+    previousError = error;
+  }
+
+  public void driveStraightY(double speed, double correction, double angle) {
+    double errorkP = SmartDashboard.getNumber("driveStraightErrorykP");
+    double errorkD = SmartDashboard.getNumber("driveStraightErrorykD");
+    double errorkI = SmartDashboard.getNumber("driveStraightErrorykI");
+    double error = getyEncoderCount();
+    SmartDashboard.putNumber("error", error);
+    double xPower = ((errorkP * error) + errorkI);
+    double zPower = -(gyro.getAngle()-angle) * correction;
     SmartDashboard.putNumber("xPower", xPower);
     SmartDashboard.putNumber("THE SPEED", speed);
     SmartDashboard.putNumber("zPower", zPower);
