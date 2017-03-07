@@ -1,13 +1,12 @@
-package org.usfirst.frc.team2059.robot.commands.auto;
+package org.usfirst.frc.team2059.robot.commands.drivetrain;
 import org.usfirst.frc.team2059.robot.commands.CommandBase;
 import org.usfirst.frc.team2059.robot.Robot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class AutoDriveIntoPeg extends CommandBase {
+public class DriveIntoPeg extends CommandBase {
   double angle, distance;
-  public AutoDriveIntoPeg(double t) {
+  public DriveIntoPeg() {
     requires(driveBase);
-    setTimeout(t);
   }
   protected void initialize() {
     angle = visionHelper.getHorizontalError();
@@ -21,7 +20,7 @@ public class AutoDriveIntoPeg extends CommandBase {
     driveBase.driveStraightY(distance, SmartDashboard.getNumber("GyroCorrection"), angle);
   }
   protected boolean isFinished() {
-    return isTimedOut();
+    false;
   }
   protected void end() {
     driveBase.driveMecanum(0, 0, 0, 0);
