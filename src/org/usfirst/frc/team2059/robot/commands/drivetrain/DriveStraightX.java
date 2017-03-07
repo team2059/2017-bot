@@ -10,8 +10,8 @@ public class DriveStraightX extends CommandBase {
     distance = d;
   }
   protected void initialize() {
-    driveBase.resetGyro(); 
-    driveBase.resetyEncoderCount(); 
+    driveBase.resetGyro();
+    driveBase.resetyEncoderCount();
     driveBase.resetxEncoderCount();
   }
   protected void execute() {

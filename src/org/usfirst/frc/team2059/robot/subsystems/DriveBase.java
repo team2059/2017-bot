@@ -90,9 +90,9 @@ public class DriveBase extends Subsystem {
     SmartDashboard.putNumber("previousError", previousError);
     SmartDashboard.putNumber("error", error);
     SmartDashboard.putNumber("distanceError", distanceError);
-    SmartDashboard.putNumber("yPOWERWRWR", distanceError+24);
+    SmartDashboard.putNumber("yPOWERWRWR", distanceError + 24);
     double xPower = ((errorkP * error) + errorkI);
-    double yPower = ((distancekP * distanceError) + distancekI); 
+    double yPower = ((distancekP * distanceError) + distancekI);
     double zPower = -gyro.getAngle() * correction;
     SmartDashboard.putNumber("yPower", yPower);
     SmartDashboard.putNumber("xPower", xPower);
@@ -113,7 +113,7 @@ public class DriveBase extends Subsystem {
     SmartDashboard.putNumber("previousError", previousError);
     SmartDashboard.putNumber("error", error);
     SmartDashboard.putNumber("distanceError", distanceError);
-    double xPower = ((distancekP * distanceError) + distancekI); 
+    double xPower = ((distancekP * distanceError) + distancekI);
     double yPower = ((errorkP * error) + errorkI);
     double zPower = -gyro.getAngle() * correction;
     SmartDashboard.putNumber("yPower", yPower);
@@ -145,7 +145,7 @@ public class DriveBase extends Subsystem {
     SmartDashboard.putNumber("previousError", previousError);
     SmartDashboard.putNumber("error", error);
     double yPower = ((errorkP * error) + errorkI);
-    double zPower = -(gyro.getAngle()-angle) * correction;
+    double zPower = -(gyro.getAngle() - angle) * correction;
     SmartDashboard.putNumber("yPower", yPower);
     driveMecanum(speed, yPower, zPower, 1);
     previousError = error;
@@ -173,7 +173,7 @@ public class DriveBase extends Subsystem {
     double error = getyEncoderDistance();
     SmartDashboard.putNumber("error", error);
     double xPower = ((errorkP * error) + errorkI);
-    double zPower = -(gyro.getAngle()-angle) * correction;
+    double zPower = -(gyro.getAngle() - angle) * correction;
     SmartDashboard.putNumber("xPower", xPower);
     SmartDashboard.putNumber("THE SPEED", speed);
     SmartDashboard.putNumber("zPower", zPower);

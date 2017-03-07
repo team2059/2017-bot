@@ -14,7 +14,7 @@ public class Shoot extends CommandBase {
   }
 
   protected void execute() {
-    if(highgoal){
+    if (highgoal) {
       shooter.setDeflectorAngle(180);
     }
     shooter.shootAtSpeed(speed);

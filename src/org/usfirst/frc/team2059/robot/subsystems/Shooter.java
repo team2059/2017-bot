@@ -59,7 +59,7 @@ public class Shooter extends Subsystem {
       deflectorServo.setAngle(RobotMap.deflectorDownDegrees);
     }
   }
-  public void setDeflectorAngle(double angle){
+  public void setDeflectorAngle(double angle) {
     deflectorServo.setAngle(angle);
   }
   public void feed(double i) {

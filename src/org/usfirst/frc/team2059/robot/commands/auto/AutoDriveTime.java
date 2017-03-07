@@ -5,7 +5,7 @@ import org.usfirst.frc.team2059.robot.Robot;
 public class AutoDriveTime extends CommandBase {
   double speed;
   public AutoDriveTime(double s, double driveTime) {
-    speed=s;
+    speed = s;
     requires(driveBase);
     setTimeout(driveTime);
   }

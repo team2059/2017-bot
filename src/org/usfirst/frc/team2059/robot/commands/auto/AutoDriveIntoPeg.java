@@ -12,7 +12,7 @@ public class AutoDriveIntoPeg extends CommandBase {
   protected void initialize() {
     angle = visionHelper.getHorizontalError();
     //Subtract 10 to stop 10 inches from wall
-    distance = visionHelper.getSonar()-10;
+    distance = visionHelper.getSonar() - 10;
     driveBase.resetyEncoderCount();
     driveBase.resetxEncoderCount();
     driveBase.resetGyro();

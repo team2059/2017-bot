@@ -31,15 +31,14 @@ public class VisionHelper extends Subsystem {
         if (area > areas[highestAreaIndex]) {
           secondHighestAreaIndex = highestAreaIndex;
           highestAreaIndex = index;
-        }else if(area > areas[secondHighestAreaIndex]){
+        } else if (area > areas[secondHighestAreaIndex]) {
           secondHighestAreaIndex = index;
         }
         index++;
       }
       double highestArea = contoursTable.getNumberArray("centerX", new double[0])[highestAreaIndex];
       double secondHighestArea = contoursTable.getNumberArray("centerX", new double[0])[secondHighestAreaIndex];
-
-      return Math.abs((highestArea+secondHighestArea)/2);
+      return Math.abs((highestArea + secondHighestArea) / 2);
     } catch (Exception e) {
       return 0;
     }
