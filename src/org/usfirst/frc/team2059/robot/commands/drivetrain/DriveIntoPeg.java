@@ -17,7 +17,7 @@ public class DriveIntoPeg extends CommandBase {
     driveBase.resetGyro();
   }
   protected void execute() {
-    driveBase.driveStraightY(distance, SmartDashboard.getNumber("GyroCorrection"), angle);
+    driveBase.driveStraightYdistance(distance, SmartDashboard.getNumber("GyroCorrection"), angle);
   }
   protected boolean isFinished() {
     return false;

@@ -121,6 +121,7 @@ public class Robot extends IterativeRobot {
     SmartDashboard.putNumber("xEncoderCount", CommandBase.driveBase.getxEncoderCount());
     //SmartDashboard.putNumber("yEncoderCount", CommandBase.driveBase.getyEncoderCount());
     SmartDashboard.putNumber("yEncoderDistance", CommandBase.driveBase.getyEncoderDistance());
+    SmartDashboard.putNumber("centerXvalue", CommandBase.visionHelper.getCenterContourX());
     SmartDashboard.putNumber("GyroAngle", CommandBase.driveBase.getGyro().getAngle());
     SmartDashboard.putNumber("horizontalError", CommandBase.visionHelper.getHorizontalError());
     SmartDashboard.putNumber("sonar distance", CommandBase.visionHelper.getSonar());

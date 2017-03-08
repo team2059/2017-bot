@@ -9,6 +9,7 @@ import org.usfirst.frc.team2059.robot.commands.Climb;
 import org.usfirst.frc.team2059.robot.commands.Collect;
 import org.usfirst.frc.team2059.robot.commands.Shoot;
 import org.usfirst.frc.team2059.robot.commands.drivetrain.DriveStraightX;
+import org.usfirst.frc.team2059.robot.commands.drivetrain.DriveIntoPeg;
 import org.usfirst.frc.team2059.robot.commands.auto.AutoStrafeAlignVision;
 import org.usfirst.frc.team2059.robot.commands.GearSystem;
 import org.usfirst.frc.team2059.robot.commands.SetServoYAngle;
@@ -35,15 +36,16 @@ public class OI {
       joystickButtons[0][i] = new JoystickButton(joysticks[0], i + 1);
       joystickButtons[1][i] = new JoystickButton(joysticks[1], i + 1);
     }
-    joystickButtons[0][0].whileHeld(new Collect(-1));
+//    joystickButtons[0][0].whileHeld(new Collect(-1));
+    joystickButtons[0][0].whileHeld(new DriveIntoPeg());
     joystickButtons[0][1].whileHeld(new Collect(1));
     joystickButtons[0][2].whenPressed(new SetCameraPosition(180, 30)); //gear
     joystickButtons[0][3].whenPressed(new SetCameraPosition(15, 0)); //climber
     joystickButtons[0][4].whenPressed(new SetCameraPosition(180, 0)); //climber
     joystickButtons[0][5].whenPressed(new SetCameraPosition(15, 70)); //shooter
     joystickButtons[0][10].whenPressed(new DriveStraightX(0.5));
-    joystickButtons[0][11].whenPressed(new CollectGear(1));
-    joystickButtons[0][12].whenPressed(new SetGearAngle(1));
+//    joystickButtons[0][11].whenPressed(new CollectGear(1));
+//    joystickButtons[0][12].whenPressed(new SetGearAngle(1));
 //    joystickButtons[0][0].whileHeld(new Collect(1));
     //joystickButtons[0][0].whileHeld(new AutoStrafeAlignVision());
 //    joystickButtons[0][3].whileHeld(new GearSystem(1));

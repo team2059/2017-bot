@@ -27,17 +27,10 @@ public class VisionHelper extends Subsystem {
     int index = 0;
     double areas[] = contoursTable.getNumberArray("area", new double[0]);
     try {
-      for (double area : areas) {
-        if (area > areas[highestAreaIndex]) {
-          secondHighestAreaIndex = highestAreaIndex;
-          highestAreaIndex = index;
-        } else if (area > areas[secondHighestAreaIndex]) {
-          secondHighestAreaIndex = index;
-        }
-        index++;
-      }
-      double highestArea = contoursTable.getNumberArray("centerX", new double[0])[highestAreaIndex];
-      double secondHighestArea = contoursTable.getNumberArray("centerX", new double[0])[secondHighestAreaIndex];
+      double highestArea = contoursTable.getNumberArray("centerX", new double[0])[0];
+      double secondHighestArea = contoursTable.getNumberArray("centerX", new double[0])[1];
+      SmartDashboard.putNumber("HighestArea",highestArea);
+      SmartDashboard.putNumber("SecondHighestArea",secondHighestArea);
       return Math.abs((highestArea + secondHighestArea) / 2);
     } catch (Exception e) {
       return 0;
@@ -47,7 +40,7 @@ public class VisionHelper extends Subsystem {
     return ((180 / Math.PI) * (Math.atan((getCenterContourX() - (RobotMap.imageWidth / 2)) / RobotMap.fWidth)));
   }
   public double getSonar() {
-    return (sonar.getAverageValue() / 9.76562f);
+    return (sonar.getAverageValue() / 4.883) * 0.394;
   }
   public double getTranslationDistance() {
     return getSonar() * Math.tan((Math.PI / 180) * getHorizontalError());
