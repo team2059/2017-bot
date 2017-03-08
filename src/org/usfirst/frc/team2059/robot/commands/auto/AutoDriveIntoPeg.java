@@ -18,7 +18,7 @@ public class AutoDriveIntoPeg extends CommandBase {
     driveBase.resetGyro();
   }
   protected void execute() {
-    driveBase.driveStraightY(distance, SmartDashboard.getNumber("GyroCorrection"), angle);
+    driveBase.driveStraightYdistance(80, SmartDashboard.getNumber("GyroCorrection"), angle);
   }
   protected boolean isFinished() {
     return isTimedOut();
