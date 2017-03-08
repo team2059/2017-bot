@@ -40,7 +40,7 @@ public class VisionHelper extends Subsystem {
     return ((180 / Math.PI) * (Math.atan((getCenterContourX() - (RobotMap.imageWidth / 2)) / RobotMap.fWidth)));
   }
   public double getSonar() {
-    return (sonar.getAverageValue() / 4.883) * 0.394;
+    return (sonar.getAverageValue() / 9.766);
   }
   public double getTranslationDistance() {
     return getSonar() * Math.tan((Math.PI / 180) * getHorizontalError());

@@ -13,7 +13,7 @@ public class AutoEncoderX extends CommandBase {
   protected void initialize() {
     driveBase.resetxEncoderCount();
     driveBase.resetGyro();
-    driveBase.resetxEncoderCount();
+    driveBase.resetyEncoderCount();
   }
   protected void execute() {
     driveBase.driveStraightXdistance(distance, SmartDashboard.getNumber("GyroCorrection"));

@@ -30,17 +30,17 @@ public class Robot extends IterativeRobot {
   public void robotInit() {
     CommandBase.init();
     oi = new OI();
-    SmartDashboard.putNumber("GyroCorrection", 0.03);
+    SmartDashboard.putNumber("GyroCorrection", 0.1);
     SmartDashboard.putNumber("xEncoderTarget", 0);
     SmartDashboard.putNumber("yEncoderTarget", 0);
     SmartDashboard.putNumber("shooterPower", 0.9);
-    SmartDashboard.putNumber("driveStraightxkP", 0.005);
+    SmartDashboard.putNumber("driveStraightxkP", 0.2);
     SmartDashboard.putNumber("driveStraightxkD", 0.003);
     SmartDashboard.putNumber("driveStraightxkI", 0.003);
-    SmartDashboard.putNumber("driveStraightykP", 0.003);
+    SmartDashboard.putNumber("driveStraightykP", 0.03);
     SmartDashboard.putNumber("driveStraightykD", 0.003);
     SmartDashboard.putNumber("driveStraightykI", 0.003);
-    SmartDashboard.putNumber("driveStraightErrorxkP", 0.003);
+    SmartDashboard.putNumber("driveStraightErrorxkP", 0.03);
     SmartDashboard.putNumber("driveStraightErrorxkD", 0.03);
     SmartDashboard.putNumber("driveStraightErrorxkI", 0.0);
     SmartDashboard.putNumber("driveStraightErrorykP", 0.003);

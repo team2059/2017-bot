@@ -14,8 +14,8 @@ public class Drive extends CommandBase {
     double x = Robot.oi.getJoysticks()[0].getRawAxis(0);
     double y = Robot.oi.getJoysticks()[0].getRawAxis(1);
     double z = Robot.oi.getJoysticks()[0].getRawAxis(2);
-    if (Robot.oi.getJoystick(0).getRawButton(11)) {
-      driveBase.driveStraightX(x, SmartDashboard.getNumber("GyroCorrection"));
+    if (Robot.oi.getJoystick(0).getRawButton(0)) {
+      //dont drive
     } else {
       driveBase.driveMecanum(x, y, z, 1);
     }
