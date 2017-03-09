@@ -16,13 +16,13 @@ public class RobotMap {
   //Collector
   public static int collectorMotor = 7;
   public static int gearCollectorMotor = 8;
-  public static int gearAngleMotor = 13;
+  public static int gearAngleMotor = 11;
   public static int gearCollectorDeploySwitch = 7;
   public static int gearCollectorCollectSwitch = 8;
 
   //Shooter
   public static int ShooterDeflector = 12;
-  public static int agitatorMotor = 11;
+  public static int agitatorMotor = 13;
   public static int shooterDeflectorSwitchOpen = 6;
   public static int shooterDeflectorSwitchClosed = 7;
   public static int CIMEncoderA = 4;
