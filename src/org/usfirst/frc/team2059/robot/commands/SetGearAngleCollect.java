@@ -1,10 +1,9 @@
 package org.usfirst.frc.team2059.robot.commands;
 import org.usfirst.frc.team2059.robot.subsystems.GearCollector;
 
-
-public class GearSystem extends CommandBase {
+public class SetGearAngleCollect extends CommandBase {
   double speed;
-  public GearSystem(double s) {
+  public SetGearAngleCollect(double s){
     speed = s;
   }
 
@@ -12,18 +11,20 @@ public class GearSystem extends CommandBase {
   }
 
   protected void execute() {
-    gearCollector.gearCollectAtSpeed(speed);
+    gearCollector.setGearAngleMotorSpeed(speed);
   }
 
   protected boolean isFinished() {
-    return false;
+    return gearCollector.getCollectSwitch();
   }
 
   protected void end() {
-    gearCollector.gearCollectAtSpeed(0);
+    gearCollector.setGearAngleMotorSpeed(0);
   }
 
   protected void interrupted() {
     end();
   }
+
+
 }

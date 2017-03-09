@@ -4,20 +4,16 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import org.usfirst.frc.team2059.robot.commands.SetGearHolderOpen;
 import org.usfirst.frc.team2059.robot.commands.Climb;
 import org.usfirst.frc.team2059.robot.commands.Collect;
 import org.usfirst.frc.team2059.robot.commands.Shoot;
 import org.usfirst.frc.team2059.robot.commands.drivetrain.DriveStraightX;
 import org.usfirst.frc.team2059.robot.commands.drivetrain.DriveIntoPeg;
 import org.usfirst.frc.team2059.robot.commands.auto.AutoStrafeAlignVision;
-import org.usfirst.frc.team2059.robot.commands.GearSystem;
 import org.usfirst.frc.team2059.robot.commands.SetServoYAngle;
 import org.usfirst.frc.team2059.robot.commands.SetServoXAngle;
 import org.usfirst.frc.team2059.robot.commands.SetCameraPosition;
 import org.usfirst.frc.team2059.robot.commands.SetDeflectorUp;
-import org.usfirst.frc.team2059.robot.commands.SetGearAngle;
-import org.usfirst.frc.team2059.robot.commands.CollectGear;
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.

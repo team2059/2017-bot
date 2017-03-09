@@ -12,10 +12,13 @@ public class RobotMap {
   public static int yEncoderB = 1;
   public static int gyro = 0;
   public static int pcm = 31;
+
+  //Collector
   public static int collectorMotor = 7;
   public static int gearCollectorMotor = 8;
   public static int gearAngleMotor = 13;
-  public static int gearRollerMotor = 14;
+  public static int gearCollectorDeploySwitch = 7;
+  public static int gearCollectorCollectSwitch = 8;
 
   //Shooter
   public static int ShooterDeflector = 12;
@@ -46,6 +49,5 @@ public class RobotMap {
   public static int climbermotor = 5;
   public static int climbermotor2 = 6;
   public static int climberSwitch1 = 6;
-  public static int climberSwitch2 = 7;
 
 }
