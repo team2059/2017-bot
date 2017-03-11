@@ -23,6 +23,7 @@ public class AutoEncoderY extends CommandBase {
     return isTimedOut();
   }
   protected void end() {
+    gearCollector.setGearAngleMotorSpeed(0);
     driveBase.driveMecanum(0, 0, 0, 0);
   }
   protected void interrupted() {
