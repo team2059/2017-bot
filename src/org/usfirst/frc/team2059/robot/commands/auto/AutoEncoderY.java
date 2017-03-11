@@ -16,6 +16,7 @@ public class AutoEncoderY extends CommandBase {
     driveBase.resetxEncoderCount();
   }
   protected void execute() {
+    gearCollector.setGearAngleMotorSpeed(.5);
     driveBase.driveStraightYdistance(distance, SmartDashboard.getNumber("GyroCorrection"));
   }
   protected boolean isFinished() {
