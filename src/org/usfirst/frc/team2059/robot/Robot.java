@@ -11,6 +11,7 @@ import org.usfirst.frc.team2059.robot.commands.auto.AutoStrafeAlignVision;
 import org.usfirst.frc.team2059.robot.commands.auto.RoutineCenterGearPeg;
 import org.usfirst.frc.team2059.robot.commands.auto.RoutineRightGearPeg;
 import org.usfirst.frc.team2059.robot.commands.auto.RoutineLeftGearPeg;
+import org.usfirst.frc.team2059.robot.commands.auto.RoutineCenterPegVision;
 import org.usfirst.frc.team2059.robot.subsystems.Shooter;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -85,6 +86,9 @@ public class Robot extends IterativeRobot {
           break;
         case 4:
           autonomousCommand = new RoutineRightGearPeg();
+          break;
+        case 43:
+          autonomousCommand = new RoutineCenterPegVision();
           break;
         default:
           break;
