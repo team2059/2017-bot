@@ -13,6 +13,7 @@ public class AutoDriveTime extends CommandBase {
   }
   protected void execute() {
     driveBase.driveMecanum(0, speed, 0, 0.8);
+    gearCollector.setGearAngleMotorSpeed(0.4);
   }
   protected boolean isFinished() {
     return isTimedOut();

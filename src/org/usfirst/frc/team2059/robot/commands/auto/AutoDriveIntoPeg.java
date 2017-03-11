@@ -5,8 +5,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class AutoDriveIntoPeg extends CommandBase {
   double angle, distance;
-  public AutoDriveIntoPeg(double t) {
+  public AutoDriveIntoPeg(double d, double t) {
     requires(driveBase);
+    distance=d;
     setTimeout(t);
   }
   protected void initialize() {
@@ -18,7 +19,8 @@ public class AutoDriveIntoPeg extends CommandBase {
     driveBase.resetGyro();
   }
   protected void execute() {
-    driveBase.driveStraightYdistance(80, SmartDashboard.getNumber("GyroCorrection"), angle);
+    gearCollector.setGearAngleMotorSpeed(.5);
+    driveBase.driveStraightYdistance(distance, SmartDashboard.getNumber("GyroCorrection"), angle);
   }
   protected boolean isFinished() {
     return isTimedOut();

@@ -9,6 +9,8 @@ import org.usfirst.frc.team2059.robot.commands.auto.AutoCircleDrive;
 import org.usfirst.frc.team2059.robot.commands.auto.AutoRotate;
 import org.usfirst.frc.team2059.robot.commands.auto.AutoStrafeAlignVision;
 import org.usfirst.frc.team2059.robot.commands.auto.RoutineCenterGearPeg;
+import org.usfirst.frc.team2059.robot.commands.auto.RoutineRightGearPeg;
+import org.usfirst.frc.team2059.robot.commands.auto.RoutineLeftGearPeg;
 import org.usfirst.frc.team2059.robot.subsystems.Shooter;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -30,7 +32,7 @@ public class Robot extends IterativeRobot {
   public void robotInit() {
     CommandBase.init();
     oi = new OI();
-    SmartDashboard.putNumber("GyroCorrection", 0.1);
+    SmartDashboard.putNumber("GyroCorrection", 0.19);
     SmartDashboard.putNumber("xEncoderTarget", 0);
     SmartDashboard.putNumber("yEncoderTarget", 0);
     SmartDashboard.putNumber("shooterPower", 0.9);
@@ -69,24 +71,24 @@ public class Robot extends IterativeRobot {
 
   @Override
   public void autonomousInit() {
-    //  switch (SmartDashboard.getInt("Automode")) {
-    //    case 0:
-    //      return;
-    //    case 1:
-    //      autonomousCommand = new AutoEncoderX(SmartDashboard.getNumber("xEncoderTarget"));
-    //    case 2:
-    //      autonomousCommand = new AutoEncoderY(256);
-    //    case 3:
-    //      autonomousCommand = new AutoCircleDrive(1);
-    //    case 4:
-    //      autonomousCommand = new AutoRotate(15);
-    //    default:
-    //      break;
-    //  }
-//        autonomousCommand = new AutoEncoderY(SmartDashboard.getNumber("xEncoderTarget"), 2);
-//      autonomousCommand = new AutoEncoderX(12, 5);
-    autonomousCommand = new RoutineCenterGearPeg();
-//autonomousCommand = new AutoDriveTime(-1.0, 2.5);
+      switch (SmartDashboard.getInt("Automode")) {
+        case 0:
+          return;
+        case 1:
+          autonomousCommand = new AutoDriveTime(-1.0, 2.5);
+          break;
+        case 2:
+          autonomousCommand = new RoutineLeftGearPeg();
+          break;
+        case 3:
+          autonomousCommand = new RoutineCenterGearPeg();
+          break;
+        case 4:
+          autonomousCommand = new RoutineRightGearPeg();
+          break;
+        default:
+          break;
+      }
     if (autonomousCommand != null) {
       autonomousCommand.start();
     }
