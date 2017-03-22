@@ -40,11 +40,11 @@ public class OI {
 //    joystickButtons[0][0].whileHeld(new Collect(-1));
     joystickButtons[0][0].whileHeld(new CollectAll(-1));
     joystickButtons[0][1].whileHeld(new DeployGear());
-    joystickButtons[0][2].whileHeld(new SetGearAngle(-0.5));
-    joystickButtons[0][4].whileHeld(new SetGearAngle(0.5));
+    joystickButtons[0][2].whileHeld(new SetGearAngle(-0.15));
+    joystickButtons[0][4].whileHeld(new SetGearAngle(0.25));
     joystickButtons[0][5].whileHeld(new DriveIntoPeg());
-    joystickButtons[0][10].whenPressed(new SetGearAngleCollect(1));
-    joystickButtons[0][10].whenPressed(new SetGearAngleDeploy(1));
+    joystickButtons[0][10].whenPressed(new SetGearAngleCollect(.5));
+    joystickButtons[0][10].whenPressed(new SetGearAngleDeploy(.5));
 
 //    joystickButtons[0][11].whenPressed(new CollectGear(1));
 //    joystickButtons[0][12].whenPressed(new SetGearAngle(1));
