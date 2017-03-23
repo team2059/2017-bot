@@ -9,6 +9,7 @@ import org.usfirst.frc.team2059.robot.commands.auto.AutoCircleDrive;
 import org.usfirst.frc.team2059.robot.commands.auto.AutoRotate;
 import org.usfirst.frc.team2059.robot.commands.auto.AutoStrafeAlignVision;
 import org.usfirst.frc.team2059.robot.commands.auto.RoutineCenterGearPeg;
+import org.usfirst.frc.team2059.robot.commands.auto.RoutineCenterGearPegFallback;
 import org.usfirst.frc.team2059.robot.commands.auto.RoutineRightGearPeg;
 import org.usfirst.frc.team2059.robot.commands.auto.RoutineLeftGearPeg;
 import org.usfirst.frc.team2059.robot.commands.auto.RoutineCenterPegVision;
@@ -94,6 +95,9 @@ public class Robot extends IterativeRobot {
           break;
         case 43:
           autonomousCommand = new RoutineCenterPegVision();
+          break;
+        case 44:
+          autonomousCommand = new RoutineCenterGearPegFallback();
           break;
         default:
           break;
