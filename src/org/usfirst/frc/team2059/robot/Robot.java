@@ -19,6 +19,8 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.CameraServer;
+
 
 
 public class Robot extends IterativeRobot {
@@ -31,6 +33,9 @@ public class Robot extends IterativeRobot {
 
   @Override
   public void robotInit() {
+
+    CameraServer.getInstance().startAutomaticCapture();
+
     CommandBase.init();
     oi = new OI();
     SmartDashboard.putNumber("GyroCorrection", 0.19);
