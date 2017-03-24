@@ -10,7 +10,7 @@ public class RobotMap {
   public static int xEncoderB = 3;
   public static int yEncoderA = 0;
   public static int yEncoderB = 1;
-  public static int gyro = 0;
+  public static int gyro = 1;
   public static int pcm = 31;
 
   //Collector
@@ -43,7 +43,7 @@ public class RobotMap {
   public static double fHeight = 362.600446468;
   public static int servoX = 0;
   public static int servoY = 1;
-  public static int sonar = 1;
+  public static int sonar = 2;
 
   //Climber
   public static int climbermotor = 5;

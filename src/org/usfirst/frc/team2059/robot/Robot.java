@@ -41,7 +41,7 @@ public class Robot extends IterativeRobot {
     oi = new OI();
     SmartDashboard.putNumber("AutoDrivePart1Distance",90);
     SmartDashboard.putNumber("AutoDrivePart2Distance",0);
-    SmartDashboard.putNumber("GyroCorrection", 0.20);
+    SmartDashboard.putNumber("GyroCorrection", 0.16);
     SmartDashboard.putNumber("xEncoderTarget", 0);
     SmartDashboard.putNumber("yEncoderTarget", 0);
     SmartDashboard.putNumber("shooterPower", 0.9);
