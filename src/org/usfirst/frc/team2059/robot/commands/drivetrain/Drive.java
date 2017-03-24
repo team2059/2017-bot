@@ -16,10 +16,9 @@ public class Drive extends CommandBase {
     double z = Robot.oi.getJoysticks()[0].getRawAxis(2);
     if (Robot.oi.getJoystick(0).getRawButton(6)) {
       //dont drive
-    } else if (Robot.oi.getJoystick(0).getRawButton(0)) {
+    } else if (Robot.oi.getJoystick(0).getRawButton(1)) {
       driveBase.driveMecanum(x, y, z, 1);
-    }
-    else {
+    } else {
       driveBase.driveMecanum(x, y, z, .5);
     }
   }

@@ -12,7 +12,8 @@ public class RoutineCenterGearPegFallback extends CommandGroup {
     }else{
       addSequential(new AutoEncoderY(SmartDashboard.getNumber("AutoDrivePart2Distance"),2));
     }
-      addParallel(new AutoSetGearAngle(-.3,.4));
+      addSequential(new WaitCommand(.3));
+      addParallel(new AutoSetGearAngle(-.3,.8));
       addSequential(new AutoEncoderY(-30, 3));
       addSequential(new WaitCommand(.3));
       addSequential(new AutoEncoderY(-30, 3));
