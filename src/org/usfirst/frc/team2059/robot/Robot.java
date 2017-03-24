@@ -39,18 +39,18 @@ public class Robot extends IterativeRobot {
 
     CommandBase.init();
     oi = new OI();
-    SmartDashboard.putNumber("AutoDrivePart1Distance",40);
-    SmartDashboard.putNumber("AutoDrivePart2Distance",40);
-    SmartDashboard.putNumber("GyroCorrection", 0.19);
+    SmartDashboard.putNumber("AutoDrivePart1Distance",90);
+    SmartDashboard.putNumber("AutoDrivePart2Distance",0);
+    SmartDashboard.putNumber("GyroCorrection", 0.20);
     SmartDashboard.putNumber("xEncoderTarget", 0);
     SmartDashboard.putNumber("yEncoderTarget", 0);
     SmartDashboard.putNumber("shooterPower", 0.9);
     SmartDashboard.putNumber("driveStraightxkP", 0.2);
     SmartDashboard.putNumber("driveStraightxkD", 0.003);
     SmartDashboard.putNumber("driveStraightxkI", 0.003);
-    SmartDashboard.putNumber("driveStraightykP", 0.015);
+    SmartDashboard.putNumber("driveStraightykP", 0.01);
     SmartDashboard.putNumber("driveStraightykD", 0.003);
-    SmartDashboard.putNumber("driveStraightykI", 0.003);
+    SmartDashboard.putNumber("driveStraightykI", 0.004);
     SmartDashboard.putNumber("driveStraightErrorxkP", 0.03);
     SmartDashboard.putNumber("driveStraightErrorxkD", 0.03);
     SmartDashboard.putNumber("driveStraightErrorxkI", 0.0);
@@ -67,7 +67,7 @@ public class Robot extends IterativeRobot {
     SmartDashboard.putData("yEncoderController", CommandBase.driveBase.getyEncoderController());
     SmartDashboard.putData("gyroController", CommandBase.driveBase.getGyroController());
     SmartDashboard.putData("shooterController", CommandBase.shooter.getCIMEncoderController());
-    SmartDashboard.putInt("Automode", 0);
+    SmartDashboard.putInt("Automode", 3);
   }
 
   @Override
@@ -84,7 +84,7 @@ public class Robot extends IterativeRobot {
         case 0:
           return;
         case 1:
-          autonomousCommand = new AutoDriveTime(-1.0, 2.5);
+          autonomousCommand = new AutoEncoderY(82,2);
           break;
         case 2:
           autonomousCommand = new RoutineLeftGearPeg();
