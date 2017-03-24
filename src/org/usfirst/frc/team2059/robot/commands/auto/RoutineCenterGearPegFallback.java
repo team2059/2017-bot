@@ -1,20 +1,22 @@
 package org.usfirst.frc.team2059.robot.commands.auto;
 import org.usfirst.frc.team2059.robot.commands.CommandBase;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.WaitCommand;
 import org.usfirst.frc.team2059.robot.Robot;
 public class RoutineCenterGearPegFallback extends CommandGroup {
   public RoutineCenterGearPegFallback() {
-      addSequential(new AutoEncoderY(40, 4));
+      addSequential(new AutoEncoderY(SmartDashboard.getNumber("AutoDrivePart1Distance"), 4));
     if(CommandBase.visionHelper.getCenterContourX()!=0){
-      addSequential(new AutoDriveIntoPeg(40, 4));
+      addSequential(new AutoDriveIntoPeg(SmartDashboard.getNumber("AutoDrivePart2Distance"), 4));
     }else{
-      addSequential(new AutoEncoderY(40,2));
+      addSequential(new AutoEncoderY(SmartDashboard.getNumber("AutoDrivePart2Distance"),2));
     }
-      addSequential(new AutoSetGearAngle(-.8,.4));
+      addParallel(new AutoSetGearAngle(-.3,.4));
+      addSequential(new AutoEncoderY(-30, 3));
       addSequential(new WaitCommand(.3));
-      addSequential(new AutoEncoderY(-60, 3));
-      addSequential(new AutoSetGearAngle(1,.4));
+      addSequential(new AutoEncoderY(-30, 3));
+      addSequential(new AutoSetGearAngle(0.5,.4));
   //  addSequential(new AutoRotate(65,2));
     //Drive forward for 24 units (inches???) with a timeout of 4
 //    addSequential(new AutoEncoderY(12, 5));
