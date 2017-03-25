@@ -145,6 +145,8 @@ public class Robot extends IterativeRobot {
     SmartDashboard.putNumber("TranslationDistance", CommandBase.visionHelper.getTranslationDistance());
     SmartDashboard.putNumber("CIMEncoder Rate", CommandBase.shooter.getCIMEncoderRate());
     SmartDashboard.putNumber("joystick1throttle", oi.getJoystickThrottle(0));
+    //Keep track of gear collector
+    CommandBase.gearCollector.gearCollectorPeriodic();
   }
   @Override
   public void testPeriodic() {

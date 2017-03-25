@@ -8,6 +8,7 @@ public class SetGearAngle extends CommandBase {
   }
 
   protected void initialize() {
+    gearCollector.setDeployMode(false);
   }
 
   protected void execute() {
@@ -19,7 +20,6 @@ public class SetGearAngle extends CommandBase {
   }
 
   protected void end() {
-    gearCollector.setGearAngleMotorSpeed(0);
   }
 
   protected void interrupted() {

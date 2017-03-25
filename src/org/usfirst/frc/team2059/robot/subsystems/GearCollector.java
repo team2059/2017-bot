@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.DigitalInput;
 
 public class GearCollector extends Subsystem {
+  boolean deployMode = false;
   CANTalon gearMotor = new CANTalon(RobotMap.gearCollectorMotor);
   CANTalon gearAngleMotor = new CANTalon(RobotMap.gearAngleMotor);
   DigitalInput gearDeploySwitch = new DigitalInput(RobotMap.gearCollectorDeploySwitch);
@@ -23,5 +24,15 @@ public class GearCollector extends Subsystem {
   }
   public boolean getCollectSwitch(){
     return gearCollectSwitch.get();
+  }
+  public void setDeployMode(boolean a){
+    deployMode=a;
+  }
+  public void gearCollectorPeriodic(){
+    if(deployMode){
+      if(!gearDeploySwitch.get()){
+        setGearAngleMotorSpeed(0.3);
+      }
+    }
   }
 }

@@ -1,11 +1,27 @@
 package org.usfirst.frc.team2059.robot.commands;
-import edu.wpi.first.wpilibj.command.CommandGroup;
-import org.usfirst.frc.team2059.robot.subsystems.Collector;
+import org.usfirst.frc.team2059.robot.subsystems.GearCollector;
 
-
-public class DeployGear extends CommandGroup{
+public class DeployGear extends CommandBase {
   public DeployGear(){
-    addSequential(new SetGearAngle(-0.5));
-    addParallel(new CollectGear(-1));
   }
+
+  protected void initialize() {
+  }
+
+  protected void execute() {
+    gearCollector.setDeployMode(true);
+  }
+
+  protected boolean isFinished() {
+    return false;
+  }
+
+  protected void end() {
+  }
+
+  protected void interrupted() {
+    end();
+  }
+
+
 }
