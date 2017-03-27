@@ -10,5 +10,7 @@ public class RoutineRightGearPeg extends CommandGroup {
     if(CommandBase.visionHelper.getCenterContourX()!=0){
       addSequential(new AutoDriveIntoPeg(73,4));
     }
+    addParallel(new AutoSetGearAngle(0,.5));
+    addSequential(new AutoEncoderY(-60, 3));
   }
 }

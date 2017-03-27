@@ -3,9 +3,9 @@ import org.usfirst.frc.team2059.robot.commands.CommandBase;
 import org.usfirst.frc.team2059.robot.subsystems.GearCollector;
 
 public class AutoSetGearAngle extends CommandBase {
-  double speed;
-  public AutoSetGearAngle(double s, double timeout){
-    speed = s;
+  double degrees;
+  public AutoSetGearAngle(double d, double timeout){
+    degrees = d;
     setTimeout(timeout);
   }
 
@@ -13,7 +13,7 @@ public class AutoSetGearAngle extends CommandBase {
   }
 
   protected void execute() {
-    CommandBase.gearCollector.setGearAngleMotorSpeed(speed);
+    CommandBase.gearCollector.setDegrees(degrees);
   }
 
   protected boolean isFinished() {
@@ -21,7 +21,6 @@ public class AutoSetGearAngle extends CommandBase {
   }
 
   protected void end() {
-    CommandBase.gearCollector.setGearAngleMotorSpeed(0);
   }
 
   protected void interrupted() {
