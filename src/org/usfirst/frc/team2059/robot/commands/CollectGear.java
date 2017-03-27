@@ -1,5 +1,6 @@
 package org.usfirst.frc.team2059.robot.commands;
 import org.usfirst.frc.team2059.robot.subsystems.Collector;
+import edu.wpi.first.wpilibj.PIDController;
 
 
 public class CollectGear extends CommandBase {
@@ -12,6 +13,7 @@ public class CollectGear extends CommandBase {
   }
 
   protected void execute() {
+    gearCollector.setDegrees(0);
     gearCollector.gearCollectAtSpeed(speed);
   }
 
@@ -20,6 +22,7 @@ public class CollectGear extends CommandBase {
   }
 
   protected void end() {
+    gearCollector.setDegrees(90);
     gearCollector.gearCollectAtSpeed(0);
   }
 

@@ -2,16 +2,16 @@ package org.usfirst.frc.team2059.robot.commands;
 import org.usfirst.frc.team2059.robot.subsystems.GearCollector;
 
 public class SetGearAngle extends CommandBase {
-  double speed;
-  public SetGearAngle(double s){
-    speed = s;
+  double degrees;
+  public SetGearAngle(double d){
+    degrees = d;
   }
 
   protected void initialize() {
   }
 
   protected void execute() {
-    gearCollector.setGearAngleMotorSpeed(speed);
+    gearCollector.setDegrees(degrees);
   }
 
   protected boolean isFinished() {
@@ -19,7 +19,6 @@ public class SetGearAngle extends CommandBase {
   }
 
   protected void end() {
-    gearCollector.setGearAngleMotorSpeed(0);
   }
 
   protected void interrupted() {

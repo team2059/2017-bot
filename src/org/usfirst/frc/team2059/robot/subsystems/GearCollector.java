@@ -33,6 +33,9 @@ public class GearCollector extends Subsystem {
   public PIDController getAngleController(){
     return angleController;
   }
+  public void setDegrees(double degrees){
+    angleController.setSetpoint(degrees);
+  }
 
   //PID Source for gear angle pot
   public class gearAnglePIDSource implements PIDSource {

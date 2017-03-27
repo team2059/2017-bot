@@ -14,10 +14,10 @@ import org.usfirst.frc.team2059.robot.commands.SetServoYAngle;
 import org.usfirst.frc.team2059.robot.commands.SetServoXAngle;
 import org.usfirst.frc.team2059.robot.commands.SetCameraPosition;
 import org.usfirst.frc.team2059.robot.commands.SetDeflectorUp;
-import org.usfirst.frc.team2059.robot.commands.CollectAll;
 import org.usfirst.frc.team2059.robot.commands.SetGearAngleCollect;
 import org.usfirst.frc.team2059.robot.commands.SetGearAngleDeploy;
 import org.usfirst.frc.team2059.robot.commands.SetGearAngle;
+import org.usfirst.frc.team2059.robot.commands.CollectGear;
 import org.usfirst.frc.team2059.robot.commands.DeployGear;
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -37,30 +37,13 @@ public class OI {
       joystickButtons[0][i] = new JoystickButton(joysticks[0], i + 1);
       joystickButtons[1][i] = new JoystickButton(joysticks[1], i + 1);
     }
-//    joystickButtons[0][0].whileHeld(new Collect(-1));
-    //joystickButtons[0][0].whileHeld(new Drive());
-    joystickButtons[0][1].whileHeld(new CollectAll(-1));
-    joystickButtons[0][3].whileHeld(new DeployGear());
-    joystickButtons[0][2].whileHeld(new SetGearAngle(-0.4));
-    joystickButtons[0][4].whileHeld(new SetGearAngle(0.4));
+    joystickButtons[0][1].whileHeld(new CollectGear(-1));
+    //Deploy
+    joystickButtons[0][3].whileHeld(new CollectGear(1));
     joystickButtons[0][5].whileHeld(new DriveIntoPeg());
-    joystickButtons[0][10].whenPressed(new SetGearAngleCollect(.5));
-    joystickButtons[0][10].whenPressed(new SetGearAngleDeploy(.5));
 
-//    joystickButtons[0][11].whenPressed(new CollectGear(1));
-//    joystickButtons[0][12].whenPressed(new SetGearAngle(1));
-//    joystickButtons[0][0].whileHeld(new Collect(1));
-    //joystickButtons[0][0].whileHeld(new AutoStrafeAlignVision());
-//    joystickButtons[0][3].whileHeld(new GearSystem(1));
-//    joystickButtons[0][4].whileHeld(new GearSystem(-1));
-    //Button 8 drives straight
-//    joystickButtons[1][0].whileHeld(new Climb(1));
-//    joystickButtons[1][1].whileHeld(new Climb(1));
-    joystickButtons[1][6].whenPressed(new SetDeflectorUp(true));
     joystickButtons[1][7].whileHeld(new Climb(-1));
     joystickButtons[1][8].whileHeld(new Climb(-0.25));
-    joystickButtons[1][10].whileHeld(new Shoot(-0.4, true));
-    joystickButtons[1][11].whileHeld(new Shoot(-1.0, false));
   }
   public Joystick[] getJoysticks() {
     return joysticks;
