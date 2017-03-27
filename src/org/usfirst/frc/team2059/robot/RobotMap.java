@@ -15,10 +15,13 @@ public class RobotMap {
 
   //Collector
   public static int collectorMotor = 7;
+
+  //Gear collector
+  public static int gearAnglePot = 2;
   public static int gearCollectorMotor = 8;
   public static int gearAngleMotor = 11;
-  public static int gearCollectorDeploySwitch = 7;
-  public static int gearCollectorCollectSwitch = 8;
+  public static double gearCollectDegrees = 1;
+  public static double gearDeployDegrees = 1;
 
   //Shooter
   public static int ShooterDeflector = 12;
@@ -43,7 +46,7 @@ public class RobotMap {
   public static double fHeight = 362.600446468;
   public static int servoX = 0;
   public static int servoY = 1;
-  public static int sonar = 2;
+  public static int sonar = 3;
 
   //Climber
   public static int climbermotor = 5;
