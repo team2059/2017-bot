@@ -19,7 +19,7 @@ public class AutoDriveIntoPeg extends CommandBase {
     driveBase.resetGyro();
   }
   protected void execute() {
-    if(distance % 10 == 0){
+    if(driveBase.getyEncoderDistance() % 10 == 0){
       angle = visionHelper.getHorizontalError();
     }
     driveBase.driveStraightYdistance(distance, SmartDashboard.getNumber("GyroCorrection"), angle);
