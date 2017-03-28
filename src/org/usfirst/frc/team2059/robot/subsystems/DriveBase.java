@@ -77,6 +77,25 @@ public class DriveBase extends Subsystem {
     yEncoderController.setSetpoint(setpoint);
     yEncoderController.enable();
   }
+  
+  //drives to a set of relative coordinates using encoders
+  public void driveRelativeCoordinates(double x, double y, double gyroCorrection){
+    double errorykP = SmartDashboard.getNumber("driveStraightErrorykP");
+    double errorykI = SmartDashboard.getNumber("driveStraightErrorykI");
+    double errorxkP = SmartDashboard.getNumber("driveStraightErrorxkP");
+    double errorxkI = SmartDashboard.getNumber("driveStraightErrorxkI");
+    double errory = getyEncoderDistance();
+    double errorx = getxEncoderDistance();
+    double xPower = ((errorxkP * errorx) + errorxkI);
+    double yPower = ((errorykP * errory) + errorykI);
+    double zPower = -gyro.getAngle() * gyroCorrection;
+    SmartDashboard.putNumber("errorX", errorx);
+    SmartDashboard.putNumber("errorY", errory);
+    SmartDashboard.putNumber("xPower", xPower);
+    SmartDashboard.putNumber("yPower", yPower);
+    SmartDashboard.putNumber("zPower", zPower);
+    driveMecanum(xPower, yPower, zPower, 0.5);
+  }
 
   public void driveStraightYdistance(double distance, double correction, double angle) {
     double errorkP = SmartDashboard.getNumber("driveStraightErrorykP");
