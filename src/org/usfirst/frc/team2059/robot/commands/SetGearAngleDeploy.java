@@ -15,7 +15,7 @@ public class SetGearAngleDeploy extends CommandBase {
   }
 
   protected boolean isFinished() {
-    return gearCollector.getDeploySwitch();
+    return false;
   }
 
   protected void end() {

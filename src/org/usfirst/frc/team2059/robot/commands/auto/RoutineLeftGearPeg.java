@@ -5,10 +5,13 @@ import edu.wpi.first.wpilibj.command.WaitCommand;
 import org.usfirst.frc.team2059.robot.Robot;
 public class RoutineLeftGearPeg extends CommandGroup {
   public RoutineLeftGearPeg() {
-    addSequential(new AutoEncoderY(93,4));
-    addSequential(new AutoRotate(-30,2));
-    if(CommandBase.visionHelper.getCenterContourX()!=0){
-      addSequential(new AutoDriveIntoPeg(73,4));
-    }
+    //addSequential(new AutoEncoderY(93,4));
+    addSequential(new AutoEncoderY(40,3));
+    addSequential(new AutoRotate(45,1.5));
+    addSequential(new AutoEncoderY(40,2));
+    addSequential(new AutoDriveIntoPeg(35,2));
+    addSequential(new AutoDriveIntoPeg(40,2));
+    addSequential(new AutoEncoderY(-75, 3));
+    addSequential(new AutoRotate(-45,2));
   }
 }

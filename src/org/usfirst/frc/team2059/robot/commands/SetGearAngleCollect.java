@@ -15,7 +15,7 @@ public class SetGearAngleCollect extends CommandBase {
   }
 
   protected boolean isFinished() {
-    return gearCollector.getCollectSwitch();
+    return false;
   }
 
   protected void end() {
