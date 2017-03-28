@@ -34,13 +34,11 @@ public class Robot extends IterativeRobot {
 
   @Override
   public void robotInit() {
-
     CameraServer.getInstance().startAutomaticCapture();
-
     CommandBase.init();
     oi = new OI();
-    SmartDashboard.putNumber("AutoDrivePart1Distance",90);
-    SmartDashboard.putNumber("AutoDrivePart2Distance",0);
+    SmartDashboard.putNumber("AutoDrivePart1Distance", 90);
+    SmartDashboard.putNumber("AutoDrivePart2Distance", 0);
     SmartDashboard.putNumber("GyroCorrection", 0.09);
     SmartDashboard.putNumber("xEncoderTarget", 0);
     SmartDashboard.putNumber("yEncoderTarget", 0);
@@ -80,30 +78,30 @@ public class Robot extends IterativeRobot {
 
   @Override
   public void autonomousInit() {
-      switch (SmartDashboard.getInt("Automode")) {
-        case 0:
-          return;
-        case 1:
-          autonomousCommand = new AutoEncoderY(82,2);
-          break;
-        case 2:
-          autonomousCommand = new RoutineLeftGearPeg();
-          break;
-        case 3:
-          autonomousCommand = new RoutineCenterGearPeg();
-          break;
-        case 4:
-          autonomousCommand = new RoutineRightGearPeg();
-          break;
-        case 43:
-          autonomousCommand = new RoutineCenterPegVision();
-          break;
-        case 44:
-          autonomousCommand = new RoutineCenterGearPegFallback();
-          break;
-        default:
-          break;
-      }
+    switch (SmartDashboard.getInt("Automode")) {
+      case 0:
+        return;
+      case 1:
+        autonomousCommand = new AutoEncoderY(82, 2);
+        break;
+      case 2:
+        autonomousCommand = new RoutineLeftGearPeg();
+        break;
+      case 3:
+        autonomousCommand = new RoutineCenterGearPeg();
+        break;
+      case 4:
+        autonomousCommand = new RoutineRightGearPeg();
+        break;
+      case 43:
+        autonomousCommand = new RoutineCenterPegVision();
+        break;
+      case 44:
+        autonomousCommand = new RoutineCenterGearPegFallback();
+        break;
+      default:
+        break;
+    }
     if (autonomousCommand != null) {
       autonomousCommand.start();
     }

@@ -41,7 +41,6 @@ public class OI {
     //Deploy
     joystickButtons[0][3].whileHeld(new CollectGear(1));
     joystickButtons[0][5].whileHeld(new DriveIntoPeg());
-
     joystickButtons[1][7].whileHeld(new Climb(-1));
     joystickButtons[1][8].whileHeld(new Climb(-0.25));
   }

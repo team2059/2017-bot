@@ -29,8 +29,8 @@ public class VisionHelper extends Subsystem {
     try {
       double highestArea = contoursTable.getNumberArray("centerX", new double[0])[0];
       double secondHighestArea = contoursTable.getNumberArray("centerX", new double[0])[1];
-      SmartDashboard.putNumber("HighestArea",highestArea);
-      SmartDashboard.putNumber("SecondHighestArea",secondHighestArea);
+      SmartDashboard.putNumber("HighestArea", highestArea);
+      SmartDashboard.putNumber("SecondHighestArea", secondHighestArea);
       return Math.abs((highestArea + secondHighestArea) / 2);
     } catch (Exception e) {
       return 0;

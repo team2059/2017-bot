@@ -3,7 +3,7 @@ import org.usfirst.frc.team2059.robot.subsystems.GearCollector;
 
 public class SetGearAngleCollect extends CommandBase {
   double speed;
-  public SetGearAngleCollect(double s){
+  public SetGearAngleCollect(double s) {
     speed = s;
   }
 

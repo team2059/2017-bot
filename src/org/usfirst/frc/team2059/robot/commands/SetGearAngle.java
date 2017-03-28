@@ -3,7 +3,7 @@ import org.usfirst.frc.team2059.robot.subsystems.GearCollector;
 
 public class SetGearAngle extends CommandBase {
   double degrees;
-  public SetGearAngle(double d){
+  public SetGearAngle(double d) {
     degrees = d;
   }
 

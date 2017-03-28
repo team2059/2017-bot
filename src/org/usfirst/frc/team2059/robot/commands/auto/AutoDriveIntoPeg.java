@@ -7,7 +7,7 @@ public class AutoDriveIntoPeg extends CommandBase {
   double angle, distance;
   public AutoDriveIntoPeg(double d, double t) {
     requires(driveBase);
-    distance=d;
+    distance = d;
     setTimeout(t);
   }
   protected void initialize() {

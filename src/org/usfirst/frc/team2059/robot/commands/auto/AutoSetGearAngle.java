@@ -4,7 +4,7 @@ import org.usfirst.frc.team2059.robot.subsystems.GearCollector;
 
 public class AutoSetGearAngle extends CommandBase {
   double degrees;
-  public AutoSetGearAngle(double d, double timeout){
+  public AutoSetGearAngle(double d, double timeout) {
     degrees = d;
     setTimeout(timeout);
   }

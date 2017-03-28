@@ -92,7 +92,7 @@ public class DriveBase extends Subsystem {
     SmartDashboard.putNumber("distanceError", distanceError);
     double xPower = ((errorkP * error) + errorkI);
     double yPower = ((distancekP * distanceError) + distancekI);
-    double zPower = -(gyro.getAngle()-angle) * correction;
+    double zPower = -(gyro.getAngle() - angle) * correction;
     SmartDashboard.putNumber("yPower", yPower);
     SmartDashboard.putNumber("xPower", xPower);
     SmartDashboard.putNumber("zPower", zPower);
