@@ -84,8 +84,8 @@ public class DriveBase extends Subsystem {
     double errorykI = SmartDashboard.getNumber("driveStraightErrorykI");
     double errorxkP = SmartDashboard.getNumber("driveStraightErrorxkP");
     double errorxkI = SmartDashboard.getNumber("driveStraightErrorxkI");
-    double errory = getyEncoderDistance();
-    double errorx = getxEncoderDistance();
+    double errorx = getyEncoderDistance() - x;
+    double errory = getxEncoderDistance() - y;
     double xPower = ((errorxkP * errorx) + errorxkI);
     double yPower = ((errorykP * errory) + errorykI);
     double zPower = -gyro.getAngle() * gyroCorrection;
