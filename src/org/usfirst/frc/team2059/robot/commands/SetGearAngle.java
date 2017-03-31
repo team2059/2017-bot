@@ -11,7 +11,7 @@ public class SetGearAngle extends CommandBase {
   }
 
   protected void execute() {
-    gearCollector.setDegrees(degrees);
+    gearCollector.setEncoderTarget(degrees);
   }
 
   protected boolean isFinished() {

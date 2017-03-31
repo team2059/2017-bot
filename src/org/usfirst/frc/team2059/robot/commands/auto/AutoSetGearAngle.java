@@ -13,7 +13,7 @@ public class AutoSetGearAngle extends CommandBase {
   }
 
   protected void execute() {
-    CommandBase.gearCollector.setDegrees(degrees);
+    CommandBase.gearCollector.setEncoderTarget(degrees);
   }
 
   protected boolean isFinished() {

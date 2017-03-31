@@ -67,7 +67,9 @@ public class Robot extends IterativeRobot {
     SmartDashboard.putData("yEncoderController", CommandBase.driveBase.getyEncoderController());
     SmartDashboard.putData("gyroController", CommandBase.driveBase.getGyroController());
     SmartDashboard.putData("shooterController", CommandBase.shooter.getCIMEncoderController());
+    SmartDashboard.putData("gearAngleController", CommandBase.gearCollector.getAngleController());
     SmartDashboard.putInt("Automode", 3);
+    CommandBase.gearCollector.resetAngleEncoderCount();
   }
 
   @Override

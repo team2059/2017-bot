@@ -13,7 +13,7 @@ public class CollectGear extends CommandBase {
   }
 
   protected void execute() {
-    gearCollector.setDegrees(0);
+    gearCollector.setEncoderTarget(0);
     gearCollector.gearCollectAtSpeed(speed);
   }
 
@@ -22,7 +22,7 @@ public class CollectGear extends CommandBase {
   }
 
   protected void end() {
-    gearCollector.setDegrees(90);
+    gearCollector.setEncoderTarget(90);
     gearCollector.gearCollectAtSpeed(0);
   }
 

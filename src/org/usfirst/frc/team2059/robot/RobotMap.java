@@ -17,7 +17,8 @@ public class RobotMap {
   public static int collectorMotor = 7;
 
   //Gear collector
-  public static int gearAnglePot = 2;
+  public static int gearAngleEncoderA = 4;
+  public static int gearAngleEncoderB = 5;
   public static int gearCollectorMotor = 8;
   public static int gearAngleMotor = 11;
   public static double gearCollectDegrees = 1;

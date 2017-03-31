@@ -7,11 +7,12 @@ import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.PIDSource;
 import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.PIDController;
+import edu.wpi.first.wpilibj.Encoder;
 
 public class GearCollector extends Subsystem {
   CANTalon gearMotor = new CANTalon(RobotMap.gearCollectorMotor);
   CANTalon gearAngleMotor = new CANTalon(RobotMap.gearAngleMotor);
-  AnalogInput gearAnglePot = new AnalogInput(RobotMap.gearAnglePot);
+  Encoder angleEncoder = new Encoder(RobotMap.gearAngleEncoderA, RobotMap.gearAngleEncoderB);
   PIDController angleController = new PIDController(0.1, 0.0, 0.001, new gearAnglePIDSource(), new gearAnglePIDOutput());
 
   public void initDefaultCommand() {
@@ -22,26 +23,24 @@ public class GearCollector extends Subsystem {
   public void setGearAngleMotorSpeed(double speed) {
     gearAngleMotor.set(speed);
   }
-  public double potToDegrees(double pot) {
-    double min = RobotMap.gearCollectDegrees;
-    double max = RobotMap.gearDeployDegrees;
-    return (pot - min) / (Math.abs(min - max) / 90);
-  }
-  public double getDegrees() {
-    return potToDegrees(gearAnglePot.getAverageVoltage());
-  }
   public PIDController getAngleController() {
     return angleController;
   }
-  public void setDegrees(double degrees) {
-    angleController.setSetpoint(degrees);
+  public void setEncoderTarget(double target) {
+    angleController.setSetpoint(target);
+  }
+  public void resetAngleEncoderCount(){
+    angleEncoder.reset();
   }
 
+  public double getAngleEncoderCount(){
+    return angleEncoder.get();
+  }
   //PID Source for gear angle pot
   public class gearAnglePIDSource implements PIDSource {
     @Override
     public double pidGet() {
-      return potToDegrees(gearAnglePot.getAverageVoltage());
+      return getAngleEncoderCount();
     }
     public PIDSourceType getPIDSourceType() {
       return PIDSourceType.kDisplacement;
