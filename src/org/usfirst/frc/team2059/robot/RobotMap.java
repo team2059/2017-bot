@@ -29,8 +29,8 @@ public class RobotMap {
   public static int agitatorMotor = 13;
   public static int shooterDeflectorSwitchOpen = 6;
   public static int shooterDeflectorSwitchClosed = 7;
-  public static int CIMEncoderA = 4;
-  public static int CIMEncoderB = 5;
+  public static int CIMEncoderA = 8;
+  public static int CIMEncoderB = 9;
   public static int shooterMotor = 10;
   public static int shooterfeeder = 9;
   public static int feederServo = 2;

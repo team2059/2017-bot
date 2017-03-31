@@ -1,4 +1,6 @@
 package org.usfirst.frc.team2059.robot.subsystems;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team2059.robot.RobotMap;
 import com.ctre.CANTalon;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -40,7 +42,7 @@ public class GearCollector extends Subsystem {
   public class gearAnglePIDSource implements PIDSource {
     @Override
     public double pidGet() {
-      return getAngleEncoderCount();
+      return angleEncoder.get();
     }
     public PIDSourceType getPIDSourceType() {
       return PIDSourceType.kDisplacement;
@@ -53,6 +55,7 @@ public class GearCollector extends Subsystem {
     @Override
     public void pidWrite(double output) {
       setGearAngleMotorSpeed(output);
+    SmartDashboard.putNumber("ignore this", output);
     }
   }
 }
