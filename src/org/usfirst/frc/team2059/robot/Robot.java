@@ -39,7 +39,7 @@ public class Robot extends IterativeRobot {
     oi = new OI();
     SmartDashboard.putNumber("AutoDrivePart1Distance", 90);
     SmartDashboard.putNumber("AutoDrivePart2Distance", 0);
-    SmartDashboard.putNumber("GyroCorrection", 0.09);
+    SmartDashboard.putNumber("GyroCorrection", 0.05);
     SmartDashboard.putNumber("xEncoderTarget", 0);
     SmartDashboard.putNumber("yEncoderTarget", 0);
     SmartDashboard.putNumber("shooterPower", 0.9);
@@ -48,7 +48,7 @@ public class Robot extends IterativeRobot {
     SmartDashboard.putNumber("driveStraightxkP", 0.2);
     SmartDashboard.putNumber("driveStraightxkD", 0.003);
     SmartDashboard.putNumber("driveStraightxkI", 0.003);
-    SmartDashboard.putNumber("driveStraightykP", 0.01);
+    SmartDashboard.putNumber("driveStraightykP", 0.04);
     SmartDashboard.putNumber("driveStraightykD", 0.003);
     SmartDashboard.putNumber("driveStraightykI", 0.004);
     SmartDashboard.putNumber("driveStraightErrorxkP", 0.03);
