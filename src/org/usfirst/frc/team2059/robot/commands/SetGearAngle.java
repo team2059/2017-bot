@@ -8,6 +8,7 @@ public class SetGearAngle extends CommandBase {
   }
 
   protected void initialize() {
+    gearCollector.getAngleController().disable();
   }
 
   protected void execute() {

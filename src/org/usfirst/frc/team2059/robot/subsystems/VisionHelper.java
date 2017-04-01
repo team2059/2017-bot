@@ -33,7 +33,7 @@ public class VisionHelper extends Subsystem {
       SmartDashboard.putNumber("SecondHighestArea", secondHighestArea);
       return Math.abs((highestArea + secondHighestArea) / 2);
     } catch (Exception e) {
-      return 0;
+      return 160;
     }
   }
   public double getHorizontalError() {

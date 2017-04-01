@@ -43,6 +43,8 @@ public class OI {
     joystickButtons[0][4].whileHeld(new SetGearAngleDeploy(-1));
     //Deploy
     joystickButtons[0][5].whileHeld(new DriveIntoPeg());
+    joystickButtons[0][8].whileHeld(new SetGearAngle(-.5));
+    joystickButtons[0][9].whileHeld(new SetGearAngle(.5));
 
     joystickButtons[1][7].whileHeld(new Climb(-1));
     joystickButtons[1][8].whileHeld(new Climb(-0.25));
