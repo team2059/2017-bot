@@ -22,7 +22,7 @@ public class DriveBase extends Subsystem {
   Encoder yEncoder = new Encoder(RobotMap.yEncoderA, RobotMap.yEncoderB, false, Encoder.EncodingType.k4X);
   PIDController xEncoderController = new PIDController(0.2, 0.002, 0.017, new xEncoderPIDSource(), new xEncoderPIDOutput());
   PIDController yEncoderController = new PIDController(0.2, 0.002, 0.017, new yEncoderPIDSource(), new yEncoderPIDOutput());
-  PIDController gyroController = new PIDController(0.02, 0.002, 0.017, new gyroPIDSource(), new gyroPIDOutput());
+  PIDController gyroController = new PIDController(0.025, 0.002, 0.017, new gyroPIDSource(), new gyroPIDOutput());
   double correctedGyroAngle = .1;
   double previousError = 0;
   public void initDefaultCommand() {
