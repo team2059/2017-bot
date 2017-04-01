@@ -10,6 +10,7 @@ public class AutoSetGearAngle extends CommandBase {
   }
 
   protected void initialize() {
+    CommandBase.gearCollector.getAngleController().enable();
   }
 
   protected void execute() {

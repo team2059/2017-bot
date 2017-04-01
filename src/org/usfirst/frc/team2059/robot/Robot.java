@@ -44,7 +44,7 @@ public class Robot extends IterativeRobot {
     SmartDashboard.putNumber("yEncoderTarget", 0);
     SmartDashboard.putNumber("shooterPower", 0.9);
     SmartDashboard.putNumber("AutoXTarget", -48);
-    SmartDashboard.putNumber("AutoYTarget", 94);
+    SmartDashboard.putNumber("AutoYTarget", 104);
     SmartDashboard.putNumber("driveStraightxkP", 0.2);
     SmartDashboard.putNumber("driveStraightxkD", 0.003);
     SmartDashboard.putNumber("driveStraightxkI", 0.003);
