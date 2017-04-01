@@ -130,7 +130,8 @@ public class Robot extends IterativeRobot {
     CommandBase.driveBase.getxEncoderController().disable();
     CommandBase.driveBase.getyEncoderController().disable();
     CommandBase.gearCollector.getAngleController().enable();
-    CommandBase.shooter.setDeflectorAngle(0);
+    CommandBase.gearCollector.setEncoderTarget(-4);
+//    CommandBase.shooter.setDeflectorAngle(0);
   }
 
   @Override

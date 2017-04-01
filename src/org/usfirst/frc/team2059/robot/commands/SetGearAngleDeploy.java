@@ -8,10 +8,11 @@ public class SetGearAngleDeploy extends CommandBase {
   }
 
   protected void initialize() {
+    gearCollector.getAngleController().enable();
+    gearCollector.setEncoderTarget(0);
   }
 
   protected void execute() {
-    gearCollector.setGearAngleMotorSpeed(-speed);
   }
 
   protected boolean isFinished() {
@@ -19,7 +20,7 @@ public class SetGearAngleDeploy extends CommandBase {
   }
 
   protected void end() {
-    gearCollector.setGearAngleMotorSpeed(0);
+    gearCollector.getAngleController().disable();
   }
 
   protected void interrupted() {

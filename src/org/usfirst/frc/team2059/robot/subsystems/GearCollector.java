@@ -15,7 +15,7 @@ public class GearCollector extends Subsystem {
   CANTalon gearMotor = new CANTalon(RobotMap.gearCollectorMotor);
   CANTalon gearAngleMotor = new CANTalon(RobotMap.gearAngleMotor);
   Encoder angleEncoder = new Encoder(RobotMap.gearAngleEncoderA, RobotMap.gearAngleEncoderB);
-  PIDController angleController = new PIDController(0.1, 0.0, 0.001, new gearAnglePIDSource(), new gearAnglePIDOutput());
+  PIDController angleController = new PIDController(0.04, 0.0, 0.08, new gearAnglePIDSource(), new gearAnglePIDOutput());
 
   public void initDefaultCommand() {
   }
@@ -54,8 +54,8 @@ public class GearCollector extends Subsystem {
   public class gearAnglePIDOutput implements PIDOutput {
     @Override
     public void pidWrite(double output) {
-      setGearAngleMotorSpeed(output);
-    SmartDashboard.putNumber("ignore this", output);
+      setGearAngleMotorSpeed(output/3);
+    SmartDashboard.putNumber("ignore this", output/3);
     }
   }
 }
