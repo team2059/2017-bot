@@ -20,7 +20,7 @@ public class SetGearAngleDeploy extends CommandBase {
   }
 
   protected void end() {
-    gearCollector.getAngleController().disable();
+    //gearCollector.getAngleController().disable();
   }
 
   protected void interrupted() {

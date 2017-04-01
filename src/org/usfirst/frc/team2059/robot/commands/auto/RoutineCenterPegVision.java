@@ -10,11 +10,8 @@ public class RoutineCenterPegVision extends CommandGroup {
     //look for target/drive into it
     addSequential(new AutoDriveIntoPeg(44, 1.5));
     //drop gear off on peg
-    addSequential(new AutoSetGearAngle(0, .4));
-    //back up
+    addParallel(new AutoSetGearAngle(-36, .5));
     addSequential(new AutoEncoderY(-60, 3));
-    //raise collector
-    addSequential(new AutoSetGearAngle(90, 1));
 //    if(CommandBase.visionHelper.getCenterContourX()!=0){
 //      addSequential(new AutoDriveIntoPeg(84, 4));
 //      addSequential(new AutoSetGearAngle(-.7,.2));
