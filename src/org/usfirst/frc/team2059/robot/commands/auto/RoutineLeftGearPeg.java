@@ -12,5 +12,7 @@ public class RoutineLeftGearPeg extends CommandGroup {
     addSequential(new AutoEncoderY(90, 3));
     addParallel(new AutoSetGearAngle(-36, .5));
     addSequential(new AutoEncoderY(-40, 3));
+    addSequential(new AutoRotate(-60, 2.5));
+    addSequential(new AutoEncoderY(60, 3));
   }
 }
