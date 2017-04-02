@@ -49,7 +49,7 @@ public class Robot extends IterativeRobot {
     SmartDashboard.putNumber("driveStraightxkP", 0.35);
     SmartDashboard.putNumber("driveStraightxkD", 0.03);
     SmartDashboard.putNumber("driveStraightxkI", 0.003);
-    SmartDashboard.putNumber("driveStraightykP", 0.01);
+    SmartDashboard.putNumber("driveStraightykP", 0.015);
     SmartDashboard.putNumber("driveStraightykD", 0.003);
     SmartDashboard.putNumber("driveStraightykI", 0.004);
     SmartDashboard.putNumber("driveStraightErrorxkP", 0.04);

@@ -8,9 +8,9 @@ import org.usfirst.frc.team2059.robot.Robot;
 public class RoutineRightGearPeg extends CommandGroup {
   public RoutineRightGearPeg() {
     addSequential(new AutoSetGearAngle(0, .1));
-    addSequential(new AutoEncoderY(84, 2));
-    addSequential(new AutoRotate(60, 1.5));
-    addSequential(new AutoEncoderY(99, 2));
+    addSequential(new AutoEncoderY(70, 3));
+    addSequential(new AutoRotate(-60, 2.5));
+    addSequential(new AutoEncoderY(90, 3));
     addParallel(new AutoSetGearAngle(-36, .5));
     addSequential(new AutoEncoderY(-40, 3));
   }
