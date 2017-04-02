@@ -80,10 +80,10 @@ public class DriveBase extends Subsystem {
   
   //drives to a set of relative coordinates using encoders
   public void driveRelativeCoordinates(double x, double y, double gyroCorrection){
-    double errorykP = SmartDashboard.getNumber("driveStraightErrorykP");
-    double errorykI = SmartDashboard.getNumber("driveStraightErrorykI");
-    double errorxkP = SmartDashboard.getNumber("driveStraightErrorxkP");
-    double errorxkI = SmartDashboard.getNumber("driveStraightErrorxkI");
+    double errorykP = SmartDashboard.getNumber("driveStraightError1ykP");
+    double errorykI = SmartDashboard.getNumber("driveStraightError1ykI");
+    double errorxkP = SmartDashboard.getNumber("driveStraightError1xkP");
+    double errorxkI = SmartDashboard.getNumber("driveStraightError1xkI");
     double errorx = getyEncoderDistance() - x;
     double errory = getxEncoderDistance() - y;
     double xPower = ((errorxkP * errorx) + errorxkI);

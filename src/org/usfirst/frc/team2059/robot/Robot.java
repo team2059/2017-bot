@@ -37,8 +37,9 @@ public class Robot extends IterativeRobot {
     CameraServer.getInstance().startAutomaticCapture();
     CommandBase.init();
     oi = new OI();
-    SmartDashboard.putNumber("AutoDrivePart1Distance", 90);
-    SmartDashboard.putNumber("AutoDrivePart2Distance", 0);
+    SmartDashboard.putNumber("driveStraightError1xkP", 0.04);
+    SmartDashboard.putNumber("driveStraightError1xkI", 0.0);
+    SmartDashboard.putNumber("driveStraightError1ykP", 0.03);
     SmartDashboard.putNumber("GyroCorrection", 0.06);
     SmartDashboard.putNumber("xEncoderTarget", 0);
     SmartDashboard.putNumber("yEncoderTarget", 0);
