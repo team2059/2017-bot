@@ -10,8 +10,9 @@ public class RoutineRightGearPeg extends CommandGroup {
     addSequential(new AutoSetGearAngle(0, .1));
     addSequential(new AutoEncoderY(70, 3));
     addSequential(new AutoRotate(-60, 2.5));
-    addSequential(new AutoEncoderY(90, 3));
+    addSequential(new AutoEncoderY(50, 3));
+    addSequential(new AutoDriveIntoPeg(40, 2));
     addParallel(new AutoSetGearAngle(-36, .5));
-    addSequential(new AutoEncoderY(-40, 3));
+    addSequential(new AutoEncoderY(-50, 3));
   }
 }
