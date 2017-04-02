@@ -90,6 +90,7 @@ public class Robot extends IterativeRobot {
         autonomousCommand = new AutoEncoderY(82, 2);
         break;
       case 2:
+        CommandBase.gearCollector.setEncoderTarget(0);
         autonomousCommand = new RoutineLeftGearPeg();
         break;
       case 3:
