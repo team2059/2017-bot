@@ -12,5 +12,7 @@
 /build/
 /dist/
 /tmp/
+/html
+/latex
 local.properties
 sysProps.xml
