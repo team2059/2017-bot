@@ -31,11 +31,11 @@ public class GearCollector extends Subsystem {
   public void setEncoderTarget(double target) {
     angleController.setSetpoint(target);
   }
-  public void resetAngleEncoderCount(){
+  public void resetAngleEncoderCount() {
     angleEncoder.reset();
   }
 
-  public double getAngleEncoderCount(){
+  public double getAngleEncoderCount() {
     return angleEncoder.get();
   }
   //PID Source for gear angle pot
@@ -54,8 +54,8 @@ public class GearCollector extends Subsystem {
   public class gearAnglePIDOutput implements PIDOutput {
     @Override
     public void pidWrite(double output) {
-      setGearAngleMotorSpeed(output/3);
-    SmartDashboard.putNumber("ignore this", output/3);
+      setGearAngleMotorSpeed(output / 3);
+      SmartDashboard.putNumber("ignore this", output / 3);
     }
   }
 }

@@ -4,12 +4,12 @@ import org.usfirst.frc.team2059.robot.Robot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class AutoGoToCoords extends CommandBase {
-  double x,y;
+  double x, y;
   public AutoGoToCoords(double xC, double yC, double timeout) {
     requires(driveBase);
     setTimeout(timeout);
-    x=xC;
-    y=yC;
+    x = xC;
+    y = yC;
   }
   protected void initialize() {
     driveBase.resetyEncoderCount();
@@ -17,7 +17,7 @@ public class AutoGoToCoords extends CommandBase {
     driveBase.resetxEncoderCount();
   }
   protected void execute() {
-    driveBase.driveRelativeCoordinates(x,y,SmartDashboard.getNumber("GyroCorrection"));
+    driveBase.driveRelativeCoordinates(x, y, SmartDashboard.getNumber("GyroCorrection"));
   }
   protected boolean isFinished() {
     return isTimedOut();
